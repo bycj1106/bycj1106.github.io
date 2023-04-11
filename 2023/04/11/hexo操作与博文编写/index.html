@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>hexo操作与博文编写 | 云升&#39;BLOG</title>
+        <title>hexo操作与博文编写 | 云升&#39;s Blog</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -33,6 +33,10 @@
 
 
 
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
+
 
 
 
@@ -53,7 +57,7 @@
             <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <div class="desktop-menu">
         <a class="title" href="/">
-            <span>云升&#39;BLOG</span>
+            <span>云升&#39;S BLOG</span>
         </a>
         
         <a href="/">
@@ -86,7 +90,7 @@
         <div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div>
         <div class="title" @click="shouMenuItems = !shouMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;云升&#39;BLOG</span>
+            <span>&emsp;云升&#39;S BLOG</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="shouMenuItems">
@@ -172,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
+                <a href="/tags/hexo/" style="color: #00a596">hexo</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/markdown/" style="color: #00a596">markdown</a>
+                <a href="/tags/markdown/" style="color: #ff7d73">markdown</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/post/" style="color: #00bcd4">post</a>
+                <a href="/tags/post/" style="color: #00a596">post</a>
             </span>
             
         </span>
@@ -196,9 +200,10 @@
 $ hexo g
 $ hexo d
 </code></pre>
-<p><em>如果在推到github前可先进行本地部署</em></p>
+<p><em>在推到github前可先进行本地部署</em></p>
 <pre><code class="bash">$ hexo s
 </code></pre>
+<h4 id="关于评论系统的引入"><a href="#关于评论系统的引入" class="headerlink" title="关于评论系统的引入"></a>关于评论系统的引入</h4><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.yuzi.dev/posts/bcb4ff00.html">在ParticleX上使用Waline作为评论区 | Yuzi’s Blog</a></p>
 <hr>
 <h2 id="编辑文章的相关操作"><a href="#编辑文章的相关操作" class="headerlink" title="编辑文章的相关操作"></a>编辑文章的相关操作</h2><h4 id="创建一个草稿"><a href="#创建一个草稿" class="headerlink" title="创建一个草稿"></a>创建一个草稿</h4><pre><code class="bash">$ hexo n draft draft_name
 </code></pre>
@@ -206,7 +211,7 @@ $ hexo d
 <h4 id="文章模板"><a href="#文章模板" class="headerlink" title="文章模板"></a>文章模板</h4><p>在根目录 <code>scaffolds</code> 文件夹下有文章样式模板，关于 <code>Front-matter</code> 的相关设置参考 <a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Layout">官方文档</a></p>
 <h4 id="推送草稿到post"><a href="#推送草稿到post" class="headerlink" title="推送草稿到post"></a>推送草稿到post</h4><pre><code class="bash">$ hexo publish &lt;file_name&gt;
 </code></pre>
-<p>可以使用 <code>hexo --draft</code> 命令可以查看已有草稿。</p>
+<p>可以使用 <code>hexo --draft</code> 命令查看已有草稿文件。</p>
 <h3 id="使用markdown语法编辑文章"><a href="#使用markdown语法编辑文章" class="headerlink" title="使用markdown语法编辑文章"></a>使用markdown语法编辑文章</h3><h4 id="markdown基础写作语法"><a href="#markdown基础写作语法" class="headerlink" title="markdown基础写作语法"></a>markdown基础写作语法</h4><pre><code class="markdown">```代码块
 `代码段`
 *斜体*
@@ -233,7 +238,20 @@ $ hexo d
     
     
     
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
     
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
+            </div>
+        </div>
+        
+
     
     
 </div>
@@ -242,7 +260,7 @@ $ hexo d
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 云升&#39;BLOG
+            2022 - 2023 云升&#39;s Blog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
@@ -270,6 +288,42 @@ $ hexo d
         
         
 
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-7qlniql7l-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-7qlniql7l-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
 
 
 
