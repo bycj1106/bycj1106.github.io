@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>云升的小窝</title>
+        <title>你来到了一篇知识的荒漠！ | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -31,8 +31,6 @@
 
 
 
-
-<script src="/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -141,45 +139,11 @@
 
             <transition name="into">
             <div id="main" v-show="!loading">
-                <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/background.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>云升的小窝</h1>
-                <h3>此心安处是吾乡</h3>
-                <h5>A home for my heart at peace</h5>
-            </div>
-        </span>
+                <div class="article">
+    <div>
+        <h1>你来到了一篇知识的荒漠！</h1>
     </div>
-</div>
-<div id="home-posts-wrap"  ref="homePostsWrap">
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2023/04/11/hexo%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%8D%9A%E6%96%87%E7%BC%96%E5%86%99/">
-        <h2 class="post-title">hexo操作与博文编写</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E5%B7%A5%E5%85%B7/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                工具
-            </a>
-        </span>
-        
+    <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
@@ -189,80 +153,33 @@
         
         
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="关于hexo操作"><a href="#关于hexo操作" class="headerlink" title="关于hexo操作"></a>关于hexo操作</h1><p>hexo是搭建博客所用框架，以下为使用搭建完成后使用操作总结。</p>
+    
+    <div class="content" v-pre>
+        <!-- markdownlint-disable MD039 MD033 -->
 
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/hexo/" style="color: #ffa2c4">
-                hexo
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/markdown/" style="color: #00bcd4">
-                markdown
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/post/" style="color: #00bcd4">
-                post
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2023/04/11/hexo%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%8D%9A%E6%96%87%E7%BC%96%E5%86%99/" class="go-post">阅读全文</a>
-</div>
+<h2 id="这是一個不存在的页面"><a href="#这是一個不存在的页面" class="headerlink" title="这是一個不存在的页面"></a>这是一個不存在的页面</h2><p>对不起，您所访问的页面不存在或者已删除。</p>
+<p>预计将在约 <span id="timeout">5</span> 秒后返回首页。</p>
+<p>当然，你可以 <strong><a href="/">点这里</a></strong> 直接返回首页。</p>
+<script>
+let countTime = 5;
+function count() {
+  document.getElementById('timeout').textContent = countTime;
+  countTime -= 1;
+  if(countTime === 0){
+    location.href = '/';
+  }
+  setTimeout(() => {
+    count();
+  }, 1000);
+}
+count();
+</script>
 
 
-        <div class="page-current">
-    <div class="prev">
-        
-    </div>
-    <div class="page-index">
-        
-        <span class="current">1</span>
-        
-    </div>
-    <div class="next">
-        
-    </div>
-</div>
+
 
     </div>
     
-    <div id="home-card">
-        <div id="card-div">
-    <div class="card-style">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">云升</div>
-        <div class="description">
-            <p>目前是枚大学生<br>…</p>
-
-        </div>
-        
-        
-    </div>
-</div>
-
-    </div>
     
 </div>
 
