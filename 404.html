@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>用Git上传项目到GitHub或Gitee | 云升的小窝</title>
+        <title>你来到了一片知识的荒漠！ | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -28,14 +28,6 @@
 
 <script src="/js/lib/preview.js"></script>
 
-
-
-
-
-
-<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
 
 
 
@@ -149,7 +141,7 @@
             <div id="main" v-show="!loading">
                 <div class="article">
     <div>
-        <h1>用Git上传项目到GitHub或Gitee</h1>
+        <h1>你来到了一片知识的荒漠！</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -159,94 +151,27 @@
             2023/4/12
         </span>
         
-        <span class="category">
-            <a href="/categories/%E5%B7%A5%E5%85%B7/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                工具
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/Git/" style="color: #03a9f4">Git</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/GitHub/" style="color: #ffa2c4">GitHub</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/Gitee/" style="color: #03a9f4">Gitee</a>
-            </span>
-            
-        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="上传本地项目到GitHub"><a href="#上传本地项目到GitHub" class="headerlink" title="上传本地项目到GitHub"></a>上传本地项目到GitHub</h1><p>在GitHub上创建一个仓库，进入仓库，点击 <code>code</code> ，在展开菜单内复制仓库路径。</p>
-<hr>
-<h2 id="Git全局设置"><a href="#Git全局设置" class="headerlink" title="Git全局设置"></a>Git全局设置</h2><p><em>全局环境已设置可略过</em></p>
-<pre><code class="bash">$ git config --global user.name &quot;云升&quot;
-$ git config --global user.email &quot;bycj1106@163.com&quot;
-</code></pre>
-<h3 id="用Git上传到仓库"><a href="#用Git上传到仓库" class="headerlink" title="用Git上传到仓库"></a>用Git上传到仓库</h3><pre><code class="bash">$ mkdir 项目名 #一般略过这一段！
-$ git init
-$ touch README.md
-$ git add README.md
-$ git commit -m &quot;first commit&quot;
-$ git remote add origin git@gitee.com:Gitee仓库路径.git
-$ git push -u origin &quot;main&quot; #Gitee上似乎是master
-</code></pre>
-<h2 id="Git的部分指令注释"><a href="#Git的部分指令注释" class="headerlink" title="Git的部分指令注释"></a>Git的部分指令注释</h2><pre><code class="bash">$ git init #把这个目录变成Git可以管理的仓库
-$ git add README.md #文件添加到仓库
-$ git add . #不但可以跟单一文件，还可以跟通配符，更可以跟目录。一个点就把当前目录下所有未追踪的文件全部add了 
-$ git commit -m &quot;first commit&quot; #把文件提交到仓库
-$ git remote add origin git@github.com:wangjiax9/practice.git #关联远程仓库
-$ git push -u origin master #把本地库的所有内容推送到远程库上
-</code></pre>
-<h2 id="gitignore文件的使用方法"><a href="#gitignore文件的使用方法" class="headerlink" title=".gitignore文件的使用方法"></a>.gitignore文件的使用方法</h2><pre><code># dir 不需要提交的目录
-/node_modules
-​
-# file 不需要提交的文件
-config.ini
-​
-# log 不需要提交的任意包含后缀名为log的文件
-*.log
-​
-# Package Files 不需要提交的任意包含后缀名为jar的文件
-*.jar
-</code></pre>
-
+        <!-- markdownlint-disable MD039 MD033 -->
+<h2 id="这是一個不存在的页面"><a href="#这是一個不存在的页面" class="headerlink" title="这是一個不存在的页面"></a>这是一個不存在的页面</h2><p>对不起，您所访问的页面不存在或者已删除。<br>预计将在约 <span id="timeout">5</span> 秒后返回首页。<br>当然，你可以 <strong><a href="/">点这里</a></strong> 直接返回首页。</p>
+<script>
+let countTime = 5;
+function count() {
+  document.getElementById('timeout').textContent = countTime;
+  countTime -= 1;
+  if(countTime === 0){
+    location.href = '/';
+  }
+  setTimeout(() => {
+    count();
+  }, 1000);
+}
+count();
+</script>
     </div>
-    
-    
-    
-    
-    <!-- 
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
-     -->
-    
-        <!-- 样式文件 -->
-        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
-        <div id="comment">
-            <div id="waline-container">
-            </div>
-        </div>
-        
-
     
     
 </div>
@@ -280,48 +205,6 @@ config.ini
             
         </div>
         <script src="/js/main.js"></script>
-        
-        
-
-<!-- 
-<script>
-    Waline.init({
-        el: "#waline-container",
-        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
-        commentCount: true,
-        pageview: false,
-        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
-        meta: ["nick","mail","link"],
-        requiredMeta: ["nick"],
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "10",
-        login: "enable",
-        locale: ,
-    });
-</script>
- -->
-
-    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-    <script>
-        Waline.init({
-            el: '#waline-container',
-            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
-            commentCount: "true",
-            pageview: "false",
-            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
-            meta: "nick,mail,link".split(','),
-            requiredMeta: "nick".split(','),
-            lang: "zh-CN",
-            wordLimit: parseInt("0"),
-            pageSize: "10",
-            login: "enable",
-        });
-    </script>
-    
-
-
-
         
     </body>
 </html>
