@@ -1,5 +1,5 @@
 ---
-title: '你来到了一片知识的荒漠！'
+title: 你来到了一片知识的荒漠！
 comments: false
 permalink: /404.html
 ---
@@ -12,7 +12,7 @@ permalink: /404.html
 let countTime = 5;
 function count() {
   document.getElementById('timeout').textContent = countTime;
-  countTime = 1;
+  countTime += -1;
   if(countTime === 0){
     location.href = '/';
   }
