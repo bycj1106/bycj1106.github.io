@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Archives | 云升的小窝</title>
+        <title>Tags: post | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -139,62 +139,83 @@
 
             <transition name="into">
             <div id="main" v-show="!loading">
-                
-<div id="archives">
+                <div id="archives">
     
-    <div id="timeline-wrap" ref="timeline">
+    <div class="categories-tags">
         
-        <div class="timeline" data-title="helloworld">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2023/4/11</div>
-                <a href="/2023/04/11/hello-world/">
-                    <h3>Hello World</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                </div>
-            </div>
-        </div>
         
-        <div class="timeline" data-title="hexo操作与博文编写">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2023/4/11</div>
-                <a href="/2023/04/11/hexo%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%8D%9A%E6%96%87%E7%BC%96%E5%86%99/">
-                    <h3>hexo操作与博文编写</h3>
-                </a>
-                <div class="info">
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/markdown/" style="color: #00bcd4">markdown</a>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/post/" style="color: #00a596">post</a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+        <span>
+            <a href="/tags/hexo/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                hexo
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/markdown/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                markdown
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/post/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                post
+            </a>
+        </span>
+        
+        
+        
         
     </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/4/11</div>
+            <a href="/2023/04/11/hexo%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%8D%9A%E6%96%87%E7%BC%96%E5%86%99/">
+                <h3>hexo操作与博文编写</h3>
+            </a>
+            <div class="info">
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/hexo/" style="color: #ff7d73">hexo</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/markdown/" style="color: #ff7d73">markdown</a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/post/" style="color: #00bcd4">post</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
+    
 </div>
 
                 <footer id="footer">
