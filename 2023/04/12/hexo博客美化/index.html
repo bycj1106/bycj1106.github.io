@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #00bcd4">hexo</a>
+                <a href="/tags/hexo/" style="color: #ffa2c4">hexo</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BE%8E%E5%8C%96/" style="color: #03a9f4">美化</a>
+                <a href="/tags/%E7%BE%8E%E5%8C%96/" style="color: #ffa2c4">美化</a>
             </span>
             
         </span>
@@ -189,7 +189,26 @@
     </div>
     
     <div class="content" v-pre>
-        
+        <h2 id="鼠标点击爆炸特效"><a href="#鼠标点击爆炸特效" class="headerlink" title="鼠标点击爆炸特效"></a>鼠标点击爆炸特效</h2><p>在制作完评论系统后逛博客时看到的不错的烟花爆炸特效<a target="_blank" rel="noopener" href="https://blog.yuzi.dev/posts/49f7102e.html">博文地址</a>。</p>
+<p>在 <code>Blog\themes\particlex\source\js</code> 目录下创建文件 <a href="....%5Cthemes%5Cparticlex%5Csource%5Cjs%5Cfireworks.min.js">fireworks.min.js</a> 。</p>
+<p>在 <code>Blog\themes\particlex\layout</code> 目录下打开 <code>layout.ejs</code> 文件，添加：</p>
+<pre><code class="html">&lt;canvas
+    id=&quot;fireworks&quot;
+    style=&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767&quot;
+&gt;&lt;/canvas&gt;
+&lt;script src=&quot;https://cdn.staticfile.org/animejs/3.2.1/anime.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/fireworks.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="流星雨特效"><a href="#流星雨特效" class="headerlink" title="流星雨特效"></a>流星雨特效</h2><p>根据主题作者的<a target="_blank" rel="noopener" href="https://argvchs.netlify.app/2022/04/17/hexo-blog-3/">原教程</a>使用。</p>
+<p>在 <code>Blog\themes\particlex\source\js</code> 目录下创建文件 <a href="....%5Cthemes%5Cparticlex%5Csource%5Cjs%5Cbackground.min.js">background.min.js</a> 。</p>
+<p>在 <code>Blog\themes\particlex\layout</code> 目录下打开 <code>layout.ejs</code> 文件，添加：</p>
+<pre><code class="html">&lt;canvas
+    id=&quot;background&quot;
+    style=&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1&quot;
+&gt;&lt;/canvas&gt;
+&lt;script src=&quot;/js/background.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
     </div>
     
     
