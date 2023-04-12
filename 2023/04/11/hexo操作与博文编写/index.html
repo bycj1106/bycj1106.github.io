@@ -176,7 +176,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #00bcd4">hexo</a>
+                <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
             </span>
             
             <span class="tag">
@@ -186,7 +186,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/post/" style="color: #00a596">post</a>
+                <a href="/tags/post/" style="color: #00bcd4">post</a>
             </span>
             
         </span>
@@ -233,6 +233,17 @@ $ hexo d
 <p>图片的资源文件夹：</p>
 <p><strong>为每个文章创建资源文件夹的设置：</strong></p>
 <p>在根目录 <code>_config.yml</code> 中找到 <code>post_asset_folder</code> 改为 <code>true</code> 即可。</p>
+<p><strong>补充</strong></p>
+<p>原版的嵌入图片方法为：</p>
+<pre><code>&#123;% asset_img foo.jpg %&#125;
+</code></pre>
+<p>十分难用，故需要安装<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders#%E4%BD%BF%E7%94%A8-Markdown-%E5%B5%8C%E5%85%A5%E5%9B%BE%E7%89%87">官方文档</a>推荐的 <code>hexo-renderer-marked</code> 插件以实现用markdown语法嵌入图片。</p>
+<p>使用 <code>npm install hexo-renderer-marked</code> 命令直接安装，之后在 <code>config.yaml</code> 中更改设置：</p>
+<pre><code class="yaml">post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
+</code></pre>
 
     </div>
     
