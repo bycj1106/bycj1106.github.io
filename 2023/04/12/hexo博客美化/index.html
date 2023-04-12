@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
+                <a href="/tags/hexo/" style="color: #00bcd4">hexo</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BE%8E%E5%8C%96/" style="color: #ffa2c4">美化</a>
+                <a href="/tags/%E7%BE%8E%E5%8C%96/" style="color: #ff7d73">美化</a>
             </span>
             
         </span>
@@ -230,6 +230,8 @@
 &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/digitalrain.min.css&quot; /&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;/js/digitalrain.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
+<p><strong>补充</strong></p>
+<p>因为在 <code>layout.ejs</code> 文件下设置会在全局生效，而代码雨在文章页会显得非常乱，所以我把其挪到了 <code>index.ejs</code> 文件下，然后将流星雨特效放回 <code>layout.ejs</code> 文件，即可实现流星雨特效在文章页生效，代码雨特效在主页生效。</p>
 
     </div>
     
@@ -332,9 +334,6 @@
         ></canvas>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
         <script src="/js/fireworks.min.js"></script>
-        <!-- 数字雨 -->
-        <canvas id="canvas" width="1440" height="900" ></canvas>
-        <link rel="stylesheet" href="/css/digitalrain.min.css" />
-        <script type="text/javascript" src="/js/digitalrain.min.js"></script>
+        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1" ></canvas> <script src="/js/background.min.js"></script>
     </body>
 </html>
