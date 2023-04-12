@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>标签 | 云升的小窝</title>
+        <title>hexo博客美化 | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -28,6 +28,14 @@
 
 <script src="/js/lib/preview.js"></script>
 
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
 
 
 
@@ -139,110 +147,69 @@
 
             <transition name="into">
             <div id="main" v-show="!loading">
-                <div id="archives">
-    
-    <div class="categories-tags">
+                <div class="article">
+    <div>
+        <h1>hexo博客美化</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/12
+        </span>
         
-        
-        <span>
-            <a href="/tags/hexo/" style="background: #ffa2c4">
+        <span class="category">
+            <a href="/categories/%E5%B7%A5%E5%85%B7/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                hexo
+                工具
             </a>
         </span>
         
         
-        
-        <span>
-            <a href="/tags/%E7%BE%8E%E5%8C%96/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                美化
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%BE%8E%E5%8C%96/" style="color: #03a9f4">美化</a>
+            </span>
+            
         </span>
-        
-        
-        
-        <span>
-            <a href="/tags/404/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                404
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                自定义
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/markdown/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                markdown
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/post/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                post
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/Git/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Git
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/GitHub/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                GitHub
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/Gitee/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Gitee
-            </a>
-        </span>
-        
         
     </div>
+    
+    <div class="content" v-pre>
+        
+    </div>
+    
+    
+    
+    
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
+            </div>
+        </div>
+        
+
+    
     
 </div>
 
@@ -275,6 +242,48 @@
             
         </div>
         <script src="/js/main.js"></script>
+        
+        
+
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
+
+
+
         
         <canvas
             id="fireworks"

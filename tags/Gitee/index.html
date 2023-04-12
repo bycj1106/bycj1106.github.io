@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="utf-8" />
         <title>Tags: Gitee | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/images/avatar.jpg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/" />
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
@@ -145,7 +145,73 @@
         
         
         <span>
-            <a href="/tags/Git/" style="background: #00bcd4">
+            <a href="/tags/hexo/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                hexo
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/%E7%BE%8E%E5%8C%96/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                美化
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/404/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                404
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                自定义
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/markdown/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                markdown
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/post/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                post
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/Git/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -156,7 +222,7 @@
         
         
         <span>
-            <a href="/tags/GitHub/" style="background: #00bcd4">
+            <a href="/tags/GitHub/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -176,61 +242,6 @@
         </span>
         
         
-        
-        
-        
-        <span>
-            <a href="/tags/hexo/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                hexo
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/markdown/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                markdown
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/post/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                post
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/404/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                404
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                自定义
-            </a>
-        </span>
         
         
     </div>
@@ -261,12 +272,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Git/" style="color: #ffa2c4">Git</a>
+                        <a href="/tags/Git/" style="color: #00bcd4">Git</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/GitHub/" style="color: #ff7d73">GitHub</a>
+                        <a href="/tags/GitHub/" style="color: #03a9f4">GitHub</a>
                     </span>
                     
                     <span class="tag">
@@ -312,5 +323,16 @@
         </div>
         <script src="/js/main.js"></script>
         
+        <canvas
+            id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+        ></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas
+            id="background"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+        ></canvas>
+        <script src="/js/background.min.js"></script>
     </body>
 </html>

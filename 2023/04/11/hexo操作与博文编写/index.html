@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="utf-8" />
         <title>hexo操作与博文编写 | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/images/avatar.jpg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/" />
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #00a596">hexo</a>
+                <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/markdown/" style="color: #ffa2c4">markdown</a>
+                <a href="/tags/markdown/" style="color: #00bcd4">markdown</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/post/" style="color: #00a596">post</a>
+                <a href="/tags/post/" style="color: #ffa2c4">post</a>
             </span>
             
         </span>
@@ -340,5 +340,16 @@ marked:
 
 
         
+        <canvas
+            id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+        ></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas
+            id="background"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+        ></canvas>
+        <script src="/js/background.min.js"></script>
     </body>
 </html>
