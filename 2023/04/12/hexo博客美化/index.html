@@ -181,7 +181,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BE%8E%E5%8C%96/" style="color: #03a9f4">美化</a>
+                <a href="/tags/%E7%BE%8E%E5%8C%96/" style="color: #00a596">美化</a>
             </span>
             
         </span>
@@ -192,7 +192,7 @@
         <h2 id="鼠标点击爆炸特效"><a href="#鼠标点击爆炸特效" class="headerlink" title="鼠标点击爆炸特效"></a>鼠标点击爆炸特效</h2><p>在制作完评论系统后逛博客时看到的不错的烟花爆炸特效<a target="_blank" rel="noopener" href="https://blog.yuzi.dev/posts/49f7102e.html">博文地址</a>。</p>
 <p>在 <code>Blog\themes\particlex\source\js</code> 目录下创建文件 <a target="_blank" rel="noopener" href="http://blog-yunsheng.cn/js/fireworks.min.js">fireworks.min.js</a> 。</p>
 <p>在 <code>Blog\themes\particlex\layout</code> 目录下打开 <code>layout.ejs</code> 文件，添加：</p>
-<pre><code class="html">&lt;canvas
+<pre><code class="ejs">&lt;canvas
     id=&quot;fireworks&quot;
     style=&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767&quot;
 &gt;&lt;/canvas&gt;
@@ -202,11 +202,33 @@
 <h2 id="流星雨特效"><a href="#流星雨特效" class="headerlink" title="流星雨特效"></a>流星雨特效</h2><p>根据主题作者的<a target="_blank" rel="noopener" href="https://argvchs.netlify.app/2022/04/17/hexo-blog-3/">原教程</a>使用。</p>
 <p>在 <code>Blog\themes\particlex\source\js</code> 目录下创建文件 <a target="_blank" rel="noopener" href="http://blog-yunsheng.cn/js/background.min.js">background.min.js</a> 。</p>
 <p>在 <code>Blog\themes\particlex\layout</code> 目录下打开 <code>layout.ejs</code> 文件，添加：</p>
-<pre><code class="html">&lt;canvas
+<pre><code class="ejs">&lt;canvas
     id=&quot;background&quot;
     style=&quot;position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1&quot;
 &gt;&lt;/canvas&gt;
 &lt;script src=&quot;/js/background.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p><strong>补充</strong></p>
+<p>要将背景图片层级上移，在 <code>Blog\themes\particlex\source\css</code> 目录下对 <code>main.css</code> 文件进行修改：</p>
+<pre><code class="css">#home-head #home-background &#123;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 0;
+&#125;
+</code></pre>
+<h2 id="代码雨特效"><a href="#代码雨特效" class="headerlink" title="代码雨特效"></a>代码雨特效</h2><p>在 <code>Blog\themes\particlex\source\js</code> 目录下创建文件  <a target="_blank" rel="noopener" href="http://blog-yunsheng.cn/js/digitalrain.min.js">digitalrain.min.js</a> </p>
+<p>在 <code>Blog\themes\particlex\source\css</code> 目录下创建文件  <a target="_blank" rel="noopener" href="http://blog-yunsheng.cn/js/digitalrain.min.css">digitalrain.min.css</a> </p>
+<p>在 <code>Blog\themes\particlex\layout</code> 目录下打开 <code>layout.ejs</code> 文件，添加：</p>
+<pre><code class="ejs">&lt;!-- 数字雨 --&gt;
+&lt;canvas id=&quot;canvas&quot; width=&quot;1440&quot; height=&quot;900&quot; &gt;&lt;/canvas&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/digitalrain.min.css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/digitalrain.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
     </div>
@@ -310,10 +332,9 @@
         ></canvas>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
         <script src="/js/fireworks.min.js"></script>
-        <canvas
-            id="background"
-            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
-        ></canvas>
-        <script src="/js/background.min.js"></script>
+        <!-- 数字雨 -->
+        <canvas id="canvas" width="1440" height="900" ></canvas>
+        <link rel="stylesheet" href="/css/digitalrain.min.css" />
+        <script type="text/javascript" src="/js/digitalrain.min.js"></script>
     </body>
 </html>
