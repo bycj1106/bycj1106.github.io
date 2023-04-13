@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>自定义404页面后文章错误跳转问题的解决 | 云升的小窝</title>
+        <title>SpringBoot+Vue+Uniapp项目环境搭建（更新中） | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -149,22 +149,22 @@
             <div id="main" v-show="!loading">
                 <div class="article">
     <div>
-        <h1>自定义404页面后文章错误跳转问题的解决</h1>
+        <h1>SpringBoot+Vue+Uniapp项目环境搭建（更新中）</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/4/12
+            2023/4/13
         </span>
         
         <span class="category">
-            <a href="/categories/%E5%85%B6%E4%BB%96/">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                其他
+                开发
             </a>
         </span>
         
@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #00bcd4">hexo</a>
+                <a href="/tags/%E7%8E%AF%E5%A2%83/" style="color: #ffa2c4">环境</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/404/" style="color: #00bcd4">404</a>
+                <a href="/tags/Docker/" style="color: #ff7d73">Docker</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" style="color: #03a9f4">自定义</a>
+                <a href="/tags/Linux/" style="color: #00bcd4">Linux</a>
             </span>
             
         </span>
@@ -194,19 +194,62 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="文章错误跳转问题的解决"><a href="#文章错误跳转问题的解决" class="headerlink" title="文章错误跳转问题的解决"></a>文章错误跳转问题的解决</h1><p>昨天在自定义404页面后，发布了一篇关于git上传远程仓库方法的记录文章，在部署后打开会跳转到404页面，以下是解决的过程记录。</p>
-<img src="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89404%E9%A1%B5%E9%9D%A2%E5%90%8E%E6%96%87%E7%AB%A0%E9%94%99%E8%AF%AF%E8%B7%B3%E8%BD%AC%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/image-20230412121358032-1681273648598-1.png" class="">
+        <h2 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h2><p>使用Oracle VM VirtualBox虚拟机 + CentOS7系统</p>
+<p>Oracle VM VirtualBox虚拟机在<a target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a>可下载.</p>
+<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1H2ToxeWh4c9QKm4SvBckvQ?pwd=c7qg">CentOS7系统</a>，提取码：c7qg。</p>
+<p>不外挂任何GUI图形界面，可使Linux系统变得更稳定，占用系统资源更小，更适合高并发、高负载的环境。</p>
+<h4 id="Linux的一些常用指令"><a href="#Linux的一些常用指令" class="headerlink" title="Linux的一些常用指令"></a>Linux的一些常用指令</h4><pre><code class="shell">立刻关机
+shutdown -h now 或者 poweroff
+两分钟后关机
+shutdown -h 2
+立刻重启
+shutdown -r now 或者 reboot
+两分钟后重启
+shutdown -r 2 
+查看 ifconfig 命令的用法
+ifconfig  --help
 
-<p>首先查看本地部署情况，本地部署后跳转正常，部署到github后则未能正常跳转，点击新发布文章后跳转到404页面。</p>
-<p>此时情况有：</p>
-<ol>
-<li>手动输入文章地址，正常打开；</li>
-<li>其他文章正常打开。</li>
+cd /
+ls
+mkdir
+rm
+mv nowname newname
+cp
+pwd
+touch
+</code></pre>
+<p>安装完成以后简单检查一下没有问题即可：</p>
+<p><img src="/2023/04/13/SpringBoot-Vue-Uniapp%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20230413103136481.png" alt="image-20230413103136481"></p>
+<h2 id="安装Docker服务"><a href="#安装Docker服务" class="headerlink" title="安装Docker服务"></a>安装Docker服务</h2><h3 id="远程连接Linux系统"><a href="#远程连接Linux系统" class="headerlink" title="远程连接Linux系统"></a>远程连接Linux系统</h3><h4 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h4><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1nQE9i0B8hkX-xej-Etzvxg?pwd=3na5">下载</a> </p>
+<p>SSH客户端软件，双击即可运行，关于SSH的扩展阅读可以看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/323322650">这篇文章</a>。</p>
+<p><em>此时先返回VirtualBox，打开虚拟机设置，在网络中设置端口转发，随意设置主机端口，我的设置为9527，子系统端口为22</em></p>
+<p>新建远程连接的时候选择SSH方式，然后填写连接信息，虚拟机为NAT模式下，填写上localhost和9527端口就能连接上Linux系统了。<em>要先启动虚拟机才能连接哦！</em></p>
+<p><img src="/2023/04/13/SpringBoot-Vue-Uniapp%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20230413105600908-1681354562578-5.png" alt="image-20230413105600908"></p>
+<h3 id="安装Docker的原因"><a href="#安装Docker的原因" class="headerlink" title="安装Docker的原因"></a>安装Docker的原因</h3><ol>
+<li>节省时间；</li>
+<li>避免软件间的冲突。</li>
 </ol>
-<p>点开F12控制台面板，点击文章，看到 <code>attribute</code> 相关信息错误，回顾之前操作，想起来自己有过直接修改 <code>post</code> 文件名，将文件名修改回创建时的文件名后再次测试，正常打开，说明 <code>hexo</code> 不能自己随意修改文章 <code>md</code> 文件名，以下是查阅官方文档找到的相关操作：</p>
-<pre><code class="bash">-p, --path	自定义新文章的路径
--r, --replace	如果存在同名文章，将其替换
--s, --slug	文章的 Slug，作为新文章的文件名和发布后的 URL
+<p>关于Docker的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/187505981">拓展阅读</a></p>
+<p><img src="/2023/04/13/SpringBoot-Vue-Uniapp%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/docker01.png" alt="img"></p>
+<p><em><del>很可爱的图标……</del></em></p>
+<p>简单的说，Docker是个沙箱环境，我们可以创建很多个沙箱空间，然后在每个沙箱中部署不同的程序。沙箱之间是物理隔绝的，只有网络联通，所以可以避免不同软件之间的冲突。</p>
+<p>因为Docker环境给每个沙箱都创建了虚拟网卡，所以每个沙箱都有自己的内网IP地址，沙箱之间可以通过网络相互调用，就可以搭建数据库集群或者部署项目了。</p>
+<p><em>沙箱的内网IP在Docker环境之外是无法访问的，所以等到我们创建沙箱的时候，需要把沙箱的某个端口映射到Linux系统的某个端口，这样才能在Docker环境之外用网络访问Docker里面的容器。</em></p>
+<p><img src="/2023/04/13/SpringBoot-Vue-Uniapp%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/v2-a5203b5c64aa5783d2ec390e4ec65c4a_720w.webp" alt="img"></p>
+<p><strong>补充</strong></p>
+<p>Docker创建的沙箱是轻量级的，只给容器创建了虚拟网卡，对Linux系统的开销非常小，所以程序运行在容器中性能几乎没有任何损失。</p>
+<h3 id="安装Docker环境"><a href="#安装Docker环境" class="headerlink" title="安装Docker环境"></a>安装Docker环境</h3><h4 id="关闭SELINUX服务"><a href="#关闭SELINUX服务" class="headerlink" title="关闭SELINUX服务"></a>关闭SELINUX服务</h4><p>SELINUX是CentOS自带的安全服务，我们需要关闭这个服务。</p>
+<p>执行命令 <code>vi /etc/sysconfig/selinux</code> 然后按 i 进入编辑模式，修改为 <code>SELINUX=disabled</code> ，然后按 Esc 退出编辑模式，输入 <code>:w</code> 保存，输入 <code>:q</code> 退出文件。</p>
+<p>输入 <code>reboot</code> 重启虚拟机。</p>
+<h4 id="更新yum程序"><a href="#更新yum程序" class="headerlink" title="更新yum程序"></a>更新yum程序</h4><p>yum命令是CentOS自带的软件包管理器。</p>
+<pre><code class="shell">yum update -y
+</code></pre>
+<h4 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h4><pre><code class="shell">yum install docker -y
+</code></pre>
+<h4 id="管理Docker"><a href="#管理Docker" class="headerlink" title="管理Docker"></a>管理Docker</h4><pre><code class="shell">service docker start //启动docker服务
+docker images //查看docker中的镜像
+docker rmi &lt;filename&gt; //删除镜像
+service docker stop //关闭docker服务
 </code></pre>
 
     </div>
