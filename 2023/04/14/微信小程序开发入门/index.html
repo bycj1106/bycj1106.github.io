@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>微信小程序开发入门（一）（更新中） | 云升的小窝</title>
+        <meta name="author" content="云升" />
+        <meta name="description" content="A home for my heart at peace" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>云升的小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div>
+        <div class="title" @click="shouMenuItems = !shouMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;云升的小窝</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="shouMenuItems">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <div class="article">
+    <div>
+        <h1>微信小程序开发入门（一）（更新中）</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/14
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                开发
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="color: #00a596">小程序</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%89%8D%E7%AB%AF/" style="color: #03a9f4">前端</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="基本目录结构"><a href="#基本目录结构" class="headerlink" title="基本目录结构"></a>基本目录结构</h1><hr>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/">官方文档</a></p>
+<p><em>Pages是小程序的基本单位，事实上一切都是组件。</em></p>
+<p>一个页面下有四个文件：<img src="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/image-20230414012001814-1681406403717-1.png" alt="image-20230414012001814">基本同Web开发。</p>
+<p>只要<strong>文件同名</strong>，不需要引用其他文件就能直接调用。<em>例如wxml文件中不需要引入wxss就能直接调用</em></p>
+<p>全局配置（不能更名）：<img src="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/image-20230414013458684-1681407299887-5.png">其中小程序运行的最低要求是app.json和页面。</p>
+<p>json文件里不能写注释。</p>
+<p>需要先在app.json中加入</p>
+<pre><code class="json">&#123;
+    &quot;pages&quot;: [
+        
+    ]
+&#125;
+</code></pre>
+<p>之后才可以新建页面，且默认显示第一个注册项的页面。</p>
+<p><em>也可以用 <code>&quot;entryPagePath&quot;</code> 设置首页</em></p>
+<h1 id="基础页面开发流程思路"><a href="#基础页面开发流程思路" class="headerlink" title="基础页面开发流程思路"></a>基础页面开发流程思路</h1><hr>
+<h2 id="先写骨架标签（组件）"><a href="#先写骨架标签（组件）" class="headerlink" title="先写骨架标签（组件）"></a>先写骨架标签（组件）</h2><p>例如我们在一页里需要一张图片，一段文字，一个按钮，我们先把骨架标签写上：</p>
+<pre><code class="html">&lt;image&gt;&lt;/image&gt;
+&lt;text&gt;&lt;/text&gt;
+&lt;button&gt;&lt;/button&gt;
+</code></pre>
+<h2 id="在骨架标签里填充内容"><a href="#在骨架标签里填充内容" class="headerlink" title="在骨架标签里填充内容"></a>在骨架标签里填充内容</h2><pre><code class="html">&lt;image src=&quot;/images/1.png&quot;&gt;&lt;/image&gt;
+&lt;text&gt;Hello,云升&lt;/text&gt;
+&lt;button&gt;开启小程序之旅&lt;/button&gt;
+</code></pre>
+<p><em>补充：</em></p>
+<p><em>绝对路径以 <code>/</code> 开头</em></p>
+<p><em>相对路径以 <code>.</code> 开头，每一个点返回上一级</em></p>
+<h2 id="修改样式"><a href="#修改样式" class="headerlink" title="修改样式"></a>修改样式</h2><p><u>在wxss文件里写，不用驼峰命名用 - 连字。</u></p>
+<p><em>初步：</em></p>
+<pre><code class="css">.user-avater &#123;
+  width: 240rpx;
+  height: 240rpx;
+  /* 距离顶部的长度 */
+  margin-top: 170rpx;
+&#125;
+</code></pre>
+<pre><code class="html">&lt;image class=&quot;user-avater&quot; src=&quot;/images/avater/1.png&quot;&gt;&lt;/image&gt;
+&lt;text&gt;Hello,云升&lt;/text&gt;
+&lt;button&gt;开启小程序之旅&lt;/button&gt;
+</code></pre>
+<p><code>rpx</code> 是小程序专门定制的一个可以自动响应当前机型屏幕分辨率和大小的自适应像素单位。<em>iphone6机型下 1px &#x3D; 2rpx</em></p>
+<h3 id="flex布局初识"><a href="#flex布局初识" class="headerlink" title="flex布局初识"></a>flex布局初识</h3><p>使用<code>&lt;view&gt;</code> ：</p>
+<pre><code class="html">&lt;view&gt;
+  &lt;image class=&quot;user-avater&quot; src=&quot;/images/avater/1.png&quot;&gt;&lt;/image&gt;
+  &lt;text&gt;Hello,云升&lt;/text&gt;
+  &lt;button&gt;开启小程序之旅&lt;/button&gt;
+&lt;/view&gt;
+</code></pre>
+<p><code>&lt;view&gt;</code> 的作用是做布局，通常称其为容器。</p>
+<p><strong><code>flex</code> 容器布局</strong></p>
+<pre><code class="css">.container &#123;
+  /* 使用flex布局 */
+  display: flex;
+  /* 设置flex方向 */
+  flex-direction: column;
+  /* 设置flex水平居中 */
+  align-items: center;
+&#125;
+.motto &#123;
+  color: #666;
+  margin-top: 100rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+&#125;
+</code></pre>
+<pre><code class="html">&lt;view class=&quot;container&quot;&gt;
+  &lt;image class=&quot;user-avater&quot; src=&quot;/images/avater/1.png&quot;&gt;&lt;/image&gt;
+  &lt;text class=&quot;motto&quot;&gt;Hello,云升&lt;/text&gt;
+  &lt;view class=&quot;journey-container&quot;&gt;
+    &lt;text&gt;开启小程序之旅&lt;/text&gt;
+  &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+<p><em>补充：</em></p>
+<p><em><code>image</code>组件默认宽度320px、高度240px。</em></p>
+<p><em><code>button</code> 组件一般不推荐使用，可用 <code>view</code> 模拟或使用组件库组件 。</em></p>
+<p><em><strong>居中方案优先考虑flex居中：</strong></em></p>
+<pre><code class="css">display: flex;
+align-items: center;
+</code></pre>
+<h3 id="自定义一个Button组件——基于view"><a href="#自定义一个Button组件——基于view" class="headerlink" title="自定义一个Button组件——基于view"></a>自定义一个Button组件——基于view</h3><pre><code class="css">.journey-container &#123;
+  border: 1px solid #405f80;
+  width: 200rpx;
+  height: 80rpx;
+  /* 设置圆角 */
+  border-radius: 10rpx;
+  /* text-align不能放到text标签中 */
+  text-align: center;
+  margin-top: 200rpx;
+&#125;
+
+.journey &#123;
+  font-size: 22rpx;
+  color: #405f80;
+  line-height: 80rpx;
+&#125;
+</code></pre>
+<pre><code class="html">&lt;view class=&quot;container&quot;&gt;
+  &lt;image class=&quot;user-avater&quot; src=&quot;/images/avater/1.png&quot;&gt;&lt;/image&gt;
+  &lt;text class=&quot;motto&quot;&gt;Hello,云升&lt;/text&gt;
+  &lt;view class=&quot;journey-container&quot;&gt;
+    &lt;text class=&quot;journey&quot;&gt;开启小程序之旅&lt;/text&gt;
+  &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+<h3 id="顶部导航栏如何调整"><a href="#顶部导航栏如何调整" class="headerlink" title="顶部导航栏如何调整"></a>顶部导航栏如何调整</h3><p>在app.json中修改：</p>
+<pre><code class="json">&#123;
+  &quot;pages&quot;: [
+    &quot;pages/welcome/welcome&quot;
+  ],
+  &quot;window&quot;: &#123;
+    &quot;navigationBarBackgroundColor&quot;: &quot;#b3d3db&quot;
+  &#125;,
+  &quot;sitemapLocation&quot;: &quot;sitemap.json&quot;
+&#125;
+</code></pre>
+<p><em>注意每一项之后加 , 隔开。</em></p>
+<p>关于全局配置，可参考<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html">官方文档</a>。</p>
+<h3 id="如何对整个页面进行调整"><a href="#如何对整个页面进行调整" class="headerlink" title="如何对整个页面进行调整"></a>如何对整个页面进行调整</h3><p>在页面wxss文件下：</p>
+<pre><code class="css">page &#123;
+  background-color: #b3d3db;
+&#125;
+</code></pre>
+<h3 id="最终首页预览"><a href="#最终首页预览" class="headerlink" title="最终首页预览"></a>最终首页预览</h3><img src="微信小程序开发入门/image-20230414183225993-1681468346983-11.png" alt="image-20230414183225993" style="zoom: 33%;" />
+
+<h1 id="添加新页面"><a href="#添加新页面" class="headerlink" title="添加新页面"></a>添加新页面</h1><hr>
+<p>添加posts页面，在开发工具编译模式里选择添加编译模式，把启动页面设置为新页面：<img src="微信小程序开发入门/image-20230414183753934-1681468676087-13.png" alt="image-20230414183753934" style="zoom: 67%;" /></p>
+<p>将顶部导航栏改为红色，打开posts.json：</p>
+<pre><code class="json">&#123;
+  &quot;usingComponents&quot;: &#123;&#125;,
+  &quot;navigationBarBackgroundColor&quot;: &quot;#c22a1e&quot;
+&#125;
+</code></pre>
+<h2 id="swiper组件"><a href="#swiper组件" class="headerlink" title="swiper组件"></a>swiper组件</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html">swiper | 微信开放文档 (qq.com)</a></p>
+<p>滑块视图容器，和 <code>swiper-item</code> 搭配使用实现轮播效果。</p>
+<pre><code class="html">&lt;view&gt;
+   &lt;swiper indicator-dots=&quot;&#123;&#123;true&#125;&#125;&quot; autoplay=&quot;&#123;&#123;true&#125;&#125;&quot;&gt;
+      &lt;swiper-item&gt;
+         &lt;!-- 插槽 --&gt;
+         &lt;image src=&quot;/images/banner/banner1.jpg&quot;&gt;&lt;/image&gt;
+      &lt;/swiper-item&gt;
+      &lt;swiper-item&gt;
+         &lt;image src=&quot;/images/banner/banner2.jpg&quot;&gt;&lt;/image&gt;
+      &lt;/swiper-item&gt;
+      &lt;swiper-item&gt;
+         &lt;image src=&quot;/images/banner/banner3.jpg&quot;&gt;&lt;/image&gt;
+      &lt;/swiper-item&gt;
+   &lt;/swiper&gt;
+&lt;/view&gt;
+</code></pre>
+<pre><code class="css">swiper &#123;
+   width: 100%;
+   height: 460rpx;
+&#125;
+
+swiper image &#123;
+   width: 100%;
+   height: 460rpx;
+&#125;
+</code></pre>
+<p><em>思考哪些组件定义了css</em></p>
+<p><code>indicator-dots=&quot;true&quot;</code> 指示点。</p>
+<p><code>autoplay=&quot;true&quot;</code> 自动轮播。</p>
+<p><em><strong>补充：这里我们测试发现把 <code>indicator-dots=&quot;true&quot;</code> 中的值改为false依然会显示指示点，原因是不加 <code>&#123;&#123;&#125;&#125;</code> 的情况下false会被认为是一个普通的字符串，而不是布尔值，一个普通的字符串会被认为是true，正确的设置方法：<code>indicator-dots=&quot;&#123;&#123;false&#125;&#125;&quot;</code> ，或者不设置值，因为其默认值为false，而当只有属性没有属性值时为true，例如 <code>indicator-dots</code> 为true。</strong></em></p>
+<p><em><strong>需要其他属性时优先查官方文档。</strong></em></p>
+<h2 id="实现第一篇文章"><a href="#实现第一篇文章" class="headerlink" title="实现第一篇文章"></a>实现第一篇文章</h2><h3 id="flex组织布局思路"><a href="#flex组织布局思路" class="headerlink" title="flex组织布局思路"></a>flex组织布局思路</h3><p>从整体到局部：</p>
+<ol>
+<li>考虑方向，水平&#x2F;垂直布局；</li>
+<li>考虑有多少行&#x2F;列，按行&#x2F;列构建组件，如果一行&#x2F;列只有一个元素通常 <code>&lt;view&gt;</code> 可以省略；</li>
+<li>把<strong>静态</strong>内容填充上；</li>
+<li>排样式，根据 <code>&lt;view&gt;</code> 从大到小一层层处理。</li>
+</ol>
+<pre><code class="html">&lt;view class=&quot;post-container&quot;&gt;
+   &lt;view class=&quot;post-author-date&quot;&gt;
+      &lt;image class=&quot;post-author&quot; src=&quot;/images/avater/2.png&quot;&gt;&lt;/image&gt;
+      &lt;text class=&quot;post-date&quot;&gt;Nov 14 2022&lt;/text&gt;
+   &lt;/view&gt;
+   &lt;text class=&quot;post-title&quot;&gt;2020LPL夏季赛季后赛观赛指南&lt;/text&gt;
+   &lt;image class=&quot;post-image&quot; src=&quot;/images/banner/banner1.jpg&quot;&gt;&lt;/image&gt;
+   &lt;text class=&quot;post-content&quot;&gt;2020LPL夏季赛季后赛观赛指南2020LPL夏季赛季后赛观赛指南2020LPL夏季赛季后赛观赛指南2020LPL夏季赛季后赛观赛指南2020LPL夏季赛季后赛观赛指南&lt;/text&gt;
+   &lt;view class=&quot;post-like&quot;&gt;
+      &lt;image class=&quot;post-like-image&quot; src=&quot;/images/icon/chat.png&quot;&gt;&lt;/image&gt;
+      &lt;text class=&quot;post-like-font&quot;&gt;92&lt;/text&gt;
+      &lt;image class=&quot;post-like-image&quot; src=&quot;/images/icon/view.png&quot;&gt;&lt;/image&gt;
+      &lt;text class=&quot;post-like-font&quot;&gt;102&lt;/text&gt;
+   &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+<pre><code class="css">/* pages/posts/posts.wxss */
+swiper &#123;
+   width: 100%;
+   height: 460rpx;
+&#125;
+
+swiper image &#123;
+   width: 100%;
+   height: 460rpx;
+&#125;
+
+.post-container &#123;
+   /* 设置为一个flex容器 */
+   display: flex;
+   /* 设置为垂直方向 */
+   flex-direction: column;
+   /* 设置上边距 */
+   margin-top: 20rpx;
+   /* 设置下边距 */
+   margin-bottom: 40rpx;
+   /* 设置背景色 */
+   background-color: #ffffff;
+   /* 设置上边线和下边线 */
+   border-top: 1px solid #ededed;
+   border-bottom: 1px solid #ededed;
+   /* 设置内边距 */
+   padding-bottom: 10rpx;
+&#125;
+
+.post-author-date &#123;
+   /* margin-top: 10rpx;
+   margin-bottom: 20rpx;
+   margin-left: 10rpx; */
+   /* margin顺序：上右下左 */
+   margin: 10rpx 0 20rpx 10rpx;
+   /* 用flex设置居中 */
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+&#125;
+
+.post-author &#123;
+   width: 60rpx;
+   height: 60rpx;
+   /* 设置居中 */
+   /* vertical-align: middle; */
+&#125;
+
+.post-date &#123;
+   margin-left: 18rpx;
+   font-size: 26rpx;
+   /* vertical-align: middle; */
+&#125;
+
+.post-title &#123;
+   font-size: 34rpx;
+   font-weight: 600;
+   margin-bottom: 20rpx;
+   margin-left: 16rpx;
+   color: #333;
+&#125;
+
+.post-image &#123;
+   width: 100%;
+   height: 340rpx;
+   margin-bottom: 30rpx;
+&#125;
+
+.post-content &#123;
+   color: rgb(58, 58, 58);
+   font-size: 28rpx;
+   margin-bottom: 20rpx;
+   margin-left: 16rpx;
+   margin-right: 16rpx;
+   /* 设置文字行距 */
+   line-height: 40rpx;
+   /* 设置字间距 */
+   letter-spacing: 3rpx;
+&#125;
+
+.post-like &#123;
+   display: flex;
+   flex-direction: row;
+   margin-left: 16rpx;
+   align-items: center;
+&#125;
+
+.post-like-image &#123;
+   height: 26rpx;
+   width: 26rpx;
+   margin-right: 12rpx;
+&#125;
+
+.post-like-font &#123;
+   margin-right: 32rpx;
+   font-size: 24rpx;
+&#125;
+</code></pre>
+<p>静态效果：<img src="微信小程序开发入门/image-20230415003158571-1681489919583-1.png" alt="image-20230415003158571" style="zoom:50%;" /></p>
+<h1 id="Lin-UI组件库"><a href="#Lin-UI组件库" class="headerlink" title="Lin UI组件库"></a>Lin UI组件库</h1><hr>
+<h3 id="组件库的安装"><a href="#组件库的安装" class="headerlink" title="组件库的安装"></a>组件库的安装</h3><p><a target="_blank" rel="noopener" href="https://doc.mini.talelin.com/">Lin UI组件库</a></p>
+<p>进入项目根目录：</p>
+<pre><code class="bash">$ npm init
+</code></pre>
+<p>初始化完成后：</p>
+<pre><code class="bash">$ npm i lin-ui
+</code></pre>
+<p>在微信开发者工具中选择：<img src="微信小程序开发入门/image-20230414180310302-1681466592302-9-1681493072081-2.png" alt="image-20230414180310302" style="zoom:50%;" />构建npm。</p>
+<h3 id="如何使用自定义组件"><a href="#如何使用自定义组件" class="headerlink" title="如何使用自定义组件"></a>如何使用自定义组件</h3><p>在页面json文件中：</p>
+<pre><code class="json">&#123;
+  &quot;usingComponents&quot;: &#123;
+    &quot;l-avater&quot;:&quot;/miniprogram_npm/lin-ui/avatar/index&quot;
+  &#125;
+&#125;
+</code></pre>
+<p><em>指向目录下文件名</em></p>
+<p><a target="_blank" rel="noopener" href="https://doc.mini.talelin.com/component/view/avatar.html">头像 Avatar | Lin UI (talelin.com)</a></p>
+
+    </div>
+    
+    
+    
+    
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
+            </div>
+        </div>
+        
+
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 云升的小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;云升
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
+
+
+
+        
+        <canvas
+            id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+        ></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1" ></canvas> <script src="/js/background.min.js"></script>
+    </body>
+</html>
