@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>微信小程序开发入门（一）（更新中） | 云升的小窝</title>
+        <title>微信小程序开发入门（一）：静态基础页面开发流程 | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -149,7 +149,7 @@
             <div id="main" v-show="!loading">
                 <div class="article">
     <div>
-        <h1>微信小程序开发入门（一）（更新中）</h1>
+        <h1>微信小程序开发入门（一）：静态基础页面开发流程</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="color: #00a596">小程序</a>
+                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="color: #ff7d73">小程序</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%89%8D%E7%AB%AF/" style="color: #03a9f4">前端</a>
+                <a href="/tags/%E5%89%8D%E7%AB%AF/" style="color: #ffa2c4">前端</a>
             </span>
             
         </span>
@@ -192,9 +192,9 @@
         <h1 id="基本目录结构"><a href="#基本目录结构" class="headerlink" title="基本目录结构"></a>基本目录结构</h1><hr>
 <p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/">官方文档</a></p>
 <p><em>Pages是小程序的基本单位，事实上一切都是组件。</em></p>
-<p>一个页面下有四个文件：<img src="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/image-20230414012001814-1681406403717-1.png" alt="image-20230414012001814">基本同Web开发。</p>
+<p>一个页面下有四个文件：<img src="/2023/04/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/image-20230414012001814-1681406403717-1.png" alt="image-20230414012001814">基本同Web开发。</p>
 <p>只要<strong>文件同名</strong>，不需要引用其他文件就能直接调用。<em>例如wxml文件中不需要引入wxss就能直接调用</em></p>
-<p>全局配置（不能更名）：<img src="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/image-20230414013458684-1681407299887-5.png">其中小程序运行的最低要求是app.json和页面。</p>
+<p>全局配置（不能更名）：<img src="/2023/04/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/image-20230414013458684-1681407299887-5.png">其中小程序运行的最低要求是app.json和页面。</p>
 <p>json文件里不能写注释。</p>
 <p>需要先在app.json中加入</p>
 <pre><code class="json">&#123;
@@ -314,10 +314,10 @@ align-items: center;
   background-color: #b3d3db;
 &#125;
 </code></pre>
-<h3 id="最终首页预览"><a href="#最终首页预览" class="headerlink" title="最终首页预览"></a>最终首页预览</h3><img src="微信小程序开发入门/image-20230414183225993-1681468346983-11.png" alt="image-20230414183225993" style="zoom: 33%;" />
+<h3 id="最终首页预览"><a href="#最终首页预览" class="headerlink" title="最终首页预览"></a>最终首页预览</h3><img src="image-20230414183225993-1681468346983-11.png" alt="image-20230414183225993" style="zoom: 33%;" />
 
 <h1 id="添加新页面"><a href="#添加新页面" class="headerlink" title="添加新页面"></a>添加新页面</h1><hr>
-<p>添加posts页面，在开发工具编译模式里选择添加编译模式，把启动页面设置为新页面：<img src="微信小程序开发入门/image-20230414183753934-1681468676087-13.png" alt="image-20230414183753934" style="zoom: 67%;" /></p>
+<p>添加posts页面，在开发工具编译模式里选择添加编译模式，把启动页面设置为新页面：<img src="image-20230414183753934-1681468676087-13.png" alt="image-20230414183753934" style="zoom: 67%;" /></p>
 <p>将顶部导航栏改为红色，打开posts.json：</p>
 <pre><code class="json">&#123;
   &quot;usingComponents&quot;: &#123;&#125;,
@@ -477,7 +477,7 @@ swiper image &#123;
    font-size: 24rpx;
 &#125;
 </code></pre>
-<p>静态效果：<img src="微信小程序开发入门/image-20230415003158571-1681489919583-1.png" alt="image-20230415003158571" style="zoom:50%;" /></p>
+<p>静态效果：<img src="image-20230415003158571-1681489919583-1.png" alt="image-20230415003158571" style="zoom:50%;" /></p>
 <h1 id="Lin-UI组件库"><a href="#Lin-UI组件库" class="headerlink" title="Lin UI组件库"></a>Lin UI组件库</h1><hr>
 <h3 id="组件库的安装"><a href="#组件库的安装" class="headerlink" title="组件库的安装"></a>组件库的安装</h3><p><a target="_blank" rel="noopener" href="https://doc.mini.talelin.com/">Lin UI组件库</a></p>
 <p>进入项目根目录：</p>
@@ -486,7 +486,7 @@ swiper image &#123;
 <p>初始化完成后：</p>
 <pre><code class="bash">$ npm i lin-ui
 </code></pre>
-<p>在微信开发者工具中选择：<img src="微信小程序开发入门/image-20230414180310302-1681466592302-9-1681493072081-2.png" alt="image-20230414180310302" style="zoom:50%;" />构建npm。</p>
+<p>在微信开发者工具中选择：<img src="image-20230414180310302-1681466592302-9-1681493072081-2.png" alt="image-20230414180310302" style="zoom:50%;" />构建npm。</p>
 <h3 id="如何使用自定义组件"><a href="#如何使用自定义组件" class="headerlink" title="如何使用自定义组件"></a>如何使用自定义组件</h3><p>在页面json文件中：</p>
 <pre><code class="json">&#123;
   &quot;usingComponents&quot;: &#123;
@@ -496,6 +496,21 @@ swiper image &#123;
 </code></pre>
 <p><em>指向目录下文件名</em></p>
 <p><a target="_blank" rel="noopener" href="https://doc.mini.talelin.com/component/view/avatar.html">头像 Avatar | Lin UI (talelin.com)</a></p>
+<h3 id="试用icon组件"><a href="#试用icon组件" class="headerlink" title="试用icon组件"></a>试用icon组件</h3><pre><code class="json">&#123;
+  &quot;usingComponents&quot;: &#123;
+     &quot;l-icon&quot;:&quot;/miniprogram_npm/lin-ui/icon/index&quot;
+  &#125;
+&#125;
+</code></pre>
+<pre><code class="html">   &lt;view class=&quot;post-like&quot;&gt;
+      &lt;!-- &lt;image class=&quot;post-like-image&quot; src=&quot;/images/icon/chat.png&quot;&gt;&lt;/image&gt; --&gt;
+      &lt;l-icon class=&quot;post-like-image&quot; color=&quot;#666&quot; size=&quot;26&quot; name=&quot;favor&quot; /&gt;
+      &lt;text class=&quot;post-like-font&quot;&gt;92&lt;/text&gt;
+      &lt;!-- &lt;image class=&quot;post-like-image&quot; src=&quot;/images/icon/view.png&quot;&gt;&lt;/image&gt; --&gt;
+      &lt;l-icon class=&quot;post-like-image&quot; color=&quot;#666&quot; size=&quot;32&quot; name=&quot;eye&quot; /&gt;
+      &lt;text class=&quot;post-like-font&quot;&gt;102&lt;/text&gt;
+   &lt;/view&gt;
+</code></pre>
 
     </div>
     

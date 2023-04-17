@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>微信小程序开发（二） | 云升的小窝</title>
+        <meta name="author" content="云升" />
+        <meta name="description" content="A home for my heart at peace" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>云升的小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div>
+        <div class="title" @click="shouMenuItems = !shouMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;云升的小窝</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="shouMenuItems">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <div class="article">
+    <div>
+        <h1>微信小程序开发（二）</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/15
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                开发
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="color: #ffa2c4">小程序</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%89%8D%E7%AB%AF/" style="color: #00a596">前端</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><hr>
+<h2 id="如何呈现动态数据"><a href="#如何呈现动态数据" class="headerlink" title="如何呈现动态数据"></a>如何呈现动态数据</h2><p>JavaScript首先从服务器拿到数据，然后通过数据绑定，如 <em><code>setData</code></em> 将数据给到View。</p>
+<p>小程序最开始是没有双向数据绑定的，但是现在提供了简易的双向的数据绑定，双向数据绑定其实不是必需的。</p>
+<p>关于数据绑定的微信小程序官方文档：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/data.html">数据绑定 | 微信开放文档 (qq.com)</a></p>
+<p><em>理解DOM优先和数据优先的区别</em></p>
+<h2 id="关于JavaScript"><a href="#关于JavaScript" class="headerlink" title="关于JavaScript"></a>关于JavaScript</h2><p>生命周期函数由小程序调用，不需要开发者调用，在很多框架里生命周期函数被称为 <code>hook function</code> 。</p>
+<p>我们在js文件下 <code>Page(&#123;data:&#125;)</code> 函数里定义的所有变量都可以直接在wxml里面使用，在wxml时加 <code>&#123;&#123;&#125;&#125;</code> 。</p>
+<p>预先在 <code>data</code> 中定义绑定数据的初始值是值得推荐的做法，即先在 <code>data</code> 中定义后再在 <code>onLoad</code> 中 <code>this.setData(&#123;&#125;)</code> 。</p>
+<p><code>setData</code>  键和值相同可以简写。</p>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p>条件渲染的表达式 <code>wx:if=&quot;&quot;</code> ，当满足这个条件的时候，这个标签才会被显示。</p>
+<p><code>if else也是可以实现的！</code></p>
+<pre><code class="html">&lt;view&gt;
+    &lt;text wx:if=&quot;&#123;&#123;flag&#125;&#125;&quot;&gt;&#123;&#123;text&#125;&#125;&lt;/text&gt;
+    &lt;text wx:else&gt;&#123;&#123;text&#125;&#125;&lt;/text&gt;
+&lt;/view&gt;
+</code></pre>
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p>用来展示一组js对象的数据。</p>
+<pre><code class="js">// 拿到一个数组，用setData包装成js对象
+onLoad(options): &#123;
+    // 这里的content内的数据其实一般是服务端直接传来的
+    var content = [&#123;
+        title: &quot;text&quot;,
+        // ......
+    &#125;,&#123;
+        title: &quot;text&quot;,
+        // ......
+    &#125;]
+&#125;)
+    this.setData(&#123;
+        posts:content
+    &#125;)
+&#125;
+</code></pre>
+<pre><code class="html">&lt;block wx:for=&quot;&#123;&#123;posts&#125;&#125;&quot; wx:key=&quot;index&quot; wx:for-item=&quot;item&quot;&gt;
+    &lt;view&gt;
+        &lt;text src=&quot;&#123;&#123;item.title&#125;&#125;&quot;&gt;&lt;/text&gt;
+    &lt;/view&gt;
+&lt;/block&gt;
+</code></pre>
+<p>如果要取到序号的话用 <code>&#123;&#123;index&#125;&#125;</code> 即可。</p>
+<p>示例：</p>
+<pre><code class="js">onLoad(options) &#123;
+    var content = [&#123;
+       avater: &quot;/images/avater/2.png&quot;,
+       title: &quot;texttextexttext&quot;,
+       content: &quot;texttextexttexttexttextexttexttexttextexttext&quot;,
+       reading: 102,
+       detail: &quot;texttextexttexttexttextexttexttexttextexttext&quot;,
+       collection: 92,
+       headImg: &quot;/images/banner/banner1.jpg&quot;,
+       author: &quot;猫猫不是猫&quot;,
+       date: &quot;Nov 13 2022&quot;,
+    &#125;, &#123;
+       avater: &quot;/images/avater/2.png&quot;,
+       title: &quot;texttextexttext&quot;,
+       content: &quot;texttextexttexttexttextexttexttexttextexttext&quot;,
+       reading: 102,
+       detail: &quot;texttextexttexttexttextexttexttexttextexttext&quot;,
+       collection: 92,
+       headImg: &quot;/images/banner/banner1.jpg&quot;,
+       author: &quot;猫猫不是猫&quot;,
+       date: &quot;Nov 13 2022&quot;,
+    &#125;]
+    this.setData(&#123;
+       posts: content
+    &#125;)
+&#125;,
+</code></pre>
+<pre><code class="html">&lt;block wx:for=&quot;&#123;&#123;posts&#125;&#125;&quot;&gt;
+   &lt;view class=&quot;post-container&quot;&gt;
+      &lt;view class=&quot;post-author-date&quot;&gt;
+         &lt;image class=&quot;post-author&quot; src=&quot;&#123;&#123;item.avater&#125;&#125;&quot;&gt;&lt;/image&gt;
+         &lt;text class=&quot;post-date&quot;&gt;&#123;&#123;item.date&#125;&#125;&lt;/text&gt;
+      &lt;/view&gt;
+      &lt;text class=&quot;post-title&quot;&gt;&#123;&#123;item.title&#125;&#125;&lt;/text&gt;
+      &lt;image class=&quot;post-image&quot; src=&quot;&#123;&#123;item.headImg&#125;&#125;&quot;&gt;&lt;/image&gt;
+      &lt;text class=&quot;post-content&quot;&gt;&#123;&#123;item.content&#125;&#125;&lt;/text&gt;
+      &lt;view class=&quot;post-like&quot;&gt;
+         &lt;l-icon class=&quot;post-like-image&quot; color=&quot;#666&quot; size=&quot;26&quot; name=&quot;favor&quot; /&gt;
+         &lt;text class=&quot;post-like-font&quot;&gt;&#123;&#123;item.collection&#125;&#125;&lt;/text&gt;
+         &lt;l-icon class=&quot;post-like-image&quot; color=&quot;#666&quot; size=&quot;32&quot; name=&quot;eye&quot; /&gt;
+         &lt;text class=&quot;post-like-font&quot;&gt;&#123;&#123;item.reading&#125;&#125;&lt;/text&gt;
+      &lt;/view&gt;
+   &lt;/view&gt;
+&lt;/block&gt;
+</code></pre>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html#%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3">事件 | 微信开放文档 (qq.com)</a></p>
+<h3 id="首页跳转按钮示例："><a href="#首页跳转按钮示例：" class="headerlink" title="首页跳转按钮示例："></a>首页跳转按钮示例：</h3><ol>
+<li>捕捉事件 <code>bindtap=&quot;&quot;</code></li>
+<li>在js文件中定义函数。</li>
+</ol>
+<pre><code class="html">  &lt;view bind:tap=&quot;onTap&quot; class=&quot;journey-container&quot;&gt;
+    &lt;text class=&quot;journey&quot;&gt;开启小程序之旅&lt;/text&gt;
+  &lt;/view&gt;
+</code></pre>
+<pre><code class="js">Page(&#123;   
+    onTap: function (params) &#123;
+      wx.navigateTo(&#123;
+        url: &#39;/pages/posts/posts&#39;,
+      &#125;)
+   &#125;
+&#125;)
+</code></pre>
+<p><em>最多只能有10个子页面。</em></p>
+<p><code>wx.redirectTO</code> 也是跳转，但是会卸载页面。</p>
+<p>捕捉事件 <code>catch</code> 和 <code>bind</code> 的区别： <code>catch</code> 会阻止事件继续冒泡，<code>bind</code> 不会阻止事件冒泡。</p>
+<h2 id="js模块的导入导出"><a href="#js模块的导入导出" class="headerlink" title="js模块的导入导出"></a>js模块的导入导出</h2><p>js模块的导出：</p>
+<pre><code class="js">module.exports = &#123;
+   postList:local_database
+&#125;
+// 最新方式
+export &#123;
+   local_database
+&#125;
+</code></pre>
+<p>js模块的导入：</p>
+<pre><code class="js">// 在Page(&#123;&#125;)之外
+var postData = require(&quot;../../data/data&quot;)
+// 更推荐的另一种导入方式，这种导入方式要和导出数据同名
+import &#123;local_database&#125; from &#39;../../data/data&#39;
+</code></pre>
+<p>导入只能使用相对路径。</p>
+<h2 id="用View模拟出分割线"><a href="#用View模拟出分割线" class="headerlink" title="用View模拟出分割线"></a>用View模拟出分割线</h2><pre><code class="html">&lt;view class=&quot;horizon&quot;&gt;&lt;/view&gt;
+</code></pre>
+<pre><code class="css">.horizon &#123;
+   width: 660rpx;
+   height: 1px;
+   background-color: #e5e5e5;
+&#125;
+</code></pre>
+<h3 id="如何设置元素浮动"><a href="#如何设置元素浮动" class="headerlink" title="如何设置元素浮动"></a>如何设置元素浮动</h3><p><code>align-items</code> 设置子元素在交叉轴上的排布方式。</p>
+<p><code>justify-content</code> 设置子元素在主轴上的排布方式。</p>
+<p>实现效果：<img src="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%EF%BC%88%E4%BA%8C%EF%BC%89/image-20230416173526635-1681637727623-1.png" alt="image-20230416173526635"></p>
+<p>用flex方式实现：</p>
+<pre><code class="html">   &lt;view class=&quot;tool&quot;&gt;
+      &lt;view class=&quot;circle&quot;&gt;
+         &lt;image src=&quot;/images/icon/collection.png&quot;&gt;&lt;/image&gt;
+         &lt;image class=&quot;share-img&quot; src=&quot;/images/icon/share.png&quot;&gt;&lt;/image&gt;
+      &lt;/view&gt;
+      &lt;view class=&quot;horizon&quot;&gt;&lt;/view&gt;
+   &lt;/view&gt;
+</code></pre>
+<pre><code class="css">.circle &#123;
+   display: flex;
+   /* 容器要有宽度后面的排布方式才生效 */
+   width: 660rpx;
+   flex-direction: row;
+   justify-content: flex-end;
+&#125;
+
+.horizon &#123;
+   width: 660rpx;
+   height: 1px;
+   background-color: #e5e5e5;
+   position: absolute;
+   /* 降低层级 */
+   z-index: -1;
+&#125;
+
+.circle image &#123;
+   width: 90rpx;
+   height: 90rpx;
+&#125;
+
+.share-img &#123;
+   margin-left: 30rpx;
+&#125;
+</code></pre>
+<h2 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h2><p><code>&lt;view data-&lt;name&gt;=&quot;&quot;&gt;</code> ，返回的键只有 <code>&lt;name&gt;</code> 。</p>
+<h3 id="如何通过自定义属性定位到相关页面（页面之间数据通信）"><a href="#如何通过自定义属性定位到相关页面（页面之间数据通信）" class="headerlink" title="如何通过自定义属性定位到相关页面（页面之间数据通信）"></a>如何通过自定义属性定位到相关页面（页面之间数据通信）</h3><pre><code class="html">&lt;!-- post.wxml --&gt;
+&lt;view data-id=&quot;&#123;&#123;item.postId&#125;&#125;&quot; bind:tap=&quot;onGoToDetail&quot; class=&quot;post-container&quot;&gt;
+</code></pre>
+<pre><code class="js">// posts.js
+onGoToDetail(event) &#123;
+   const pid = event.currentTarget.dataset.id
+   wx.navigateTo(&#123;
+      url: &#39;/pages/post-detail/post-detail?pid=&#39; + pid
+   &#125;)
+&#125;
+
+// post-detail.js
+onLoad(options) &#123;
+   const postData = postList[options.pid]
+   console.log(postData)
+   this.setData(&#123;
+      postData
+   &#125;)
+   console.log(postData)
+&#125;,
+</code></pre>
+<h2 id="如何响应用户操作"><a href="#如何响应用户操作" class="headerlink" title="如何响应用户操作"></a>如何响应用户操作</h2><p>关于同步和异步的区别：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hong521520/article/details/106671930">同步与异步的区别</a></p>
+<h3 id="app-js的一些作用"><a href="#app-js的一些作用" class="headerlink" title="app.js的一些作用"></a>app.js的一些作用</h3><p>设置全局变量：</p>
+<pre><code class="js">App(&#123;
+   onLaunch()&#123;
+      console.log(&quot;小程序启动~&quot;)
+   &#125;
+&#125;)
+</code></pre>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><pre><code class="js">      // 设置缓存
+      wx.setStorageSync(&#39;flag&#39;, true)
+      wx.setStorageSync(&#39;flag2&#39;, true)
+      // 清除缓存
+      wx.removeStorageSync(&#39;flag&#39;)
+      // 清除所有缓存
+      wx.clearStorageSync() 
+      // 获取同步缓存
+      wx.setStorageSync(&#39;flag&#39;, true)
+      // const flag = wx.getStorageSync(&#39;flag&#39;)
+      // 获取异步缓存
+      const flag = wx.getStorage(&#123;
+         key: &#39;flag&#39;,
+         // success(value)&#123;
+         //    console.log(value.data)
+         // &#125;
+      &#125;)
+      // 获取Promise的方法（传统）
+      flag.then((value)=&gt;&#123;
+         console.log(value)
+      &#125;)
+      // ES7获取异步缓存的方法:
+      // 在onLoad()前加上async
+      wx.setStorageSync(&#39;flag2&#39;, true)
+      const flag2 = await wx.getStorage(&#123;
+         key: &#39;flag2&#39;,
+      &#125;)
+</code></pre>
+<p><em>缓存就像是前端的数据库。</em></p>
+<h3 id="完善文章详情页收藏按钮"><a href="#完善文章详情页收藏按钮" class="headerlink" title="完善文章详情页收藏按钮"></a>完善文章详情页收藏按钮</h3><pre><code class="js">   /**
+    * 页面的初始数据
+    */
+   data: &#123;
+      postData: &#123;&#125;,
+      collected: false,
+      // 不做数据绑定的变量名开头加_
+      _pid: null,
+      _postsCollected: &#123;&#125;,
+   &#125;,
+
+   /**
+    * 生命周期函数--监听页面加载
+    */
+   onLoad(options) &#123;
+      const postData = postList[options.pid]
+      // 获取pid
+      this.data._pid = options.pid
+      const postCollected = wx.getStorageSync(&#39;posts_collected&#39;)
+      this.data._postsCollected = postCollected
+      let collected = postCollected[this.data._pid]
+      if (collected == undefined) &#123;
+         collected = false
+      &#125;
+      this.setData(&#123;
+         postData,
+         collected
+      &#125;)
+   &#125;,
+
+   /**
+    * 收藏按钮
+    */
+   onCollection(event) &#123;
+      // 需要解决:
+      // 1.哪篇文章被收藏
+      // 2.多篇文章被收藏的情况
+      const postsCollected = this.data._postsCollected
+      postsCollected[this.data._pid] = !this.data.collected
+      this.setData(&#123;
+         collected: !this.data.collected
+      &#125;)
+      wx.setStorageSync(&#39;posts_collected&#39;, postsCollected)
+   &#125;,
+</code></pre>
+<pre><code class="html">&lt;image wx:if=&quot;&#123;&#123;!collected&#125;&#125;&quot; bind:tap=&quot;onCollection&quot; src=&quot;/images/icon/collection-anti.png&quot;&gt;&lt;/image&gt;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
+            </div>
+        </div>
+        
+
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 云升的小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;云升
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
+
+
+
+        
+        <canvas
+            id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+        ></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1" ></canvas> <script src="/js/background.min.js"></script>
+    </body>
+</html>
