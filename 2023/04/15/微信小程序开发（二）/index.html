@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="color: #ffa2c4">小程序</a>
+                <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="color: #00bcd4">小程序</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%89%8D%E7%AB%AF/" style="color: #00a596">前端</a>
+                <a href="/tags/%E5%89%8D%E7%AB%AF/" style="color: #00bcd4">前端</a>
             </span>
             
         </span>
@@ -462,6 +462,181 @@ onLoad(options) &#123;
    &#125;,
 </code></pre>
 <pre><code class="html">&lt;image wx:if=&quot;&#123;&#123;!collected&#125;&#125;&quot; bind:tap=&quot;onCollection&quot; src=&quot;/images/icon/collection-anti.png&quot;&gt;&lt;/image&gt;
+</code></pre>
+<h3 id="交互组件"><a href="#交互组件" class="headerlink" title="交互组件"></a>交互组件</h3><p><strong>showToast组件：轻提示</strong></p>
+<pre><code class="js">      wx.showToast(&#123;
+         title: this.data.collected ? &#39;收藏成功&#39; : &#39;取消收藏&#39;,
+         // 停留时间
+         duration: 3000,
+      &#125;)
+</code></pre>
+<p><strong>showModal组件：模态对话框</strong></p>
+<pre><code class="js">      wx.showModal(&#123;
+         title: &#39;这是一个提示框&#39;,
+         content: &#39;&#39;,
+         complete: (res) =&gt; &#123;
+            if (res.cancel) &#123;
+
+            &#125;
+
+            if (res.confirm) &#123;
+
+            &#125;
+         &#125;
+      &#125;)
+</code></pre>
+<p><strong>音乐组件</strong></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/BackgroundAudioManager.html">BackgroundAudioManager | 微信开放文档 (qq.com)</a></p>
+<p><em>实现播放</em></p>
+<pre><code class="html">   &lt;image bind:tap=&quot;onMusic&quot; class=&quot;audio&quot; src=&quot;/images/music/music-start.png&quot;&gt;&lt;/image&gt;
+</code></pre>
+<pre><code class="js">   onMusic(event) &#123;
+      const mgr = wx.getBackgroundAudioManager()
+      mgr.src = postList[this.data.pid].music.url
+      mgr.title = postList[this.data.pid].music.title
+   &#125;,
+</code></pre>
+<p><em>继续完善：状态切换</em></p>
+<pre><code class="js">   data: &#123;
+      postData: &#123;&#125;,
+      collected: false,
+      // 音乐播放标识（新增）
+      isPlaying: false,
+      // 不做数据绑定的变量名开头加_
+      _pid: null,
+      _postsCollected: &#123;&#125;,
+   &#125;,
+</code></pre>
+<pre><code class="js">   /**
+    * 音乐播放
+    * @param &#123;onMusicStart&#125; event 
+    */
+   onMusicStart(event) &#123;
+      const mgr = wx.getBackgroundAudioManager()
+      mgr.src = postList[this.data._pid].music.url
+      mgr.title = postList[this.data._pid].music.title
+      // 设置音乐封面
+      mgr.coverImgUrl = postList[this.data._pid].music.coverImgUrl
+      this.setData(&#123;
+         isPlaying: true,
+      &#125;)
+   &#125;,
+
+   /**
+    * 音乐停止
+    * @param &#123;onMusicStop&#125; event 
+    */
+   onMusicStop(event) &#123;
+      const mgr = wx.getBackgroundAudioManager()
+      mgr.stop()
+      this.setData(&#123;
+         isPlaying: false
+      &#125;)
+   &#125;,
+</code></pre>
+<pre><code class="html">   &lt;image wx:if=&quot;&#123;&#123;!isPlaying&#125;&#125;&quot; bind:tap=&quot;onMusicStart&quot; class=&quot;audio&quot; src=&quot;/images/music/music-start.png&quot;&gt;&lt;/image&gt;
+   &lt;image wx:else bind:tap=&quot;onMusicStop&quot; class=&quot;audio&quot; src=&quot;/images/music/music-stop.png&quot;&gt;&lt;/image&gt;
+</code></pre>
+<p><em><strong>存在问题：音乐控制面板切换状态与页面没有同步（使用监听机制）</strong></em></p>
+<p>背景音频播放事件的监听函数：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/BackgroundAudioManager.onPlay.html">BackgroundAudioManager.onPlay(function listener) | 微信开放文档 (qq.com)</a></p>
+<pre><code class="js">   data: &#123;
+      _mgr: null,
+   &#125;,
+   onLoad(options) &#123;
+      const mgr = wx.getBackgroundAudioManager()
+      this.data._mgr = mgr
+      mgr.onPlay(this.onMusicStart)
+      mgr.onPause(this.onMusicPause)
+   &#125;,
+   onMusicStart(event) &#123;
+      const mgr = this.data._mgr
+   &#125;,
+   onMusicPause(event) &#123;
+      const mgr = this.data._mgr
+      mgr.pause()
+      this.setData(&#123;
+         isPlaying: false
+      &#125;)
+   &#125;,
+</code></pre>
+<p><em><strong>存在问题：音乐后台播放时返回上一页后再回来状态为初始状态（用全局变量解决）</strong></em></p>
+<p>在app.js中加入控制音乐播放的全局变量</p>
+<pre><code class="js">App(&#123;
+   onLaunch()&#123;
+      gIsPlayingMusic: false
+   &#125;,
+&#125;)
+</code></pre>
+<p>在post-detail.js中获取全局变量</p>
+<pre><code class="js">const app = getApp()
+</code></pre>
+<p>在函数中尝试改变全局变量</p>
+<pre><code class="js">   onMusicStart(event) &#123;
+      app.gIsPlayingMusic = true
+   &#125;,
+</code></pre>
+<p>初始化时给isPlaying赋全局变量gIsPlayingMusic的值</p>
+<pre><code class="js">   onLoad(options) &#123;
+      this.setData(&#123;
+         isPlaying: app.gIsPlayingMusic
+      &#125;)
+   &#125;,
+</code></pre>
+<p><em><strong>新问题：后台播放音乐时切换到其他文章仍然显示音乐正在播放</strong></em></p>
+<p>对全局变量做更改，用以标识ID，-1表示false</p>
+<pre><code class="js">App(&#123;
+   onLaunch()&#123;
+      // gIsPlayingMusic: false
+      gIsPlayingMusic: -1
+   &#125;,
+&#125;)
+</code></pre>
+<pre><code class="js">   currentMusicIsPlaying() &#123;
+      if (app.gIsPlayingMusic != -1 &amp;&amp; app.gIsPlayingMusic == this.data._pid) &#123;
+         return true
+      &#125;
+      return false
+   &#125;,
+   onLoad(options) &#123;
+
+      this.setData(&#123;
+         postData,
+         collected,
+         isPlaying: this.currentMusicIsPlaying()
+      &#125;)
+   &#125;,
+   onMusicPause(event) &#123;
+      app.gIsPlayingMusic = -1
+   &#125;,
+   onMusicStart(event) &#123;
+      app.gIsPlayingMusic = this.data._pid
+   &#125;,
+</code></pre>
+<h2 id="tabBar选项卡"><a href="#tabBar选项卡" class="headerlink" title="tabBar选项卡"></a>tabBar选项卡</h2><p>app.json：</p>
+<pre><code class="json">   &quot;tabBar&quot;: &#123;
+      &quot;selectedColor&quot;: &quot;#333333&quot;,
+      &quot;color&quot;: &quot;#999999&quot;,
+      &quot;list&quot;: [&#123;
+            &quot;pagePath&quot;: &quot;pages/posts/posts&quot;,
+            &quot;text&quot;: &quot;阅读&quot;,
+            &quot;iconPath&quot;: &quot;images/tab/post.png&quot;,
+            &quot;selectedIconPath&quot;: &quot;images/tab/post@highlight.png&quot;
+         &#125;,
+         &#123;
+            &quot;pagePath&quot;: &quot;pages/movies/movies&quot;,
+            &quot;text&quot;: &quot;电影&quot;,
+            &quot;iconPath&quot;: &quot;images/tab/movie.png&quot;,
+            &quot;selectedIconPath&quot;: &quot;images/tab/movie@highlight.png&quot;
+         &#125;
+      ]
+   &#125;,
+</code></pre>
+<p>如果要跳转到带有tabBar选项卡的页面：</p>
+<pre><code class="js">   onTap: function (params) &#123;
+      wx.switchTab(&#123;
+         url: &#39;/pages/posts/posts&#39;,
+      &#125;)
+   &#125;
 </code></pre>
 
     </div>
