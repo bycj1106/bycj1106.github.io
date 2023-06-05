@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>使用远程客户端连接不上Mysql报错 | 云升的小窝</title>
+        <title>部分使用远程客户端连接Mysql时报错问题的解决 | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -149,7 +149,7 @@
             <div id="main" v-show="!loading">
                 <div class="article">
     <div>
-        <h1>使用远程客户端连接不上Mysql报错</h1>
+        <h1>部分使用远程客户端连接Mysql时报错问题的解决</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -157,6 +157,15 @@
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/5/24
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                开发
+            </a>
         </span>
         
         
@@ -167,7 +176,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Mysql/" style="color: #ff7d73">Mysql</a>
+                <a href="/tags/Mysql/" style="color: #00bcd4">Mysql</a>
             </span>
             
             <span class="tag">
@@ -193,6 +202,14 @@
 更新user为root，host为localhost 的密码为123456
 </code></pre>
 <p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lovedingd/article/details/106728292">Mysql 解决1251- Client does not support authentication protocol requested by server…的问题_慕城南风的博客-CSDN博客</a></p>
+<hr>
+<p><em><strong>补充一个mysql8.0的连接问题</strong></em></p>
+<p>网上有些项目用的是老版mysql，我个人电脑用的是mysql8.0.27版本，与老版项目jar包版本不符，需要更换对应版本jar包。</p>
+<p><a target="_blank" rel="noopener" href="https://downloads.mysql.com/archives/c-j/">MySQL :: Download MySQL Connector&#x2F;J (Archived Versions)</a></p>
+<p>数据库配置文件：</p>
+<pre><code class="java">dataSource.driverClass=com.mysql.cj.jdbc.Driver
+dataSource.jdbcUrl=jdbc:mysql://localhost:3306/ssm?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC
+</code></pre>
 
     </div>
     

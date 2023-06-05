@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>微信小程序开发（三） | 云升的小窝</title>
+        <meta name="author" content="云升" />
+        <meta name="description" content="A home for my heart at peace" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>云升的小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div>
+        <div class="title" @click="shouMenuItems = !shouMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;云升的小窝</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="shouMenuItems">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <div class="article">
+    <div>
+        <h1>微信小程序开发（三）</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/26
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><hr>
+<h2 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h2><p>自定义组件的引用：</p>
+<p><em>需要引用的页面的json文件下</em></p>
+<pre><code class="json">&#123;
+  &quot;usingComponents&quot;: &#123;
+     &quot;l-icon&quot;:&quot;/miniprogram_npm/lin-ui/icon/index&quot;
+  &#125;
+&#125;
+</code></pre>
+<p>自定义组件的属性定义：</p>
+<p><em>index.js</em></p>
+<pre><code class="js">properties: &#123;
+    // text: &#123;
+    //     type: String,
+    //     value: &#39;123&#39;
+    // &#125;,
+    text: String
+&#125;,
+</code></pre>
+<p><code>properties</code> 里定义的属性也可以用作数据绑定。</p>
+<h3 id="尝试将阅读页面文章列表封装到组件"><a href="#尝试将阅读页面文章列表封装到组件" class="headerlink" title="尝试将阅读页面文章列表封装到组件"></a>尝试将阅读页面文章列表封装到组件</h3><p>将 <code>post.wxml</code> 里的文章列表代码剪切进组件 <code>index.wxml</code> 里，把 <code>post.wxss</code> 里的文章列表样式剪切进组件的 <code>index.wxss</code> 里。</p>
+<p><em><strong>数据绑定（如何把post页面的值传给components）</strong></em></p>
+<pre><code class="html">&lt;!-- posts.wxml --&gt;
+&lt;block wx:for=&quot;&#123;&#123;postList&#125;&#125;&quot; wx:key=&quot;index&quot;&gt;
+   &lt;!-- 因为在wx:for循环里，wx:for循环里的每一个数组是用item去指代的 --&gt;
+   &lt;post res=&quot;&#123;&#123;item&#125;&#125;&quot; /&gt;
+&lt;/block&gt;
+</code></pre>
+<pre><code class="js">   // index.js
+   properties: &#123;
+      res: Object
+   &#125;,
+</code></pre>
+<pre><code class="html">&lt;!-- index.wxml --&gt;
+&lt;view data-id=&quot;&#123;&#123;res.postId&#125;&#125;&quot; bind:tap=&quot;onGoToDetail&quot; class=&quot;post-container&quot;&gt;
+      &lt;view class=&quot;post-author-date&quot;&gt;
+         &lt;image class=&quot;post-author&quot; src=&quot;&#123;&#123;res.avater&#125;&#125;&quot;&gt;&lt;/image&gt;
+         &lt;text class=&quot;post-date&quot;&gt;&#123;&#123;res.date&#125;&#125;&lt;/text&gt;
+      &lt;/view&gt;
+      &lt;text class=&quot;post-title&quot;&gt;&#123;&#123;res.title&#125;&#125;&lt;/text&gt;
+      &lt;image class=&quot;post-image&quot; src=&quot;&#123;&#123;res.headImg&#125;&#125;&quot;&gt;&lt;/image&gt;
+      &lt;text class=&quot;post-content&quot;&gt;&#123;&#123;res.content&#125;&#125;&lt;/text&gt;
+      &lt;view class=&quot;post-like&quot;&gt;
+         &lt;l-icon class=&quot;post-like-image&quot; color=&quot;#666&quot; size=&quot;26&quot; name=&quot;favor&quot; /&gt;
+         &lt;text class=&quot;post-like-font&quot;&gt;&#123;&#123;res.collection&#125;&#125;&lt;/text&gt;
+         &lt;l-icon class=&quot;post-like-image&quot; color=&quot;#666&quot; size=&quot;32&quot; name=&quot;eye&quot; /&gt;
+         &lt;text class=&quot;post-like-font&quot;&gt;&#123;&#123;res.reading&#125;&#125;&lt;/text&gt;
+      &lt;/view&gt;
+   &lt;/view&gt;
+</code></pre>
+<p><strong>以后写小程序时需要优先写组件，并且在写组件时可以嵌套引用组件。</strong></p>
+<p><em>嵌套组件一般从内到外写。</em></p>
+<hr>
+<h2 id="字数过多时用CSS样式进行省略处理的方法"><a href="#字数过多时用CSS样式进行省略处理的方法" class="headerlink" title="字数过多时用CSS样式进行省略处理的方法"></a>字数过多时用CSS样式进行省略处理的方法</h2><pre><code class="css">/* components/movie/movie.wxss */
+.container &#123;
+   display: flex;
+   flex-direction: column;
+   width: 200rpx; /* 主要用以限定文字的空间 */
+&#125;
+
+.poster &#123;
+   height: 270rpx;
+   width: 100%;
+   margin-bottom: 22rpx;
+&#125;
+
+.title &#123;
+   /* 字数过多时进行省略（固定了范围时生效） */
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   word-break: break-all;
+&#125;
+</code></pre>
+<hr>
+<h2 id="外部样式类"><a href="#外部样式类" class="headerlink" title="外部样式类"></a>外部样式类</h2><pre><code class="js">// components/movie-list/index.js
+Component(&#123;
+   externalClasses: [&#39;d-class&#39;],
+&#125;)
+</code></pre>
+<pre><code class="html">&lt;!--components/movie-list/index.wxml--&gt;
+&lt;view class=&quot;container d-class&quot;&gt;
+&lt;/view&gt;
+</code></pre>
+<pre><code class="html">&lt;!--pages/movies/movies.wxml--&gt;
+&lt;movie-list d-class=&quot;movie-list&quot;/&gt;
+</code></pre>
+<pre><code class="css">/* pages/movies/movies.wxss */
+.movie-list &#123;
+   margin-bottom: 35rpx;
+&#125;
+</code></pre>
+<hr>
+<h2 id="访问服务端数据"><a href="#访问服务端数据" class="headerlink" title="访问服务端数据"></a>访问服务端数据</h2><p><em>最好不要在组件内向服务端发起请求。（通用性）</em></p>
+<pre><code class="js">// pages/movies/movies.js
+Page(&#123;
+   /**
+    * 生命周期函数--监听页面加载
+    */
+   onLoad(options) &#123;
+      wx.request(&#123;
+         url: &#39;http://t.talelin.com/v2/movie/in_theaters?star=0&amp;count=3&#39;,
+         success: (res) =&gt; &#123;
+            // 不能直接用this.setData，因为this指代不明
+            this.setData(&#123;
+               inTheaters: res.data.subjects
+            &#125;)
+         &#125;
+      &#125;)
+   &#125;,
+&#125;)
+</code></pre>
+<p>然后一层层传给需要的组件：</p>
+<pre><code class="js">// components/movie-list/index.js
+Component(&#123;
+   externalClasses: [&#39;d-class&#39;],
+   /**
+    * 组件的属性列表
+    */
+   properties: &#123;
+      title: String,
+      movies: Array
+   &#125;,
+&#125;)
+</code></pre>
+<pre><code class="html">&lt;!--pages/movies/movies.wxml--&gt;
+&lt;movie-list movies=&quot;&#123;&#123;inTheaters&#125;&#125;&quot; title=&quot;正在热映&quot; d-class=&quot;movie-list&quot;/&gt;
+</code></pre>
+<pre><code class="js">// components/movie/index.js
+Component(&#123;
+   /**
+    * 组件的属性列表
+    */
+   properties: &#123;
+      movie: Object
+   &#125;,
+&#125;)
+</code></pre>
+<pre><code class="html">&lt;!--components/movie-list/index.wxml--&gt;
+&lt;view class=&quot;container d-class&quot;&gt;
+   &lt;view class=&quot;movie-container&quot;&gt;
+      &lt;block wx:for=&quot;&#123;&#123;movies&#125;&#125;&quot; wx:key=&quot;index&quot;&gt;
+         &lt;movie movie=&quot;&#123;&#123;item&#125;&#125;&quot; /&gt;
+      &lt;/block&gt;
+   &lt;/view&gt;
+&lt;/view&gt;
+</code></pre>
+<p><strong>如何对服务端传来的数据进行处理：</strong></p>
+<ol>
+<li>用 <code>wxs</code> </li>
+<li>在 <code>js</code> 文件里处理完数据再用</li>
+</ol>
+<h1 id="更多电影页面"><a href="#更多电影页面" class="headerlink" title="更多电影页面"></a>更多电影页面</h1><h2 id="WXSS文件"><a href="#WXSS文件" class="headerlink" title="WXSS文件"></a>WXSS文件</h2><p>包括 <code>flex-wrap</code> 和 <code>justify-content</code> 的应用</p>
+<pre><code class="css">/* pages/more-movie/more-movie.wxss */
+.container &#123;
+   padding: 40rpx 30rpx;
+   display: flex;
+   flex-direction: row;
+   /* 自动换行 */
+   flex-wrap: wrap;
+   /* 居中 */
+   justify-content: space-between;
+&#125;
+
+.movie &#123;
+   margin-bottom: 30rpx;
+&#125;
+</code></pre>
+<p><em><strong>解决只有两个元素时排布问题</strong></em></p>
+<pre><code class="css">.search-container::after &#123;
+   content: &#39;&#39;;
+   width: 200rpx;
+&#125;
+</code></pre>
+<h2 id="如何实现不同“更多电影”页面的跳转"><a href="#如何实现不同“更多电影”页面的跳转" class="headerlink" title="如何实现不同“更多电影”页面的跳转"></a>如何实现不同“更多电影”页面的跳转</h2><pre><code class="html">&lt;!--pages/movies/movies.wxml--&gt;
+&lt;movie-list data-type=&quot;in_theaters&quot; bind:tap=&quot;onGotoMore&quot; movies=&quot;&#123;&#123;inTheaters&#125;&#125;&quot; title=&quot;正在热映&quot; d-class=&quot;movie-list&quot; /&gt;
+&lt;movie-list data-type=&quot;coming_soon&quot; bind:tap=&quot;onGotoMore&quot; movies=&quot;&#123;&#123;comingSoon&#125;&#125;&quot; title=&quot;即将上映&quot; d-class=&quot;movie-list&quot; /&gt;
+&lt;movie-list data-type=&quot;top250&quot; bind:tap=&quot;onGotoMore&quot; movies=&quot;&#123;&#123;top250&#125;&#125;&quot; title=&quot;豆瓣Top250&quot; d-class=&quot;movie-list&quot; /&gt;
+</code></pre>
+<pre><code class="js">// pages/movies/movies.js
+onGotoMore(event) &#123;
+    const type = event.currentTarget.dataset.type
+    wx.navigateTo(&#123;
+        url: &#39;/pages/more-movie/more-movie?type=&#39; + type,
+    &#125;)
+&#125;,
+</code></pre>
+<pre><code class="js">// pages/more-movie/more-movie.js
+const app = getApp()
+Page(&#123;
+   onLoad(options) &#123;
+      const type = options.type
+      wx.request(&#123;
+         url: app.gBaseUrl + type + &#39;?star=0&amp;count=12&#39;,
+         success: (res) =&gt; &#123;
+            this.setData(&#123;
+               movies: res.data.subjects
+            &#125;)
+         &#125;
+      &#125;)
+   &#125;,
+&#125;)
+</code></pre>
+<h1 id="上拉触底加载更多"><a href="#上拉触底加载更多" class="headerlink" title="上拉触底加载更多"></a>上拉触底加载更多</h1><pre><code class="js">// pages/more-movie/more-movie.js
+const app = getApp()
+Page(&#123;
+
+   /**
+    * 页面的初始数据
+    */
+   data: &#123;
+      movies: [],
+      _type: &#39;&#39;
+   &#125;,
+
+    * 页面上拉触底事件的处理函数
+    */
+   onReachBottom: function () &#123;
+      wx.showNavigationBarLoading()
+      wx.request(&#123;
+         url: app.gBaseUrl + this._type,
+         data: &#123;
+            start: this.data.movies.length,
+            count: 12
+         &#125;,
+         success: (res) =&gt; &#123;
+            this.setData(&#123;
+               // 合并数据
+               movies: this.data.movies.concat(res.data.subjects)
+            &#125;)
+            wx.hideNavigationBarLoading()
+         &#125;
+      &#125;)
+   &#125;,
+&#125;)
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
+            </div>
+        </div>
+        
+
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 云升的小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;云升
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
+
+
+
+        
+        <canvas
+            id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+        ></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1" ></canvas> <script src="/js/background.min.js"></script>
+    </body>
+</html>
