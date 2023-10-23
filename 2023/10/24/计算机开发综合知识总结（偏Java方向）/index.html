@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>计算机开发综合知识总结（偏Java方向） | 云升的小窝</title>
+        <meta name="author" content="云升" />
+        <meta name="description" content="A home for my heart at peace" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>云升的小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div>
+        <div class="title" @click="shouMenuItems = !shouMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;云升的小窝</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="shouMenuItems">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <div class="article">
+    <div>
+        <h1>计算机开发综合知识总结（偏Java方向）</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/24
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                开发
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Java/" style="color: #00a596">Java</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ff7d73">开发</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00bcd4">综合</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p><em>例：13 –&gt; 三进制 –&gt; 111</em></p>
+<p>1 * 3 * 3 + 1 * 3 + 1 &#x3D; 13</p>
+<p>13 % 3 &#x3D; 1         13 &#x2F; 3 &#x3D; 4</p>
+<p>4 % 3 &#x3D; 1            4 &#x2F; 3 &#x3D; 1</p>
+<p>1 % 3 &#x3D; 1            1 &#x2F; 3 &#x3D; 0</p>
+<h2 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h2><p><em>例：A和B的IP地址分别为10.105.1.113和10.105.1.91，它们需要在一个子网中，求他们的子网掩码，选出不能使用的那个</em></p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">10.105.1.113</th>
+<th>10.105.1.91</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td align="left">00001010.01101001.00000001.01110001</td>
+<td>00001010.01101001.00000001.01011011</td>
+</tr>
+<tr>
+<td align="left">255.255.255.0</td>
+<td align="left">11111111.11111111.11111111.00000000</td>
+<td>11111111.11111111.11111111.00000000</td>
+</tr>
+<tr>
+<td align="left">255.255.255.128</td>
+<td align="left">11111111.11111111.11111111.10000000</td>
+<td>11111111.11111111.11111111.10000000</td>
+</tr>
+<tr>
+<td align="left">255.255.255.192</td>
+<td align="left">11111111.11111111.11111111.11000000</td>
+<td>11111111.11111111.11111111.11000000</td>
+</tr>
+<tr>
+<td align="left">255.255.255.224</td>
+<td align="left">11111111.11111111.11111111.11100000</td>
+<td>11111111.11111111.11111111.11100000</td>
+</tr>
+</tbody></table>
+<p>可知到255.255.255.224时不能使用，其实……根本不用算，这道题可以直接盲选嘛。</p>
+<h2 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h2><p><em>例：</em></p>
+<pre><code>class` `A &#123;
+  ``int` `a;
+  ``short` `b;
+  ``int` `c;
+  ``char` `d;
+&#125;;
+class` `B &#123;
+  ``double` `a;
+  ``short` `b;
+  ``int` `c;
+  ``char` `d;
+&#125;;
+</code></pre>
+<p><em>在32位机器上用gcc编译以上代码，求sizeof(A)，sizeof(B)分别是（）</em></p>
+<pre><code>A -----&gt;   △△△△||△△==||△△△△||△=== 
+
+B -----&gt;  △△△△△△△△||△△==(short)△△△△(int)||△======= 
+</code></pre>
+<p>其中△为数据存储，&#x3D;为填充</p>
+<p>A: int a    （4个字节）                         4 </p>
+<p>short b   (2个字节，起始地址4是2的倍数，不补)    4+2</p>
+<p>int c     (4个字节，4+2不是4的倍数，补2个 )    4+2+2（补）+4</p>
+<p>char d    (1个字节，4+2+2+4是1的倍数，不补)  4+2+2（补）+4 +1</p>
+<p>最后补3个字节，让整体大小为4的倍数   4+2+2(补)+4+1+3（补） &#x3D;16 </p>
+<p>B: double a    （8个字节）                         8  </p>
+<p>short b   (2个字节，起始地址8是2的倍数，不补)    8+2</p>
+<p>int c     (4个字节，8+2不是4的倍数，补2个 )    8+2+2（补）+4</p>
+<p>char d    (1个字节，8+2+2+4是1的倍数，不补)  8+2+2（补）+4 +1<br>最后补7个字节，让整体大小为8的倍数   8+2+2(补)+4+1+7（补） &#x3D;24  </p>
+<p><strong>总结</strong></p>
+<ol>
+<li>结构体变量的首地址 必须 是内部最宽数据类型的倍数</li>
+<li>按顺序一个变量一个变量看，要求current变量的首地址 必须是自己大小的倍数。 </li>
+<li>到了最后一个变量，要求整个结构体的大小的最宽数据类型的倍数。</li>
+</ol>
+<h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2a14fe583cdf">Linux命名空间概述</a></p>
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><ol>
+<li>算法复杂度与初始状态无关的有：选择排序、堆排序、归并排序、基数排序；</li>
+<li>元素总比较次数与初始状态无关的有：选择排序、基数排序；</li>
+<li>元素总移动次数与初始状态无关的有：归并排序、基数排序。</li>
+</ol>
+<h3 id="简单排序算法"><a href="#简单排序算法" class="headerlink" title="简单排序算法"></a>简单排序算法</h3><h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><p>就像扑克牌一张张排序一样，我们每次从牌堆摸一张牌到手上，就把牌插入相应的位置。</p>
+<pre><code>for (int i = 0; i &lt; a.length; i++) &#123;
+  for (int j = i; j &gt; 0 &amp;&amp; a[j] &lt; a[j - 1]; j--) &#123;
+    swap(a, j, j - 1);
+  &#125;
+&#125;
+</code></pre>
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>我们考虑桌上有一堆面相上的明牌，我们要排序的话，通常会先选择A，然后选择2,3…K，完成排序。选择排序就是这样，每次从数组中剩下的元素中选择最小的那个即可。</p>
+<pre><code>for (int i = 0; i &lt; a.length; i++) &#123;
+  // a[0...i)为原数组中最小的i个元素排序完成的结果
+&#125;
+</code></pre>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><pre><code>for (int i = 0; i &lt; a.length; i++) &#123;
+  for (int j = a.length - 1; j &gt; i; j--) &#123;
+    if (a[j] &lt; a[j - 1]) &#123;
+      swap(a, j, j - 1);
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>在里层的for里面，我们j是<strong>反向</strong>移动的，这个非常重要。每次这样反向比较+交换一轮之后，我们总能保证剩下的数据中最小的数被换到a[i]的位置，这个交换的过程就像在模拟气泡在水中慢慢升起的过程。</p>
+<h3 id="高效排序算法"><a href="#高效排序算法" class="headerlink" title="高效排序算法"></a>高效排序算法</h3><p>平均复杂度为O(nlogn)的算法。</p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>快速排序和归并排序更是“分治”思想方法的典型体现。</p>
+<pre><code>void sort(int[] a) &#123;
+  // 分组：扫描a，把比a[0]小的数移到左边，把比a[0]大的数移到a[0]右边。
+  // 递归：对于左右两半边分别递归调用sort
+&#125;
+</code></pre>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><pre><code>void sort(int[] a) &#123;
+  // 分组：把a分成左右两边，这次我们不管数据大小，直接中间切一刀，分组就完成了
+  // 递归：把左右两边分别递归调用归并排序，获得两个排好序的子数组
+  // 归并：把两个排好序的子数组进行归并
+&#125;
+</code></pre>
+<p><strong>把问题分成（若干个）互相独立的子问题，分别解决它们，并把子问题的解合成最终解</strong>。</p>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><ol>
+<li>所有数据建堆</li>
+<li>不断从堆中取出一个元素，重复n次。由于堆中取出的总是最小元素，因此排序完成。</li>
+</ol>
+<h3 id="非基于比较的排序算法"><a href="#非基于比较的排序算法" class="headerlink" title="非基于比较的排序算法"></a>非基于比较的排序算法</h3><h4 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h4><p>我们考虑一个问题，如果我告诉你我们所有的数据都是0-100的范围内的整数，但是数据的个数非常大，我们如何来排序呢？我们这样来做</p>
+<ol>
+<li>分别数一下有几个0，有几个1，几个2。。。</li>
+<li>计算累进的计数c，c[i]为&lt;&#x3D;i的个数。比如有2个0，3个1，那么c[0]&#x3D;2, c[1]&#x3D;5</li>
+<li>这个累进的计数c有一个重要的特点，数值为i的数在排好序的数组中位于[ c[i-1]…c[i] )</li>
+<li>利用这个累进计数的特点，可以重建出排序结果</li>
+</ol>
+<h4 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h4><p>扫描数据，放在自己建立的对应的“桶”里。</p>
+<h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><p>根据位数来排序，不需要像桶排一样人为指定桶。</p>
+<p>比如</p>
+<pre><code>原始数据：       10,21,17,34,44,11,654,123
+根据个位数排序：  10,21,11,123,34,44,654,17
+根据十位数排序：  10,11,17,21,123,34,44,654
+根据百位数排序：  10,11,17,21,34,44,123,644
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th align="left">算法</th>
+<th align="left">平均时间复杂度</th>
+<th align="left">最好时间复杂度</th>
+<th align="left">最坏时间复杂度</th>
+<th align="left">空间复杂度</th>
+<th align="left">稳定性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">插入排序</td>
+<td align="left">n2</td>
+<td align="left">n</td>
+<td align="left">n2</td>
+<td align="left">1</td>
+<td align="left">稳定</td>
+</tr>
+<tr>
+<td align="left">选择排序</td>
+<td align="left">n2</td>
+<td align="left">n2</td>
+<td align="left">n2</td>
+<td align="left">1</td>
+<td align="left">不稳定</td>
+</tr>
+<tr>
+<td align="left">冒泡排序</td>
+<td align="left">n2</td>
+<td align="left">n</td>
+<td align="left">n2</td>
+<td align="left">1</td>
+<td align="left">稳定</td>
+</tr>
+<tr>
+<td align="left">快速排序</td>
+<td align="left">nlogn</td>
+<td align="left">nlogn</td>
+<td align="left">n2</td>
+<td align="left">logn</td>
+<td align="left">不稳定</td>
+</tr>
+<tr>
+<td align="left">归并排序</td>
+<td align="left">nlogn</td>
+<td align="left">nlogn</td>
+<td align="left">nlogn</td>
+<td align="left">n</td>
+<td align="left">稳定</td>
+</tr>
+<tr>
+<td align="left">堆排序</td>
+<td align="left">nlogn</td>
+<td align="left">nlogn</td>
+<td align="left">nlogn</td>
+<td align="left">1</td>
+<td align="left">不稳定</td>
+</tr>
+<tr>
+<td align="left">计数排序</td>
+<td align="left">n+s</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">n+s</td>
+<td align="left">稳定</td>
+</tr>
+<tr>
+<td align="left">桶排序</td>
+<td align="left">n+s</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">n+s</td>
+<td align="left">稳定</td>
+</tr>
+<tr>
+<td align="left">基数排序</td>
+<td align="left">dn</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">n</td>
+<td align="left">稳定</td>
+</tr>
+</tbody></table>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><ul>
+<li>原子操作 (Atomic)。是指比如在一个原子操作哪检查和增加一个变量的值，中间不被打断。这保证了数据的完整性。但对于运行时长，其实没啥关系。</li>
+<li>互斥锁 (Mutex)。互斥，就是我只让一个人干活，其他人都等着。然后这个人运行时间还长，占着这个锁不放，系统的性能就非常低了。因此互斥锁更好的用于运行时间较短的任务。</li>
+<li>自旋锁 (SpinLock)。这个锁采用了不是被挂起，而是通过不断循环检查锁是否释放的机制。这个检查的过程是消耗CPU的。肯定只能适用于更短的任务。比如毫秒级。</li>
+<li>信号量 (Semaphore)。信号量是所有这些同步元语中稍微复杂的一种。信号量确保了同时最多只能有n个人占着“坑”干活。相对来说，这里面的活可以干的久一点。</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
+            </div>
+        </div>
+        
+
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 云升的小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;云升
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
+
+
+
+        
+        <canvas
+            id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+        ></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1" ></canvas> <script src="/js/background.min.js"></script>
+    </body>
+</html>
