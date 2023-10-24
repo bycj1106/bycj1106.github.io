@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/tags/Java/" style="color: #00bcd4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #03a9f4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00a596">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00a596">综合</a>
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00bcd4">综合</a>
             </span>
             
         </span>
@@ -198,8 +198,8 @@
 <p>线程包含栈、PC（放在内存中；下一条执行指令的地址）以及TLS。</p>
 <p>操作系统实际真正在运行的是一个一个的线程，进程只是一个容器。</p>
 <h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>快	寄存器	贵</p>
-<p>|	    缓存	   |</p>
-<p>|	    内存	   |</p>
+<p>|            缓存           |</p>
+<p>|            内存           |</p>
 <p>慢	  硬盘	 便宜</p>
 <h2 id="寻址空间"><a href="#寻址空间" class="headerlink" title="寻址空间"></a>寻址空间</h2><p>进程里面指针能取到的地址的范围。</p>
 <p>32位–&gt;4G</p>
@@ -213,6 +213,12 @@
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9a0e9ffa17dd">MQ（消息队列）功能介绍 - 简书 (jianshu.com)</a></p>
 <ul>
 <li>管道&#x2F;命名管道</li>
+</ul>
+<p><strong>匿名管道</strong></p>
+<p>匿名管道主要用于本地父进程和子进程之间的通信，只支持半双工通信。</p>
+<p><em>第一：匿名管道只能实现本地进程之间的通信，不能实现跨网络之间的进程间的通信。</em></p>
+<p><em>第二：匿名管道只能实现父进程和子进程之间的通信，而不能实现任意两个本地进程之间的通信。</em></p>
+<ul>
 <li>共享内存</li>
 <li>同步机制，如信号量</li>
 </ul>
@@ -225,10 +231,98 @@
 <p>（1）在计算机网络中，Socket 连接是一种重要的通信机制。它允许两个程序在不同计算机上进行实时通信，通过套接字的创建和使用来实现数据的传输。</p>
 <p>（2）在 Socket 连接中，我们需要指定套接字的一些参数，例如 IP 地址、端口号、协议等等，以确保通信能够顺利进行。</p>
 <p>（3）常见的协议有 TCP 和 UDP 两种，它们在数据传输的方式和效率上有所不同。</p>
-<p>​	TCP 协议是一种可靠的协议，它保证数据在传输过程中不会丢失或损坏。TCP 协议通过连接的建立、数据的传输和连接的释放等步骤来保证数据的完整性和可靠性。TCP 协议适合于需要数据传输可靠性的场合，例如文件传输、网页浏览等。</p>
-<p>​	UDP 协议是一种不可靠的协议，它不对数据传输的可靠性做出保证。UDP 协议的传输速度比 TCP 更快，但在传输过程中数据可能会丢失或损坏。UDP 协议适合于实时通信，例如视频和音频流的传输。</p>
+<p>​        TCP 协议是一种可靠的协议，它保证数据在传输过程中不会丢失或损坏。TCP 协议通过连接的建立、数据的传输和连接的释放等步骤来保证数据的完整性和可靠性。TCP 协议适合于需要数据传输可靠性的场合，例如文件传输、网页浏览等。</p>
+<p>​        UDP 协议是一种不可靠的协议，它不对数据传输的可靠性做出保证。UDP 协议的传输速度比 TCP 更快，但在传输过程中数据可能会丢失或损坏。UDP 协议适合于实时通信，例如视频和音频流的传输。</p>
 <p>（4）Socket 连接被广泛应用于网络游戏、视频和音频流、文件传输、网络聊天、远程控制等方面。</p>
 <h2 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h2><p>中断（interrupt）是指CPU对I&#x2F;O设备发来的中断信号的一种响应。CPU暂停正在执行的程序，保存CPU现场环境后，自动转去执行该I&#x2F;O设备的中断处理程序。执行完后再回到断点，继续执行原来的程序。陷入和陷阱（trap）时由CPU内部事件所引起的中断。中断和陷入的主要区别是信号的来源不同，即来自CPU外部（外中断或硬中断）还是CPU内部（内中断或软中断）。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p><strong>五层协议的体系结构</strong></p>
+<p>应用层</p>
+<p>运输层</p>
+<p>网络层</p>
+<p>数据链路层</p>
+<p>物理层</p>
+<p><strong>OSI的体系结构</strong></p>
+<p>应用层</p>
+<p>表示层</p>
+<p>会话层</p>
+<p>运输层</p>
+<p>网络层</p>
+<p>数据链路层</p>
+<p>物理层</p>
+<h2 id="网络传输"><a href="#网络传输" class="headerlink" title="网络传输"></a>网络传输</h2><p><strong>不可靠</strong></p>
+<ul>
+<li>丢包，重复包</li>
+<li>出错</li>
+<li>乱序</li>
+</ul>
+<p><strong>不安全</strong></p>
+<ul>
+<li>中间人攻击</li>
+<li>窃取</li>
+<li>篡改</li>
+</ul>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><ul>
+<li>TCP协议</li>
+<li>维持发送方&#x2F;接收方缓冲区</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaojie_570/article/details/87904328">计算机网络（7）——滑动窗口_接收窗口跟滑动窗口的区别-CSDN博客</a></p>
+<p>能更好地利用带宽和流量控制。</p>
+<h2 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h2><p>建立连接-&gt;三次握手:发[SYN];接[SYN, ACK];发[ACK]</p>
+<p>断开连接-&gt;四次挥手:发[FIN];接[ACK];接[FIN];发[ACK]</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a19881029/article/details/38091243">理解TCP序列号（Sequence Number）和确认号（Acknowledgment Number）_relative sequence number-CSDN博客</a></p>
+<p>Acknowledgment number：期待收到的包。</p>
+<p>三次握手之后建立可靠的联系，可以发送HTTP协议。</p>
+<ul>
+<li>网络是不可靠的，任何包都有可能丢</li>
+<li>遇见问题，解决问题，不断迭代</li>
+<li>能用就好</li>
+</ul>
+<h4 id="TCP协议要达成什么目的？"><a href="#TCP协议要达成什么目的？" class="headerlink" title="TCP协议要达成什么目的？"></a>TCP协议要达成什么目的？</h4><p>TCP协议是一种基于连接的协议，在连接的基础上达到一种可靠的传输。可靠的传输指发包的顺序和收包的顺序是一样的、能够保证包不出错、流量控制（不会发得太快来不及收）、拥塞控制（网络出现拥塞的时候不会使情况进一步恶化）。</p>
+<h4 id="TCP协议如何做到流量控制、拥塞控制？"><a href="#TCP协议如何做到流量控制、拥塞控制？" class="headerlink" title="TCP协议如何做到流量控制、拥塞控制？"></a>TCP协议如何做到流量控制、拥塞控制？</h4><p>流量控制：滑动窗口</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tuyang1129/p/12439862.html">计算机网络——TCP的拥塞控制（超详细） - 特务依昂 - 博客园 (cnblogs.com)</a></p>
+<p>因为网络层不会提供拥塞的反馈信息，所以<strong>TCP协议采用的是第一种方式——自己判断网络的拥塞情况</strong>。当<code>TCP</code>检测到网络拥塞，则降低数据的发送速率，否则增加数据的发送速率。</p>
+<h3 id="部分例题"><a href="#部分例题" class="headerlink" title="部分例题"></a>部分例题</h3><ol>
+<li>TCP采用的滑动窗口大小为0是合法的。</li>
+<li>传输问题，已知距离、数据大小、要求时间、传输速率，问发送缓冲区最小设置大小<ul>
+<li>一个来回的时间：       距离 &#x2F; 传输速度 * 2</li>
+<li>来回的最多次数：       要求传输时间 &#x2F; 一个来回的时间</li>
+<li>每次来回最少传输大小：         文件大小 &#x2F; 来回的最多次数</li>
+</ul>
+</li>
+</ol>
+<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+<li>前序遍历<ul>
+<li>先遍历树根</li>
+<li>前序遍历左子树</li>
+<li>前线遍历右子树</li>
+</ul>
+</li>
+<li>中序遍历<ul>
+<li>中序遍历左子树</li>
+<li>遍历树根</li>
+<li>中序遍历右子树</li>
+</ul>
+</li>
+<li>后序遍历<ul>
+<li>后序遍历左子树</li>
+<li>后序遍历右子树</li>
+<li>遍历树根</li>
+</ul>
+</li>
+</ul>
+<h2 id="内连接和外连接"><a href="#内连接和外连接" class="headerlink" title="内连接和外连接"></a>内连接和外连接</h2><p><strong>内连接：</strong></p>
+<p>合并具有同一列的两个以上的表的行，结果集中不包含一个表与另一个表不匹配的行（交集）</p>
+<p><strong>外连接：</strong></p>
+<p>合并具有同一列的两个以上的表的行，结果集中除了一个表与另一个表匹配的行之外，还查询到了左表或右表中不匹配的行</p>
+<p><strong>外连接的分类：</strong></p>
+<p>左外连接，右外连接，满外连接</p>
+<h2 id="DHCP与NAT的含义与作用"><a href="#DHCP与NAT的含义与作用" class="headerlink" title="DHCP与NAT的含义与作用"></a>DHCP与NAT的含义与作用</h2><p>两个协议都是IP协议。</p>
+<p>DHCP（<a target="_blank" rel="noopener" href="https://gw-c.nowcoder.com/api/sparta/jump/link?link=https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AE/10778663">动态主机配置协议</a>）是一个局域网的网络协议。指的是由服务器控制一段IP地址范围，客户机登录服务器时就可以自动获得服务器分配的IP地址和子网掩码。</p>
+<p>NAT英文全称是“Network Address Translation”，中文意思是“网络地址转换”，它允许一个整体机构以一个公用IP地址出现在Internet上。</p>
+<p>顾名思义，它是一种把内部私有网络地址（IP地址）翻译成合法网络IP地址的技术。简单的说，NAT就是在局域网内部网络中使用内部地址，而当内部节点要与外部网络进行通讯时，就在网关（可以理解为出口，打个比方就像院子的门一样）处，将内部地址替换成公用地址，从而在外部公网（internet）上正常使用，NAT可以使多台计算机共享Internet连接，这一功能很好地解决了公共IP地址紧缺的问题。</p>
+<h3 id="根据前序中序构造二叉树"><a href="#根据前序中序构造二叉树" class="headerlink" title="根据前序中序构造二叉树"></a>根据前序中序构造二叉树</h3><p>前序：树根 + （左子树 + 右子树）</p>
+<p>中序：（左子树） + 树根 + （右子树）</p>
+<p><em><strong>递归思想，不停找树根，定左右子树，即可构造出二叉树！</strong></em></p>
 <h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p><em>例：13 –&gt; 三进制 –&gt; 111</em></p>
 <p>1 * 3 * 3 + 1 * 3 + 1 &#x3D; 13</p>
 <p>13 % 3 &#x3D; 1         13 &#x2F; 3 &#x3D; 4</p>
