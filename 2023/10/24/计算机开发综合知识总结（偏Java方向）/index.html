@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #ff7d73">Java</a>
+                <a href="/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00a596">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ffa2c4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #03a9f4">综合</a>
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00bcd4">综合</a>
             </span>
             
         </span>
@@ -194,7 +194,35 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p>进程包含若干个线程、逻辑内存（不同进程间的内存相互独立——为了安全性）以及文件&#x2F;网络句柄（不同进程所共有的，以打开同一个文件或抢同一个网络的端口）。</p>
+        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+<li>前序遍历<ul>
+<li>先遍历树根</li>
+<li>前序遍历左子树</li>
+<li>前线遍历右子树</li>
+</ul>
+</li>
+<li>中序遍历<ul>
+<li>中序遍历左子树</li>
+<li>遍历树根</li>
+<li>中序遍历右子树</li>
+</ul>
+</li>
+<li>后序遍历<ul>
+<li>后序遍历左子树</li>
+<li>后序遍历右子树</li>
+<li>遍历树根</li>
+</ul>
+</li>
+</ul>
+<h3 id="根据前序中序构造二叉树"><a href="#根据前序中序构造二叉树" class="headerlink" title="根据前序中序构造二叉树"></a>根据前序中序构造二叉树</h3><p>前序：树根 + （左子树 + 右子树）</p>
+<p>中序：（左子树） + 树根 + （右子树）</p>
+<p><em><strong>递归思想，不停找树根，定左右子树，即可构造出二叉树！</strong></em></p>
+<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p><em>例：13 –&gt; 三进制 –&gt; 111</em></p>
+<p>1 * 3 * 3 + 1 * 3 + 1 &#x3D; 13</p>
+<p>13 % 3 &#x3D; 1         13 &#x2F; 3 &#x3D; 4</p>
+<p>4 % 3 &#x3D; 1            4 &#x2F; 3 &#x3D; 1</p>
+<p>1 % 3 &#x3D; 1            1 &#x2F; 3 &#x3D; 0</p>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p>进程包含若干个线程、逻辑内存（不同进程间的内存相互独立——为了安全性）以及文件&#x2F;网络句柄（不同进程所共有的，以打开同一个文件或抢同一个网络的端口）。</p>
 <p>线程包含栈、PC（放在内存中；下一条执行指令的地址）以及TLS。</p>
 <p>操作系统实际真正在运行的是一个一个的线程，进程只是一个容器。</p>
 <h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>快	寄存器	贵</p>
@@ -235,6 +263,7 @@
 <p>​        UDP 协议是一种不可靠的协议，它不对数据传输的可靠性做出保证。UDP 协议的传输速度比 TCP 更快，但在传输过程中数据可能会丢失或损坏。UDP 协议适合于实时通信，例如视频和音频流的传输。</p>
 <p>（4）Socket 连接被广泛应用于网络游戏、视频和音频流、文件传输、网络聊天、远程控制等方面。</p>
 <h2 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h2><p>中断（interrupt）是指CPU对I&#x2F;O设备发来的中断信号的一种响应。CPU暂停正在执行的程序，保存CPU现场环境后，自动转去执行该I&#x2F;O设备的中断处理程序。执行完后再回到断点，继续执行原来的程序。陷入和陷阱（trap）时由CPU内部事件所引起的中断。中断和陷入的主要区别是信号的来源不同，即来自CPU外部（外中断或硬中断）还是CPU内部（内中断或软中断）。</p>
+<h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2a14fe583cdf">Linux命名空间概述</a></p>
 <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p><strong>五层协议的体系结构</strong></p>
 <p>应用层</p>
 <p>运输层</p>
@@ -290,72 +319,10 @@
 </ul>
 </li>
 </ol>
-<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><ul>
-<li><p>基于关系代数理论</p>
-</li>
-<li><p>缺点：表结构不直观，实现复杂，速度慢</p>
-</li>
-<li><p>优点：健壮性高，社区庞大</p>
-</li>
-</ul>
-<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p><strong>ACID</strong></p>
-<ul>
-<li>Atomicity</li>
-<li>Consistency</li>
-<li>Isolation</li>
-<li>Durability</li>
-</ul>
-<p><strong>事务的隔离级别</strong></p>
-<ul>
-<li>Read uncommitted</li>
-<li>Read Committed</li>
-<li>Repeatable Reads</li>
-<li>Serializable</li>
-</ul>
-<h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><ul>
-<li>读取数据，记录Timestamp</li>
-<li>修改数据</li>
-<li>检查和提交数据</li>
-</ul>
-<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
-<li>前序遍历<ul>
-<li>先遍历树根</li>
-<li>前序遍历左子树</li>
-<li>前线遍历右子树</li>
-</ul>
-</li>
-<li>中序遍历<ul>
-<li>中序遍历左子树</li>
-<li>遍历树根</li>
-<li>中序遍历右子树</li>
-</ul>
-</li>
-<li>后序遍历<ul>
-<li>后序遍历左子树</li>
-<li>后序遍历右子树</li>
-<li>遍历树根</li>
-</ul>
-</li>
-</ul>
-<h2 id="内连接和外连接"><a href="#内连接和外连接" class="headerlink" title="内连接和外连接"></a>内连接和外连接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dove_knowledge/article/details/71420206">数据库-内连接与外连接的区别(举例说明)_数据库内连接和外连接的区别举例-CSDN博客</a></p>
-<p><strong>内连接：</strong></p>
-<p>取出两张表中匹配到的数据，匹配不到的不保留。</p>
-<p><strong>外连接：</strong></p>
-<p>取出连接表中匹配到的数据，匹配不到的也会保留，其值为NULL。</p>
-<p><strong>外连接的分类：</strong></p>
-<p>左外连接，右外连接，全外连接</p>
 <h2 id="DHCP与NAT的含义与作用"><a href="#DHCP与NAT的含义与作用" class="headerlink" title="DHCP与NAT的含义与作用"></a>DHCP与NAT的含义与作用</h2><p>两个协议都是IP协议。</p>
 <p>DHCP（<a target="_blank" rel="noopener" href="https://gw-c.nowcoder.com/api/sparta/jump/link?link=https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AE/10778663">动态主机配置协议</a>）是一个局域网的网络协议。指的是由服务器控制一段IP地址范围，客户机登录服务器时就可以自动获得服务器分配的IP地址和子网掩码。</p>
 <p>NAT英文全称是“Network Address Translation”，中文意思是“网络地址转换”，它允许一个整体机构以一个公用IP地址出现在Internet上。</p>
 <p>顾名思义，它是一种把内部私有网络地址（IP地址）翻译成合法网络IP地址的技术。简单的说，NAT就是在局域网内部网络中使用内部地址，而当内部节点要与外部网络进行通讯时，就在网关（可以理解为出口，打个比方就像院子的门一样）处，将内部地址替换成公用地址，从而在外部公网（internet）上正常使用，NAT可以使多台计算机共享Internet连接，这一功能很好地解决了公共IP地址紧缺的问题。</p>
-<h3 id="根据前序中序构造二叉树"><a href="#根据前序中序构造二叉树" class="headerlink" title="根据前序中序构造二叉树"></a>根据前序中序构造二叉树</h3><p>前序：树根 + （左子树 + 右子树）</p>
-<p>中序：（左子树） + 树根 + （右子树）</p>
-<p><em><strong>递归思想，不停找树根，定左右子树，即可构造出二叉树！</strong></em></p>
-<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p><em>例：13 –&gt; 三进制 –&gt; 111</em></p>
-<p>1 * 3 * 3 + 1 * 3 + 1 &#x3D; 13</p>
-<p>13 % 3 &#x3D; 1         13 &#x2F; 3 &#x3D; 4</p>
-<p>4 % 3 &#x3D; 1            4 &#x2F; 3 &#x3D; 1</p>
-<p>1 % 3 &#x3D; 1            1 &#x2F; 3 &#x3D; 0</p>
 <h2 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h2><p><em>例：A和B的IP地址分别为10.105.1.113和10.105.1.91，它们需要在一个子网中，求他们的子网掩码，选出不能使用的那个</em></p>
 <table>
 <thead>
@@ -392,7 +359,82 @@
 </tr>
 </tbody></table>
 <p>可知到255.255.255.224时不能使用，其实……根本不用算，这道题可以直接盲选嘛。</p>
-<h2 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h2><p><em>例：</em></p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><ul>
+<li><p>基于关系代数理论</p>
+</li>
+<li><p>缺点：表结构不直观，实现复杂，速度慢</p>
+</li>
+<li><p>优点：健壮性高，社区庞大</p>
+</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p><strong>事务管理（ACID）</strong></p>
+<ul>
+<li>原子性（Atomicity）</li>
+</ul>
+<p>原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</p>
+<ul>
+<li>一致性（Consistency）</li>
+</ul>
+<p>事务前后数据的完整性必须保持一致。</p>
+<ul>
+<li>隔离性（Isolation）</li>
+</ul>
+<p>事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。</p>
+<ul>
+<li>持久性（Durability）</li>
+</ul>
+<p>持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响。</p>
+<p><strong>事务的隔离级别</strong></p>
+<ul>
+<li>Read uncommitted</li>
+</ul>
+<p>读未提交，即一个事务可以读取另一个未提交事务的数据；并发操作会导致脏读。</p>
+<ul>
+<li>Read Committed</li>
+</ul>
+<p>读操作，即一个事务要等到另一个事务提交后才能读取数据；解决脏读问题；并发操作会导致不可重复读。</p>
+<ul>
+<li>Repeatable Reads</li>
+</ul>
+<p>重复读，即开始读取数据（事务开启）时，不再允许修改操作；解决不可重复读问题；并发操作会导致幻读（对应insert操作）。</p>
+<ul>
+<li>Serializable</li>
+</ul>
+<p>序列化，最高的事务隔离级别，该级别下，事务串行化顺序执行；避免脏读、不可重复读与幻读；但是该级别效率低下，比较消耗数据库性能，一般不用。</p>
+<h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>乐观锁假设认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。</p>
+<ul>
+<li>读取数据，记录Timestamp</li>
+<li>修改数据</li>
+<li>检查和提交数据</li>
+</ul>
+<h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xidianliuy/article/details/51566576">什么是第一，第二，第三范式_第一范式第二范式第三范式的定义-CSDN博客</a></p>
+<p>第一范式：简单说 列不能再分</p>
+<p>第二范式：简单说 建立在第一范式基础上，消除部分依赖</p>
+<p>第三范式：简单说 建立在第二范式基础上，消除传递依赖。</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51486343/article/details/113351092">【精选】MySQL 数据库–索引（理论详解及实例演示）_https://blog.csdn.net/weixin_51486343&#x2F;article&#x2F;deta-CSDN博客</a></p>
+<p>最好把要查的字段都加上索引，不然会很慢，怎么知道有没有索引呢？用EXPLAIN去看，看type，ref就是对的。</p>
+<p>主键和外键会自动建索引，自己把要查的数据量大的字段加上索引。</p>
+<h2 id="内连接和外连接"><a href="#内连接和外连接" class="headerlink" title="内连接和外连接"></a>内连接和外连接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dove_knowledge/article/details/71420206">数据库-内连接与外连接的区别(举例说明)_数据库内连接和外连接的区别举例-CSDN博客</a></p>
+<p><strong>内连接：</strong></p>
+<p>取出两张表中匹配到的数据，匹配不到的不保留。</p>
+<p><strong>外连接：</strong></p>
+<p>取出连接表中匹配到的数据，匹配不到的也会保留，其值为NULL。</p>
+<p><strong>外连接的分类：</strong></p>
+<p>左外连接，右外连接，全外连接</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><em><strong>介绍一下关系型数据库的理论基础</strong></em></p>
+<p>基于关系代数理论，一到五范式。</p>
+<p><em><strong>给定一个场景，请设计表结构</strong></em></p>
+<p>至少到三范式</p>
+<h1 id="程序设计"><a href="#程序设计" class="headerlink" title="程序设计"></a>程序设计</h1><h2 id="常见问题-1"><a href="#常见问题-1" class="headerlink" title="常见问题"></a>常见问题</h2><p><em><strong>比较一下Java和C++语言</strong></em></p>
+<p><em><strong>介绍一下面向对象思想</strong></em></p>
+<p><em><strong>介绍一下函数式编程，函数式编程和函数指针的区别</strong></em></p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>Singleton模式</p>
+<ul>
+<li>确保全局至多只有一个对象</li>
+<li>用于：构造缓慢的对象，需要统一管理的资源</li>
+<li>缺点：很多全局状态，线程安全性</li>
+</ul>
+<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h2><p><em>例：</em></p>
 <pre><code>class` `A &#123;
   ``int` `a;
   ``short` `b;
@@ -427,7 +469,6 @@ B -----&gt;  △△△△△△△△||△△==(short)△△△△(int)||△====
 <li>按顺序一个变量一个变量看，要求current变量的首地址 必须是自己大小的倍数。 </li>
 <li>到了最后一个变量，要求整个结构体的大小的最宽数据类型的倍数。</li>
 </ol>
-<h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2a14fe583cdf">Linux命名空间概述</a></p>
 <h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><ol>
 <li>算法复杂度与初始状态无关的有：选择排序、堆排序、归并排序、基数排序；</li>
 <li>元素总比较次数与初始状态无关的有：选择排序、基数排序；</li>
