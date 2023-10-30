@@ -181,12 +181,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #03a9f4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ffa2c4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00bcd4">综合</a>
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00a596">综合</a>
             </span>
             
         </span>
@@ -514,6 +514,11 @@
 <h4 id="常见问题-1"><a href="#常见问题-1" class="headerlink" title="常见问题"></a>常见问题</h4><p><em><strong>比较一下Java和C++语言</strong></em></p>
 <p><em><strong>介绍一下面向对象思想</strong></em></p>
 <p><em><strong>介绍一下函数式编程，函数式编程和函数指针的区别</strong></em></p>
+<h2 id="Java创建对象的几种方式"><a href="#Java创建对象的几种方式" class="headerlink" title="Java创建对象的几种方式"></a>Java创建对象的几种方式</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Yearingforthefuture/article/details/115843044">【面试题】Java中创建对象的方式有几种？_创建对象的方式有哪些 面试题-CSDN博客</a></p>
+<h2 id="Java-IO"><a href="#Java-IO" class="headerlink" title="Java IO"></a>Java IO</h2><p>Java 把 Input输入流 和 Output 输出流，统称为IO流，它的核心就是对文件的操作，对于 字节 、字符类型的输入和输出。</p>
+<p>IO流主要分为两大类，字节流和字符流。字节流可以处理任何类型的数据，如图片，视频等，字符流只能处理字符类型的数据。</p>
+<p>IO流的本质是数据传输，并且流是单向的。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25418336">Java IO学习整理 - 知乎 (zhihu.com)</a></p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><p><strong>32位int的范围</strong></p>
 <p>-2^31 ~ 2^31-1</p>
 <p><strong>补码</strong></p>
@@ -563,6 +568,45 @@ Integer.valueOf(2) == Integer.valueOf(2); // true 数值比较小的时候会分
 Integer.valueOf(2).intValue() == 2; // true
 new Integer(2).equals(new Integer(2)); // true
 </code></pre>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p><em>从用户（终端用户，使用代码的用户）的角度思考问题，摈弃完全基于逻辑的思维。（易读性）</em></p>
+<h3 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3><ul>
+<li>类的成员变量–&gt;对象状态</li>
+<li>类的成员函数–&gt;对象行为</li>
+<li>类的静态变量</li>
+</ul>
+<p>没有this引用，全局变量。</p>
+<ul>
+<li>类的静态函数</li>
+</ul>
+<p>普通函数可以引用静态变量、静态函数。</p>
+<p>静态函数引用普通成员变量、函数是编译错误的。</p>
+<p>对象上引用静态变量、函数会被编译器警告。</p>
+<p><strong>类的特殊函数</strong></p>
+<ul>
+<li>构造函数</li>
+<li>equals</li>
+<li>hashCode</li>
+<li>toString</li>
+</ul>
+<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p><em><strong>为什么要有接口的概念</strong></em></p>
+<p>从用户（使用实现的代码）角度看问题，用户不需要关心它是怎么实现的。</p>
+<p><em><strong>接口与类相比</strong></em></p>
+<ul>
+<li>由编译器强制的一个模块间协作的合约（Contract）；</li>
+<li>无成员变量；</li>
+<li>成员函数只能申明不能有实现。</li>
+</ul>
+<p><em><strong>接口的申明</strong></em></p>
+<ul>
+<li>Java：interface BankEndPoint {…}</li>
+<li>C++：一个全部是纯虚函数的类</li>
+<li>Python&#x2F;大部分动态语言：依靠注释申明</li>
+</ul>
+<p><em><strong>接口和抽象类的区别</strong></em></p>
+<p><strong>从实现角度看</strong></p>
+<p>抽象类可以有成员变量</p>
+<p>抽象类可以有部分实现</p>
+<p>抽象类不可以多重继承，接口可以</p>
 <h2 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h2><p><em><strong>数学归纳法（俗称……找规律，显然法，高数里高阶函数问题常用的方法，这里用来推程序正确性）</strong></em></p>
 <p>用于证明断言对所有自然数成立</p>
 <ul>
@@ -591,13 +635,24 @@ new Integer(2).equals(new Integer(2)); // true
 <li>每次必须向前推进循环不变式中涉及的变量值</li>
 <li>每次推进的规模必须为1</li>
 </ul>
-<h3 id="边界控制"><a href="#边界控制" class="headerlink" title="边界控制"></a>边界控制</h3><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>Singleton模式</p>
+<h3 id="边界控制"><a href="#边界控制" class="headerlink" title="边界控制"></a>边界控制</h3><p>凭经验。</p>
+<h2 id="静态绑定与动态绑定"><a href="#静态绑定与动态绑定" class="headerlink" title="静态绑定与动态绑定"></a>静态绑定与动态绑定</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Untara/article/details/100115150">java的动态绑定与静态绑定(彻底理解多态与重载)-CSDN博客</a></p>
+<h2 id="常见问题-2"><a href="#常见问题-2" class="headerlink" title="常见问题"></a>常见问题</h2><p><em><strong>如何判断对象已死亡</strong></em></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33591903/article/details/82107686">【JAVA】如何判断对象已经死亡？_java 如何判断对象已经“死去”-CSDN博客</a></p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>Singleton模式</p>
 <ul>
 <li>确保全局至多只有一个对象</li>
 <li>用于：构造缓慢的对象，需要统一管理的资源</li>
 <li>缺点：很多全局状态，线程安全性</li>
 </ul>
-<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h2><p><em>例：</em></p>
+<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/laomo_bible/article/details/83112622">【JAVA核心】Java GC机制详解-CSDN博客</a></p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44469202/article/details/115496920">什么是Redis？简述它的优缺点？_redis介绍和优缺点_SONNIE在路上的博客-CSDN博客</a></p>
+<p><em><strong>Redis的特点</strong></em></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29974229/article/details/121673809">【精选】简述redis特点及其应用场景-CSDN博客</a></p>
+<p><em><strong>Redis的一些问题</strong></em></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fcvtb/article/details/89478554">【面试】redis缓存穿透、缓存击穿、缓存雪崩区别和解决方案-CSDN博客</a></p>
+<h2 id="JVM中导致OOM的原因与解决"><a href="#JVM中导致OOM的原因与解决" class="headerlink" title="JVM中导致OOM的原因与解决"></a>JVM中导致OOM的原因与解决</h2><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/726472">1篇文章搞清楚8种JVM内存溢出（OOM）的原因和解决方法-阿里云开发者社区 (aliyun.com)</a></p>
+<h2 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h2><p><em>例：</em></p>
 <pre><code>class` `A &#123;
   ``int` `a;
   ``short` `b;
