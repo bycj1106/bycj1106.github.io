@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #00a596">Java</a>
+                <a href="/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ffa2c4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #03a9f4">开发</a>
             </span>
             
             <span class="tag">
@@ -194,7 +194,42 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ul>
+<li>数组</li>
+<li>链表</li>
+<li>队列，栈</li>
+</ul>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><ul>
+<li>二叉树</li>
+<li>搜索树</li>
+<li>堆&#x2F;优先队列</li>
+</ul>
+<pre><code class="java">push(1);push(3);push(2);pop();pop();pop();
+栈：2; 3; 1
+队列：1; 3; 2
+优先队列：1; 2; 3
+</code></pre>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><ul>
+<li>无向图</li>
+<li>有向图</li>
+<li>有向无环图</li>
+</ul>
+<p><em><strong>图的算法</strong></em></p>
+<ul>
+<li>深度优先遍历</li>
+<li>广度优先遍历</li>
+<li>拓扑排序</li>
+<li>最短路径&#x2F;最小生成树</li>
+</ul>
+<h2 id="Java集合类型"><a href="#Java集合类型" class="headerlink" title="Java集合类型"></a>Java集合类型</h2><p><img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BC%80%E5%8F%91%E7%BB%BC%E5%90%88%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%81%8FJava%E6%96%B9%E5%90%91%EF%BC%89/image-20231029171954123-1698571199741-1.png" alt="image-20231029171954123"></p>
+<p><em><strong>ArrayList和LinkedList的区别</strong></em></p>
+<p>都是线性表的结构，他们都是List接口，但是实现不同，ArrayList是数组实现，LinkedList是链表实现。</p>
+<p><em><strong>HashMap和Hashtable的区别</strong></em></p>
+<p>Hashtable是Java 1的遗留产物；</p>
+<p>Hashtable不允许null；</p>
+<p>Hashtable线程安全，因为所有危险函数都加了synchronized（一种同步锁），会让开销变得很大；</p>
+<p>HashMap更快，想要线程安全用ConcurrentHashMap。</p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
 <li>前序遍历<ul>
 <li>先遍历树根</li>
 <li>前序遍历左子树</li>
@@ -217,6 +252,16 @@
 <h3 id="根据前序中序构造二叉树"><a href="#根据前序中序构造二叉树" class="headerlink" title="根据前序中序构造二叉树"></a>根据前序中序构造二叉树</h3><p>前序：树根 + （左子树 + 右子树）</p>
 <p>中序：（左子树） + 树根 + （右子树）</p>
 <p><em><strong>递归思想，不停找树根，定左右子树，即可构造出二叉树！</strong></em></p>
+<h4 id="二叉查找树和中序遍历"><a href="#二叉查找树和中序遍历" class="headerlink" title="二叉查找树和中序遍历"></a>二叉查找树和中序遍历</h4><p>因为二叉查找树每一个左子树都比根小，每一个右子树都比根大，所以它的中序遍历序列是从小到大的。</p>
+<h3 id="B-x2F-B-树"><a href="#B-x2F-B-树" class="headerlink" title="B&#x2F;B+树"></a>B&#x2F;B+树</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a519640026/article/details/106940115">一文彻底搞懂MySQL基础：B树和B+树的区别_mysql b树和b+树的区别-CSDN博客</a></p>
+<p><strong>m阶B&#x2F;B+树</strong></p>
+<ul>
+<li>每个非叶子节点（除根外）至多有m个儿子，至少有[m&#x2F;2]个儿子</li>
+<li>根节点（如果不是叶子）至少有两个儿子</li>
+<li>所有叶子节点在同一层</li>
+</ul>
+<h4 id="B-x2F-B-树的区别"><a href="#B-x2F-B-树的区别" class="headerlink" title="B&#x2F;B+树的区别"></a>B&#x2F;B+树的区别</h4><p>B树的值可以出现在非叶子节点上，B+树真正有用的东西全在叶子节点上，它的根和非叶子节点作用在于帮助找到这个真正的数值所在的地方。</p>
+<h4 id="B树和二叉搜索树的区别"><a href="#B树和二叉搜索树的区别" class="headerlink" title="B树和二叉搜索树的区别"></a>B树和二叉搜索树的区别</h4><p>B树的每一个节点可以放更多的元素，可以有更多的儿子——为了优化磁盘的读写次数（磁盘存取次数与B树的高度成正比）。</p>
 <h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p><em>例：13 –&gt; 三进制 –&gt; 111</em></p>
 <p>1 * 3 * 3 + 1 * 3 + 1 &#x3D; 13</p>
 <p>13 % 3 &#x3D; 1         13 &#x2F; 3 &#x3D; 4</p>
@@ -263,6 +308,12 @@
 <p>​        UDP 协议是一种不可靠的协议，它不对数据传输的可靠性做出保证。UDP 协议的传输速度比 TCP 更快，但在传输过程中数据可能会丢失或损坏。UDP 协议适合于实时通信，例如视频和音频流的传输。</p>
 <p>（4）Socket 连接被广泛应用于网络游戏、视频和音频流、文件传输、网络聊天、远程控制等方面。</p>
 <h2 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h2><p>中断（interrupt）是指CPU对I&#x2F;O设备发来的中断信号的一种响应。CPU暂停正在执行的程序，保存CPU现场环境后，自动转去执行该I&#x2F;O设备的中断处理程序。执行完后再回到断点，继续执行原来的程序。陷入和陷阱（trap）时由CPU内部事件所引起的中断。中断和陷入的主要区别是信号的来源不同，即来自CPU外部（外中断或硬中断）还是CPU内部（内中断或软中断）。</p>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><ul>
+<li>原子操作 (Atomic)。是指比如在一个原子操作哪检查和增加一个变量的值，中间不被打断。这保证了数据的完整性。但对于运行时长，其实没啥关系。</li>
+<li>互斥锁 (Mutex)。互斥，就是我只让一个人干活，其他人都等着。然后这个人运行时间还长，占着这个锁不放，系统的性能就非常低了。因此互斥锁更好的用于运行时间较短的任务。</li>
+<li>自旋锁 (SpinLock)。这个锁采用了不是被挂起，而是通过不断循环检查锁是否释放的机制。这个检查的过程是消耗CPU的。肯定只能适用于更短的任务。比如毫秒级。</li>
+<li>信号量 (Semaphore)。信号量是所有这些同步元语中稍微复杂的一种。信号量确保了同时最多只能有n个人占着“坑”干活。相对来说，这里面的活可以干的久一点。</li>
+</ul>
 <h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2a14fe583cdf">Linux命名空间概述</a></p>
 <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p><strong>五层协议的体系结构</strong></p>
 <p>应用层</p>
@@ -414,6 +465,20 @@
 <h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51486343/article/details/113351092">【精选】MySQL 数据库–索引（理论详解及实例演示）_https://blog.csdn.net/weixin_51486343&#x2F;article&#x2F;deta-CSDN博客</a></p>
 <p>最好把要查的字段都加上索引，不然会很慢，怎么知道有没有索引呢？用EXPLAIN去看，看type，ref就是对的。</p>
 <p>主键和外键会自动建索引，自己把要查的数据量大的字段加上索引。</p>
+<h3 id="索引的实现"><a href="#索引的实现" class="headerlink" title="索引的实现"></a>索引的实现</h3><ul>
+<li>B树</li>
+<li>B+树</li>
+<li>二叉树优先<strong>比较</strong>次数，B&#x2F;B+树优化<strong>磁盘</strong>读写次数</li>
+</ul>
+<h4 id="数据库索引的作用"><a href="#数据库索引的作用" class="headerlink" title="数据库索引的作用"></a>数据库索引的作用</h4><ul>
+<li>加快查找速度</li>
+<li>约束数据的值</li>
+</ul>
+<h4 id="数据库索引的分类"><a href="#数据库索引的分类" class="headerlink" title="数据库索引的分类"></a>数据库索引的分类</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/338629505">浅谈 MySQL 索引的分类 - 知乎 (zhihu.com)</a></p>
+<h2 id="数据库的连接池"><a href="#数据库的连接池" class="headerlink" title="数据库的连接池"></a>数据库的连接池</h2><ul>
+<li>建立连接要花很多时间</li>
+<li>每个用户建立连接造成浪费</li>
+</ul>
 <h2 id="内连接和外连接"><a href="#内连接和外连接" class="headerlink" title="内连接和外连接"></a>内连接和外连接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dove_knowledge/article/details/71420206">数据库-内连接与外连接的区别(举例说明)_数据库内连接和外连接的区别举例-CSDN博客</a></p>
 <p><strong>内连接：</strong></p>
 <p>取出两张表中匹配到的数据，匹配不到的不保留。</p>
@@ -425,10 +490,108 @@
 <p>基于关系代数理论，一到五范式。</p>
 <p><em><strong>给定一个场景，请设计表结构</strong></em></p>
 <p>至少到三范式</p>
-<h1 id="程序设计"><a href="#程序设计" class="headerlink" title="程序设计"></a>程序设计</h1><h2 id="常见问题-1"><a href="#常见问题-1" class="headerlink" title="常见问题"></a>常见问题</h2><p><em><strong>比较一下Java和C++语言</strong></em></p>
+<h1 id="程序设计与算法"><a href="#程序设计与算法" class="headerlink" title="程序设计与算法"></a>程序设计与算法</h1><h2 id="归类"><a href="#归类" class="headerlink" title="归类"></a>归类</h2><h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><ul>
+<li>编译时：C，C++，Java，GO</li>
+<li>运行时：Python，Perl，JavaScript，Ruby</li>
+</ul>
+<h3 id="运行-x2F-编译"><a href="#运行-x2F-编译" class="headerlink" title="运行&#x2F;编译"></a>运行&#x2F;编译</h3><ul>
+<li>编译为机器代码运行：C，C++</li>
+</ul>
+<p>速度快</p>
+<ul>
+<li>编译为中间代码，在虚拟机运行：Java，C#</li>
+</ul>
+<p>提供程序跨平台的能力</p>
+<ul>
+<li>解释执行：Python，Perl，JavaScript</li>
+</ul>
+<p>不需要编译，看到一行代码就运行一行代码</p>
+<h3 id="编程范式（Programming-Paradigm）"><a href="#编程范式（Programming-Paradigm）" class="headerlink" title="编程范式（Programming Paradigm）"></a>编程范式（Programming Paradigm）</h3><ul>
+<li>面向过程：C，Visual Basic</li>
+<li>面向对象：Java，C#，C++，Scala</li>
+<li>函数式：Haskell，Erlang</li>
+</ul>
+<h4 id="常见问题-1"><a href="#常见问题-1" class="headerlink" title="常见问题"></a>常见问题</h4><p><em><strong>比较一下Java和C++语言</strong></em></p>
 <p><em><strong>介绍一下面向对象思想</strong></em></p>
 <p><em><strong>介绍一下函数式编程，函数式编程和函数指针的区别</strong></em></p>
-<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>Singleton模式</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><p><strong>32位int的范围</strong></p>
+<p>-2^31 ~ 2^31-1</p>
+<p><strong>补码</strong></p>
+<p><em>取反加1</em></p>
+<ul>
+<li><p>符号位可以和数值位一起参加运算</p>
+</li>
+<li><p>可以直接利用加法的形式计算整数间的减法</p>
+</li>
+<li><p>唯一表示0，没有+0，-0</p>
+</li>
+<li><p>总共表示2^32个数</p>
+</li>
+</ul>
+<h3 id="浮点数与定点数"><a href="#浮点数与定点数" class="headerlink" title="浮点数与定点数"></a>浮点数与定点数</h3><p>64位double范围：+&#x2F;-10^308</p>
+<p>64位double精度：10^15</p>
+<p><strong>浮点数比较</strong></p>
+<p>因为精度问题，直接比较经常出错，常用<code>Math.abs(a - b) &lt; eps ?</code>来判断</p>
+<p>使用BigDecimal算钱</p>
+<h3 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h3><ul>
+<li><p>primitive type: int, long, float …</p>
+<ul>
+<li>值类型</li>
+<li>用<code>a == b</code>来判断值相等</li>
+</ul>
+</li>
+<li><p>Object: Integer, Long, Float, String …</p>
+<ul>
+<li>引用类型</li>
+<li>用<code>a == b</code>判断是否为同一个Object</li>
+<li>用<code>a.equals(b)</code>或<code>Object.equals(a, b)</code>判断是否相等</li>
+</ul>
+</li>
+</ul>
+<h4 id="什么是值传递，什么是引用传递"><a href="#什么是值传递，什么是引用传递" class="headerlink" title="什么是值传递，什么是引用传递"></a>什么是值传递，什么是引用传递</h4><p>在Java里面primitive type之间就是值传递，Object之间就是引用传递。</p>
+<p>在C++里面值传递和引用传递由程序员说了算。</p>
+<h4 id="String-s-x3D-new-String-“test”-创建了多少对象"><a href="#String-s-x3D-new-String-“test”-创建了多少对象" class="headerlink" title="String s &#x3D; new String(“test”);创建了多少对象"></a>String s &#x3D; new String(“test”);创建了多少对象</h4><p>两个对象。</p>
+<h4 id="equals和hashCode的关系"><a href="#equals和hashCode的关系" class="headerlink" title="equals和hashCode的关系"></a>equals和hashCode的关系</h4><p>hashCode相等不一定equal，但equal一定hashCode相等。</p>
+<h4 id="什么是序列化和反序列化"><a href="#什么是序列化和反序列化" class="headerlink" title="什么是序列化和反序列化"></a>什么是序列化和反序列化</h4><p>当我们把内存中的对象转成字节流就是序列化，反序列化就是把字节流还原成原来的对象放进内存。</p>
+<h3 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a>装箱和拆箱</h3><pre><code class="java">Integer a = 2; // Boxing
+Integer b = new Integer(2); // Boxing
+int v = a.intValue(); // Unboxing
+</code></pre>
+<pre><code class="java">new Integer(2) == 2; // true--&gt;编译的时候会自动帮我们拆箱
+new Integer(2) == new Integer(2); // false
+Integer.valueOf(2) == Integer.valueOf(2); // true 数值比较小的时候会分配到同一个箱子，但是当数值比较大的时候可能不会分配到同一个箱子，即可能true可能false
+Integer.valueOf(2).intValue() == 2; // true
+new Integer(2).equals(new Integer(2)); // true
+</code></pre>
+<h2 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h2><p><em><strong>数学归纳法（俗称……找规律，显然法，高数里高阶函数问题常用的方法，这里用来推程序正确性）</strong></em></p>
+<p>用于证明断言对所有自然数成立</p>
+<ul>
+<li>证明对于N&#x3D;1成立</li>
+<li>证明N&gt;1时：如果对于N-1成立，那么对于N成立</li>
+</ul>
+<h3 id="递归控制"><a href="#递归控制" class="headerlink" title="递归控制"></a>递归控制</h3><p><em><strong>要点</strong></em></p>
+<ul>
+<li>严格定义递归函数的作用，包括参数、返回值、Side-effect</li>
+<li>先写<strong>一般</strong>情况，后写<strong>特殊</strong>情况</li>
+<li>每次调用<strong>必须</strong>缩小问题规模</li>
+<li>每次问题规模缩小程度必须为<strong>1</strong></li>
+</ul>
+<p><strong>不要尝试递归改非递归</strong></p>
+<ul>
+<li>一般化的方法仍需要使用栈</li>
+<li>代码复杂</li>
+<li>不能根本解决问题</li>
+</ul>
+<h3 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h3><p><em><strong>循环不变式</strong></em></p>
+<p>是一句断言定义各变量所满足的条件，说人话就是变量进入循环必须满足的条件。</p>
+<p><em><strong>循环书写方法</strong></em></p>
+<ul>
+<li>定义循环不变式，并在循环体每次结束后保持循环不变式</li>
+<li>先一般，后特殊</li>
+<li>每次必须向前推进循环不变式中涉及的变量值</li>
+<li>每次推进的规模必须为1</li>
+</ul>
+<h3 id="边界控制"><a href="#边界控制" class="headerlink" title="边界控制"></a>边界控制</h3><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>Singleton模式</p>
 <ul>
 <li>确保全局至多只有一个对象</li>
 <li>用于：构造缓慢的对象，需要统一管理的资源</li>
@@ -612,12 +775,6 @@ B -----&gt;  △△△△△△△△||△△==(short)△△△△(int)||△====
 <td align="left">稳定</td>
 </tr>
 </tbody></table>
-<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><ul>
-<li>原子操作 (Atomic)。是指比如在一个原子操作哪检查和增加一个变量的值，中间不被打断。这保证了数据的完整性。但对于运行时长，其实没啥关系。</li>
-<li>互斥锁 (Mutex)。互斥，就是我只让一个人干活，其他人都等着。然后这个人运行时间还长，占着这个锁不放，系统的性能就非常低了。因此互斥锁更好的用于运行时间较短的任务。</li>
-<li>自旋锁 (SpinLock)。这个锁采用了不是被挂起，而是通过不断循环检查锁是否释放的机制。这个检查的过程是消耗CPU的。肯定只能适用于更短的任务。比如毫秒级。</li>
-<li>信号量 (Semaphore)。信号量是所有这些同步元语中稍微复杂的一种。信号量确保了同时最多只能有n个人占着“坑”干活。相对来说，这里面的活可以干的久一点。</li>
-</ul>
 
     </div>
     
