@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ffa2c4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #03a9f4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00a596">综合</a>
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #03a9f4">综合</a>
             </span>
             
         </span>
@@ -249,6 +249,19 @@
 </ul>
 </li>
 </ul>
+<h3 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h3><ol>
+<li>非空二叉树上第k层上至多有$2^{k-1}$个结点（k&gt;&#x3D;1）</li>
+<li>高度为h的二叉树至多有$2^h-1$个结点（h&gt;&#x3D;1）<ul>
+<li>满二叉树：高度为h的有$2^h-1$个结点（h&gt;&#x3D;1）的二叉树</li>
+<li>满二叉树：每一层有$2^{k-1}$个结点</li>
+</ul>
+</li>
+<li>非空二叉树上的叶节点数等于度为2的结点数加1，即$n_0$&#x3D;$n_2$+1<ul>
+<li>设度为0，1，2的结点个数分别为$n_0,n_1,n_2$，结点总数$n&#x3D;n_0+n_1+n_2$</li>
+</ul>
+</li>
+<li>具有n个（n&gt;0）结点的完全二叉树的高度为$log_2(n+1)（向上取整）$或$log_2n（向下取整）+1$</li>
+</ol>
 <h3 id="根据前序中序构造二叉树"><a href="#根据前序中序构造二叉树" class="headerlink" title="根据前序中序构造二叉树"></a>根据前序中序构造二叉树</h3><p>前序：树根 + （左子树 + 右子树）</p>
 <p>中序：（左子树） + 树根 + （右子树）</p>
 <p><em><strong>递归思想，不停找树根，定左右子树，即可构造出二叉树！</strong></em></p>
