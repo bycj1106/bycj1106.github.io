@@ -181,12 +181,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #03a9f4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ff7d73">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #03a9f4">综合</a>
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #ff7d73">综合</a>
             </span>
             
         </span>
@@ -708,7 +708,19 @@ new Integer(2).equals(new Integer(2)); // true
 <li>用于：构造缓慢的对象，需要统一管理的资源</li>
 <li>缺点：很多全局状态，线程安全性</li>
 </ul>
-<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/101038664">基础 | 三层架构与MVC模式 - 知乎 (zhihu.com)</a></p>
+<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="分布式ID"><a href="#分布式ID" class="headerlink" title="分布式ID"></a>分布式ID</h2><p><em><strong>全局唯一性</strong></em></p>
+<p>不能出现有重复的ID标识，这是基本要求。</p>
+<p><em><strong>递增性</strong></em></p>
+<p>确保生成ID对于用户或业务是递增的。</p>
+<p><em><strong>高可用性</strong></em></p>
+<p>确保任何时候都能生成正确的ID。</p>
+<p><em><strong>高性能性</strong></em></p>
+<p>在高并发的环境下依然表现良好。</p>
+<h3 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h3><p>Java自带的生成一串唯一随机36位字符串（32个字符串+4个“-”）的算法。它可以保证唯一性，且据说够用N亿年，但是其业务可读性差，无法有序递增。</p>
+<h3 id="雪花算法"><a href="#雪花算法" class="headerlink" title="雪花算法"></a>雪花算法</h3><p>Twitter开源的由64位整数组成分布式ID，性能较高，并且在单机上递增。 </p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/433690272">面试官：讲讲雪花算法，越详细越好 - 知乎 (zhihu.com)</a></p>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/382966178">大白话告你什么是分布式，史上最全详解！ - 知乎 (zhihu.com)</a></p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/101038664">基础 | 三层架构与MVC模式 - 知乎 (zhihu.com)</a></p>
 <p><strong>MVC模式</strong>是软件工程中常见的一种软件架构模式，该模式把软件系统（项目）分为三个基本部分：<strong>模型（Model）、视图（View）和控制器（Controller）。</strong></p>
 <p>使用MVC模式有很多优势，例如:简化后期对项目的修改、扩展等维护操作；使项目的某一部分变得可以重复利用；使项目的结构更加直观。</p>
 <p>具体来讲，MVC模式可以将项目划分为模型（M）、视图（V）和控制器（C）三个部分，并赋予各个部分不同的功能，方便开发人员进行分组。</p>
