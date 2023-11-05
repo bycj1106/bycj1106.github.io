@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #ff7d73">Java</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #03a9f4">开发</a>
+                <a href="/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
             <span class="tag">
@@ -331,6 +331,9 @@
 <li>自旋锁 (SpinLock)。这个锁采用了不是被挂起，而是通过不断循环检查锁是否释放的机制。这个检查的过程是消耗CPU的。肯定只能适用于更短的任务。比如毫秒级。</li>
 <li>信号量 (Semaphore)。信号量是所有这些同步元语中稍微复杂的一种。信号量确保了同时最多只能有n个人占着“坑”干活。相对来说，这里面的活可以干的久一点。</li>
 </ul>
+<p><em><strong>同步和异步的区别</strong></em></p>
+<p>同步就相当于是当客户端发送请求给服务端，在等待服务端响应的请求时，客户端不做其他的事情。当服务端做完了才返回到客户端。这样的话客户端需要一直等待。用户使用起来会有不友好。</p>
+<p>异步就相当于当客户端发送给服务端请求时，在等待服务端响应的时候，客户端可以做其他的事情，这样节约了时间，提高了效率。</p>
 <h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2a14fe583cdf">Linux命名空间概述</a></p>
 <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p><strong>五层协议的体系结构</strong></p>
 <p>应用层</p>
@@ -443,6 +446,9 @@
 </tr>
 </tbody></table>
 <p>可知到255.255.255.224时不能使用，其实……根本不用算，这道题可以直接盲选嘛。</p>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/li528405176/article/details/82810342">SSH简介及两种远程登录的方法_ssh @-CSDN博客</a></p>
+<p>Secure Shell(SSH) 是由 IETF(The Internet Engineering Task Force) 制定的建立在<strong>应用层</strong>基础上的安全网络协议。它是专为远程登录会话(甚至可以用Windows远程登录Linux服务器进行文件互传)和其他网络服务提供安全性的协议，可有效弥补网络中的漏洞。通过SSH，可以把所有传输的数据进行加密，也能够防止DNS欺骗和IP欺骗。还有一个额外的好处就是传输的数据是经过压缩的，所以可以加快传输的速度。目前已经成为Linux系统的标准配置。</p>
+<p>SSH之所以能够保证安全，原因在于它采用了非对称加密技术(RSA)加密了所有传输的数据。</p>
 <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><ul>
 <li><p>基于关系代数理论</p>
 </li>
@@ -628,7 +634,24 @@ Integer.valueOf(2) == Integer.valueOf(2); // true 数值比较小的时候会分
 Integer.valueOf(2).intValue() == 2; // true
 new Integer(2).equals(new Integer(2)); // true
 </code></pre>
-<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p><em>从用户（终端用户，使用代码的用户）的角度思考问题，摈弃完全基于逻辑的思维。（易读性）</em></p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jianyuerensheng/article/details/51602015">面向对象编程三大特性——封装、继承、多态_面向对象，封装继承多态-CSDN博客</a></p>
+<p>就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候一个一个依次调用就可以了。</p>
+<p><em>从用户（终端用户，使用代码的用户）的角度思考问题，摈弃完全基于逻辑的思维。（易读性）</em></p>
+<p><strong>封装</strong></p>
+<p>系统的其他对象只能通过包裹在数据外面的已经授权的操作来与这个封装的对象进行交流和交互。也就是说用户是无需知道对象内部的细节，但可以通过该对象对外的提供的接口来访问该对象。</p>
+<p>对于封装而言，一个对象它所封装的是自己的属性和方法，所以它是不需要依赖其他对象就可以完成自己的操作。</p>
+<p>1、良好的封装能够减少耦合。</p>
+<p>2、类内部的结构可以自由修改。</p>
+<p>3、可以对成员进行更精确的控制。</p>
+<p>4、隐藏信息，实现细节。</p>
+<p><strong>继承</strong></p>
+<p>继承是使用已存在的类的定义作为基础建立新类的技术，新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。</p>
+<p>1、子类拥有父类非private的属性和方法。</p>
+<p>2、子类可以拥有自己属性和方法，即子类可以对父类进行扩展。</p>
+<p>3、子类可以用自己的方式实现父类的方法。。</p>
+<p><strong>多态</strong></p>
+<p>一个引用变量倒底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。</p>
+<p>Java实现多态有三个必要条件：继承、重写、向上转型。</p>
 <h3 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3><ul>
 <li>类的成员变量–&gt;对象状态</li>
 <li>类的成员函数–&gt;对象行为</li>
@@ -698,17 +721,39 @@ new Integer(2).equals(new Integer(2)); // true
 </ul>
 <h3 id="边界控制"><a href="#边界控制" class="headerlink" title="边界控制"></a>边界控制</h3><p>凭经验。</p>
 <h2 id="静态绑定与动态绑定"><a href="#静态绑定与动态绑定" class="headerlink" title="静态绑定与动态绑定"></a>静态绑定与动态绑定</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Untara/article/details/100115150">java的动态绑定与静态绑定(彻底理解多态与重载)-CSDN博客</a></p>
+<p>静态绑定是发生在编译阶段；而动态绑定是在运行阶段；</p>
+<p>重载方法(overloaded methods)使用的是静态绑定，而重写方法(overridden methods)使用的是动态绑定</p>
 <h2 id="常见问题-2"><a href="#常见问题-2" class="headerlink" title="常见问题"></a>常见问题</h2><p><em><strong>如何判断对象已死亡</strong></em></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33591903/article/details/82107686">【JAVA】如何判断对象已经死亡？_java 如何判断对象已经“死去”-CSDN博客</a></p>
+<ol>
+<li>引用计数法</li>
+</ol>
+<p>程序给对象添加一个引用计数器，每有一个变量引用它时，计数器加1。当引用断开时，计数器减1。当计数器为0时，代表着没有任何变量引用它，该对象就是死亡状态，JVM需要对此类对象进行回收。</p>
+<ol start="2">
+<li>可达性分析法</li>
+</ol>
+<p>程序创建一系列的GC Roots作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象与GC Roots没有任何引用链相连的话，即此对象到GC Roots不可达，则证明此对象是不可用的，JVM稍后将会对此类对象进行回收。</p>
 <p><em><strong>web开发安全问题</strong></em></p>
 <p>[web开发常见的几大安全问题 - 知乎 (zhihu.com)](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/113179679#:~:text=web%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E5%A4%A7%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98">https://zhuanlan.zhihu.com/p/113179679#:~:text=web开发常见的几大安全问题</a> 1 1、涉及到私密信息 使用post请求，因为信息放在请求体中而不像get请求暴露在url上 2 2、HTTPS。 … 3,XSS。 … 7 7、点击劫持，点击劫持是一种视觉欺骗的攻击手段。 … 8 8、URL跳转漏洞，借助未验证的URL跳转，将应用程序引导到不安全的第三方区域，从而导致的安全问题。 更多项目)</p>
-<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>Singleton模式</p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><strong>单例模式</strong></p>
 <ul>
 <li>确保全局至多只有一个对象</li>
 <li>用于：构造缓慢的对象，需要统一管理的资源</li>
 <li>缺点：很多全局状态，线程安全性</li>
 </ul>
-<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="分布式ID"><a href="#分布式ID" class="headerlink" title="分布式ID"></a>分布式ID</h2><p><em><strong>全局唯一性</strong></em></p>
+<p>实现的方法为先判断实例存在与否，如果存在则直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象</p>
+<p><strong>工厂模式</strong></p>
+<p>工厂模式通常会分成3个角色：</p>
+<ul>
+<li>工厂角色-负责实现创建所有实例的内部逻辑</li>
+<li>抽象产品角色-是所创建的所有对象的父类，负责描述所有实例所共有的公共接口</li>
+<li>具体产品角色-是创建目标，所有创建的对象都充当这个角色的某个具体类的实例</li>
+</ul>
+<p><strong>观察者模式</strong></p>
+<p>观察者模式是一种行为型设计模式，它定义了一种一对多的依赖关系，当一个对象的状态发生改变时，其所有依赖者都会收到通知并自动更新。</p>
+<p>当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知依赖它的对象。观察者模式属于行为型模式。</p>
+<h1 id="暂未分类"><a href="#暂未分类" class="headerlink" title="暂未分类"></a>暂未分类</h1><h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/382966178">大白话告你什么是分布式，史上最全详解！ - 知乎 (zhihu.com)</a></p>
+<h2 id="分布式ID"><a href="#分布式ID" class="headerlink" title="分布式ID"></a>分布式ID</h2><p><em><strong>全局唯一性</strong></em></p>
 <p>不能出现有重复的ID标识，这是基本要求。</p>
 <p><em><strong>递增性</strong></em></p>
 <p>确保生成ID对于用户或业务是递增的。</p>
@@ -719,22 +764,80 @@ new Integer(2).equals(new Integer(2)); // true
 <h3 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h3><p>Java自带的生成一串唯一随机36位字符串（32个字符串+4个“-”）的算法。它可以保证唯一性，且据说够用N亿年，但是其业务可读性差，无法有序递增。</p>
 <h3 id="雪花算法"><a href="#雪花算法" class="headerlink" title="雪花算法"></a>雪花算法</h3><p>Twitter开源的由64位整数组成分布式ID，性能较高，并且在单机上递增。 </p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/433690272">面试官：讲讲雪花算法，越详细越好 - 知乎 (zhihu.com)</a></p>
-<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/382966178">大白话告你什么是分布式，史上最全详解！ - 知乎 (zhihu.com)</a></p>
 <h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/101038664">基础 | 三层架构与MVC模式 - 知乎 (zhihu.com)</a></p>
 <p><strong>MVC模式</strong>是软件工程中常见的一种软件架构模式，该模式把软件系统（项目）分为三个基本部分：<strong>模型（Model）、视图（View）和控制器（Controller）。</strong></p>
 <p>使用MVC模式有很多优势，例如:简化后期对项目的修改、扩展等维护操作；使项目的某一部分变得可以重复利用；使项目的结构更加直观。</p>
 <p>具体来讲，MVC模式可以将项目划分为模型（M）、视图（V）和控制器（C）三个部分，并赋予各个部分不同的功能，方便开发人员进行分组。</p>
 <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110130347">六大设计原则超详细介绍（再不理解你打我） - 知乎 (zhihu.com)</a></p>
+<ol>
+<li>单一职责原则：一个类或接口只承担一个职责。</li>
+<li>里氏替换原则：在继承类时，务必重写（override）父类中所有的方法，尤其需要注意父类的protected方法（它们往往是让你重写的），子类尽量不要暴露自己的public方法供外界调用。</li>
+<li>依赖倒置原则：高层模块不应该依赖于低层模块，而应该依赖于抽象。抽象不应依赖于细节，细节应依赖于抽象。</li>
+<li>接口隔离原则：不要对外暴露没有实际意义的接口。</li>
+<li>迪米特法则：尽量减少对象之间的交互，从而减小类之间的耦合。</li>
+<li>开闭原则：对软件实体的改动，最好用扩展而非修改的方式。</li>
+</ol>
+<h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，相当于是新建了一个对象，该对象复制了原对象的指针，新旧对象还是共用一个内存块。</p>
+<p>深拷贝是新建一个一模一样的对象，该对象与原对象不共享内存，修改新对象也不会影响原对象。</p>
 <h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/laomo_bible/article/details/83112622">【JAVA核心】Java GC机制详解-CSDN博客</a></p>
+<p>程序运行时，内存空间是有限的，那么如何及时的把不再使用的对象清除将内存释放出来，这就是GC要做的事。</p>
+<p>需要进行回收的对象就是已经没有存活的对象，<strong>判断一个对象是否存活</strong>常用的有两种办法：引用计数和可达分析。</p>
+<p>(1)程序调用System.gc时可以触发</p>
+<p>(2)系统自身来决定GC触发的时机（根据Eden区和From Space区的内存大小来决定。当内存大小不足时，则会启动GC线程并停止应用线程）</p>
+<p>主要做了清理对象，整理内存的工作。</p>
+<p>标记-清除算法，标记-压缩算法，复制算法，分代收集算法。</p>
 <p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/08/06/new-zgc-practice-in-meituan.html">新一代垃圾回收器ZGC的探索与实践 - 美团技术团队 (meituan.com)</a></p>
+<p>与CMS中的ParNew和G1类似，ZGC也采用标记-复制算法，不过ZGC对该算法做了重大改进：ZGC在标记、转移和重定位阶段几乎都是并发的，这是ZGC实现停顿时间小于10ms目标的最关键原因。</p>
 <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37982685">Redis【入门】就这一篇！ - 知乎 (zhihu.com)</a></p>
+<p>NoSQL是一种<strong>基于内存的数据库</strong>，并且提供一定的持久化功能。Redis的性能十分优越，可以<strong>支持每秒十几万此的读&#x2F;写操作</strong>，其性能远超数据库，并且还<strong>支持集群、分布式、主从同步等</strong>配置，原则上可以无限扩展，让更多的数据存储在内存中，更让人欣慰的是它还<strong>支持一定的事务能力</strong>，这保证了高并发的场景下数据的安全和一致性。</p>
+<p>Redis 在 Java Web 主要有两个应用场景：</p>
+<ul>
+<li>存储 <strong>缓存</strong> 用的数据；</li>
+<li>需要高速读&#x2F;写的场合<strong>使用它快速读&#x2F;写</strong>；</li>
+</ul>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/powertoolsteam/p/redis.html">Redis是什么？看这一篇就够了 - 葡萄城技术团队 - 博客园 (cnblogs.com)</a></p>
+<p>相比于其他数据库类型，Redis具备的特点是：</p>
+<ul>
+<li>C&#x2F;S通讯模型</li>
+<li>单进程单线程模型</li>
+<li>丰富的数据类型</li>
+<li>操作具有原子性</li>
+<li>持久化</li>
+<li>高并发读写</li>
+<li>支持lua脚本</li>
+</ul>
+<p>Redis 的应用场景包括：缓存系统（“热点”数据：高频读、低频写）、计数器、消息队列系统、排行榜、社交网络和实时系统。</p>
+<p>Redis提供的数据类型主要分为5种自有类型和一种自定义类型，这5种自有类型包括：String类型、哈希类型、列表类型、集合类型和顺序集合类型。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44469202/article/details/115496920">什么是Redis？简述它的优缺点？_redis介绍和优缺点_SONNIE在路上的博客-CSDN博客</a></p>
 <p><em><strong>Redis的特点</strong></em></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29974229/article/details/121673809">【精选】简述redis特点及其应用场景-CSDN博客</a></p>
 <p><em><strong>Redis的一些问题</strong></em></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fcvtb/article/details/89478554">【面试】redis缓存穿透、缓存击穿、缓存雪崩区别和解决方案-CSDN博客</a></p>
+<ol>
+<li>缓存穿透是指<strong>缓存和数据库中都没有的数据</strong>，而用户不断发起请求。由于缓存是不命中时被动写的，并且出于容错考虑，如果从存储层查不到数据则不写入缓存，这将导致这个不存在的数据每次请求都要到存储层去查询，失去了缓存的意义。</li>
+</ol>
+<p>​	<strong>接口层增加校验</strong>，如用户鉴权校验，id做基础校验</p>
+<ol start="2">
+<li><strong>缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期）</strong>，这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力。</li>
+</ol>
+<p>​	<strong>接口限流与熔断，降级</strong></p>
+<p>​	<strong>设置热点数据永远不过期</strong></p>
+<p>​	<strong>加互斥锁</strong></p>
+<ol start="3">
+<li><strong>缓存雪崩是指缓存中数据大批量到过期时间</strong>，而查询数据量巨大，引起数据库压力过大甚至down机。和缓存击穿不同的是，        缓存击穿指并发查同一条数据，缓存雪崩是不同数据都过期了，很多数据都查不到从而查数据库。</li>
+</ol>
+<p>​	缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。</p>
+<p>​	如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。</p>
+<p>​	设置热点数据永远不过期。</p>
 <h2 id="JVM中导致OOM的原因与解决"><a href="#JVM中导致OOM的原因与解决" class="headerlink" title="JVM中导致OOM的原因与解决"></a>JVM中导致OOM的原因与解决</h2><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/726472">1篇文章搞清楚8种JVM内存溢出（OOM）的原因和解决方法-阿里云开发者社区 (aliyun.com)</a></p>
+<ol>
+<li>堆溢出</li>
+<li>永久代&#x2F;元空间溢出</li>
+<li>方法栈溢出</li>
+<li>非常规溢出</li>
+<li>swap溢出</li>
+<li>本地方法溢出</li>
+</ol>
 <h2 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h2><p><em>例：</em></p>
 <pre><code>class` `A &#123;
   ``int` `a;
@@ -914,6 +1017,7 @@ B -----&gt;  △△△△△△△△||△△==(short)△△△△(int)||△====
 <td align="left">稳定</td>
 </tr>
 </tbody></table>
+<p>15074806803</p>
 
     </div>
     
