@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Categories: 其他 | 云升的小窝</title>
+        <title>本地远程连接云服务器上Docker下的MySQL | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -28,6 +28,14 @@
 
 <script src="/js/lib/preview.js"></script>
 
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
 
 
 
@@ -139,13 +147,20 @@
 
             <transition name="into">
             <div id="main" v-show="!loading">
-                <div id="archives">
-    
-    <div class="categories-tags">
+                <div class="article">
+    <div>
+        <h1>本地远程连接云服务器上Docker下的MySQL</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/12
+        </span>
         
-        
-        <span>
-            <a href="/categories/%E5%BC%80%E5%8F%91/" style="background: #ff7d73">
+        <span class="category">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -154,87 +169,67 @@
         </span>
         
         
-        
-        <span>
-            <a href="/categories/%E5%B7%A5%E5%85%B7/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                工具
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/MySQL/" style="color: #00a596">MySQL</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ffa2c4">计算机网络</a>
+            </span>
+            
         </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E9%AD%94%E6%9C%AF/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                魔术
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E5%85%B6%E4%BB%96/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                其他
-            </a>
-        </span>
-        
-        
-        
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/4/12</div>
-            <a href="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89404%E9%A1%B5%E9%9D%A2%E5%90%8E%E6%96%87%E7%AB%A0%E9%94%99%E8%AF%AF%E8%B7%B3%E8%BD%AC%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/">
-                <h3>自定义404页面后文章错误跳转问题的解决</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E5%85%B6%E4%BB%96/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        其他
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/404/" style="color: #03a9f4">404</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" style="color: #00a596">自定义</a>
-                    </span>
-                    
-                </span>
-                
+    <div class="content" v-pre>
+        <p><strong>Linux</strong></p>
+<pre><code class="bash">docker ps
+docker exec -it [container name] /bin/bash
+mysql -u -p
+# 对远程连接进行授权
+GRANT ALL ON *.* TO &#39;root&#39;@&#39;%&#39;;
+# 刷新权限
+flush privileges;
+</code></pre>
+<p><strong>云服务器实例</strong></p>
+<p>在网卡中新建安全组，新增MySQL规则。</p>
+<p><img src="/2023/11/12/%E6%9C%AC%E5%9C%B0%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8ADocker%E4%B8%8B%E7%9A%84MySQL/image-20231112145553920.png" alt="image-20231112145553920"></p>
+<p><strong>Navicat</strong></p>
+<p><img src="/2023/11/12/%E6%9C%AC%E5%9C%B0%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8ADocker%E4%B8%8B%E7%9A%84MySQL/image-20231112145738864.png" alt="image-20231112145738864"></p>
+<p><img src="/2023/11/12/%E6%9C%AC%E5%9C%B0%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8ADocker%E4%B8%8B%E7%9A%84MySQL/image-20231112145752364.png" alt="image-20231112145752364"></p>
+
+    </div>
+    
+    
+    
+    
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
             </div>
         </div>
-    </div>
+        
+
+    
     
 </div>
 
@@ -267,6 +262,48 @@
             
         </div>
         <script src="/js/main.js"></script>
+        
+        
+
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
+
+
+
         
         <canvas
             id="fireworks"
