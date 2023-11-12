@@ -1,0 +1,1047 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>基于SpringCloudAlibaba设计开发的直播平台项目 | 云升的小窝</title>
+        <meta name="author" content="云升" />
+        <meta name="description" content="A home for my heart at peace" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>云升的小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div>
+        <div class="title" @click="shouMenuItems = !shouMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;云升的小窝</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="shouMenuItems">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <div class="article">
+    <div>
+        <h1>基于SpringCloudAlibaba设计开发的直播平台项目</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/5
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                开发
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ff7d73">开发</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #00bcd4">微服务</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="color: #ff7d73">项目</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="1-技术栈总结"><a href="#1-技术栈总结" class="headerlink" title="1. 技术栈总结"></a>1. 技术栈总结</h1><table>
+<thead>
+<tr>
+<th><strong>数据库</strong></th>
+<th><strong>缓存</strong></th>
+<th><strong>网关</strong></th>
+<th><strong>消息队列</strong></th>
+<th><strong>注册&#x2F;配置中心</strong></th>
+<th><strong>基础框架</strong></th>
+<th><strong>容器技术</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MySQL</td>
+<td>Caffeine</td>
+<td>Gateway</td>
+<td>RocketMQ</td>
+<td>Nacos</td>
+<td>SpringBoot</td>
+<td>docker</td>
+</tr>
+<tr>
+<td></td>
+<td>Redis</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Dubbo</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>MybatisPlus</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ShardingJDBC</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Netty</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="2-基础架构搭建"><a href="#2-基础架构搭建" class="headerlink" title="2. 基础架构搭建"></a>2. 基础架构搭建</h1><h2 id="2-1-微服务架构模式"><a href="#2-1-微服务架构模式" class="headerlink" title="2.1. 微服务架构模式"></a>2.1. 微服务架构模式</h2><ol>
+<li>代理微服务模式</li>
+<li>聚合器模式</li>
+<li>链式微服务模式（错误）</li>
+<li>分支微服务模式</li>
+<li>数据共享模式</li>
+<li><strong>异步消息传递模式</strong></li>
+</ol>
+<h2 id="2-2-框架对比"><a href="#2-2-框架对比" class="headerlink" title="2.2. 框架对比"></a>2.2. 框架对比</h2><h3 id="2-2-1-Dubbo"><a href="#2-2-1-Dubbo" class="headerlink" title="2.2.1. Dubbo"></a>2.2.1. Dubbo</h3><p><em><strong>核心特点</strong></em></p>
+<ul>
+<li>高性能RPC调用</li>
+<li>弹性架构</li>
+<li>服务治理<ul>
+<li>流量分配转发</li>
+<li>可视化监控平台</li>
+<li>微服务生态完善</li>
+<li>开始支持服务网格技术</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-2-SpringCloud"><a href="#2-2-2-SpringCloud" class="headerlink" title="2.2.2. SpringCloud"></a>2.2.2. SpringCloud</h3><p><em><strong>核心特点</strong></em></p>
+<p>提供一套通用的分布式系统基础组件，支持服务治理、服务注册与发现，配置中心，负载均衡，监控跟踪等。</p>
+<h3 id="2-2-3-SpringCloudAlibaba"><a href="#2-2-3-SpringCloudAlibaba" class="headerlink" title="2.2.3. SpringCloudAlibaba"></a>2.2.3. SpringCloudAlibaba</h3><p>致力于提供微服务开发的一站式解决方案。</p>
+<p>HTP–&gt;RPC，性能比SpringCloud要高。</p>
+<h2 id="2-3-环境搭建"><a href="#2-3-环境搭建" class="headerlink" title="2.3. 环境搭建"></a>2.3. 环境搭建</h2><pre><code>docker latest
+docker-mysql 8.0.27
+docker-redis latest
+RocketMQ 4.8.0
+JDK 1.8.0_212
+nacos 2.2.3
+</code></pre>
+<p><em><del>一堆坑，但是踩完这些坑对网络连接的认识比起以往深刻多了。</del></em></p>
+<h3 id="2-3-1-Docker"><a href="#2-3-1-Docker" class="headerlink" title="2.3.1. Docker"></a>2.3.1. Docker</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-tutorial.html">Docker 教程 | 菜鸟教程 (runoob.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/get-started/overview/">Docker overview | Docker Docs</a></p>
+<p><em><strong>Docker安装MySQL，Redis</strong></em></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-install-mysql.html">Docker 安装 MySQL | 菜鸟教程 (runoob.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-install-redis.html">Docker 安装 Redis | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="2-3-2-JDK1-8"><a href="#2-3-2-JDK1-8" class="headerlink" title="2.3.2. JDK1.8"></a>2.3.2. JDK1.8</h3><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1XVVQ67HuMpnhM7TN5BjVKg?pwd=sjeo">https://pan.baidu.com/s/1XVVQ67HuMpnhM7TN5BjVKg?pwd=sjeo</a><br>提取码：sjeo </p>
+<h3 id="2-3-3-Maven"><a href="#2-3-3-Maven" class="headerlink" title="2.3.3. Maven"></a>2.3.3. Maven</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zxf0619/article/details/121478813">在Linux系统中安装并配置maven详细教程_linux安装maven-CSDN博客</a></p>
+<h3 id="2-3-4-RocketMQ"><a href="#2-3-4-RocketMQ" class="headerlink" title="2.3.4. RocketMQ"></a>2.3.4. RocketMQ</h3><p><a target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/quickStart/01quickstart/">快速开始 | RocketMQ (apache.org)</a></p>
+<p><em>启动</em></p>
+<pre><code class="shell">cd /usr/local/RocketMQ-4.8.0/distribution/target/rocketmq-4.8.0/rocketmq-4.8.0/
+nohup sh /bin/mqnamesrcv &gt;/dev/null 2&gt;&amp;1 &amp;
+</code></pre>
+<h3 id="2-3-5-Nacos"><a href="#2-3-5-Nacos" class="headerlink" title="2.3.5. Nacos"></a>2.3.5. Nacos</h3><p><a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/docs/quick-start.html">Nacos 快速开始</a></p>
+<h2 id="2-4-Docker的使用"><a href="#2-4-Docker的使用" class="headerlink" title="2.4. Docker的使用"></a>2.4. Docker的使用</h2><p>容器技术的流行与服务的架构演变有关。</p>
+<h3 id="2-4-1-Docker的特点"><a href="#2-4-1-Docker的特点" class="headerlink" title="2.4.1. Docker的特点"></a>2.4.1. Docker的特点</h3><ul>
+<li>不需要运行额外的OS（省内存）</li>
+<li>部署方便快速</li>
+<li>资源相互隔离</li>
+</ul>
+<h3 id="2-4-2-Docker的常用操作"><a href="#2-4-2-Docker的常用操作" class="headerlink" title="2.4.2. Docker的常用操作"></a>2.4.2. Docker的常用操作</h3><pre><code class="shell">创建、部署容器
+docker run -d -p [对外端口]:[内部端口] [images name]
+创建镜像
+docker create [images name]
+部署容器
+docker start [images id]
+进入容器 
+docker exec -it [container id] /bin/bash
+退出容器
+exit
+停止容器
+docker stop [container id]
+容器信息
+docker inspect [container id]
+容器日志
+docker logs [container id]
+容器状态监控
+docker stats [container id]
+限制容器下载速度
+docker update -m -100m --memory-swap -1 [container id]
+</code></pre>
+<h3 id="2-4-3-Docker的底层原理"><a href="#2-4-3-Docker的底层原理" class="headerlink" title="2.4.3. Docker的底层原理"></a>2.4.3. Docker的底层原理</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ra681t58cjxsgckj31/article/details/104707642">一文读懂容器三大核心技术——Namespace，Cgroup和UnionFS-CSDN博客</a></p>
+<h4 id="2-4-3-1-NameSpace"><a href="#2-4-3-1-NameSpace" class="headerlink" title="2.4.3.1. NameSpace"></a>2.4.3.1. NameSpace</h4><p>Namespaces是一种实现不同进程间资源隔离的机制，不同的Namespaces程序之间的资源相互独立。</p>
+<h4 id="2-4-3-2-Cgroups"><a href="#2-4-3-2-Cgroups" class="headerlink" title="2.4.3.2. Cgroups"></a>2.4.3.2. Cgroups</h4><p>全称Control Groups，是Linux内核提供的物理资源隔离机制，通过这种机制，可以实现对Linux进程或者进程组的资源限制、隔离和统计功能。</p>
+<hr>
+<h1 id="3-技术选型"><a href="#3-技术选型" class="headerlink" title="3. 技术选型"></a>3. 技术选型</h1><h2 id="3-1-RPC"><a href="#3-1-RPC" class="headerlink" title="3.1. RPC"></a>3.1. RPC</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/187560185">RPC是什么，看完你就知道了 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110424162">Rpc和Http的区别 - 知乎 (zhihu.com)</a></p>
+<p><strong>RPC产品</strong></p>
+<ol>
+<li><p>Dubbo</p>
+</li>
+<li><p>gRPC</p>
+</li>
+<li><p>brpc</p>
+</li>
+<li><p>Thrift</p>
+</li>
+</ol>
+<h3 id="3-1-1-Dubbo"><a href="#3-1-1-Dubbo" class="headerlink" title="3.1.1. Dubbo"></a>3.1.1. Dubbo</h3><p><em><strong>resources</strong></em></p>
+<pre><code class="yaml">spring:
+application:
+  name:yun-livestreaming-user-provider
+cloud:
+nacos:
+  username:
+  password:
+discovery:
+  server-addr:yun.test.com:8848
+  namespace:yun-live-test
+</code></pre>
+<pre><code>dubbo.application.name=yun-livestreaming-user-provider
+dubbo.registry.address=nacos://localhost:8848?namespace=yun-live-test
+dubbo.server=true
+dubbo.protocol.name=dubbo
+dubbo.protocol.port=9090
+</code></pre>
+<p><em><strong>启动类</strong></em></p>
+<pre><code class="java">package org.yun.livestreaming.user.provider;
+
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+@SpringBootApplication
+@EnableDubbo
+@EnableDiscoveryClient
+public class UserProviderApplication &#123;
+    public static void main(String[] args) &#123;
+        SpringApplication springApplication = new SpringApplication(UserProviderApplication.class);
+        springApplication.setWebApplicationType(WebApplicationType.NONE);
+        springApplication.run(args);
+    &#125;
+&#125;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://cn.dubbo.apache.org/zh-cn/docsv2.7/user/references/xml/dubbo-reference/">dubbo:reference | Apache Dubbo</a></p>
+<p><a target="_blank" rel="noopener" href="https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/advanced-features-and-usage/">高级特性和用法 | Apache Dubbo</a></p>
+<h4 id="3-1-1-1-Dubbo的底层原理"><a href="#3-1-1-1-Dubbo的底层原理" class="headerlink" title="3.1.1.1. Dubbo的底层原理"></a>3.1.1.1. Dubbo的底层原理</h4><p><strong>服务暴露原理</strong></p>
+<p>对export函数的源代码进行深入研究，一直到NettyServer的启动。</p>
+<p><strong>服务调用原理</strong></p>
+<p>通过ReferenceConfig的get函数返回一个代理对象，然后在代理对象中发送请求，最后抵达DubboInvoker中，将请求放入一条队列中，再由一个异步线程去消费这条队列的数据进行发送消息。</p>
+<h2 id="3-2-架构演变下的技术变化"><a href="#3-2-架构演变下的技术变化" class="headerlink" title="3.2. 架构演变下的技术变化"></a>3.2. 架构演变下的技术变化</h2><h3 id="3-2-1-MySQL的架构变化"><a href="#3-2-1-MySQL的架构变化" class="headerlink" title="3.2.1. MySQL的架构变化"></a>3.2.1. MySQL的架构变化</h3><ol>
+<li><p><strong>单机</strong></p>
+<ul>
+<li>承载能力不足</li>
+</ul>
+</li>
+<li><p><strong>主从</strong></p>
+<ul>
+<li>主从延迟</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-2-2-Redis的架构变化"><a href="#3-2-2-Redis的架构变化" class="headerlink" title="3.2.2. Redis的架构变化"></a>3.2.2. Redis的架构变化</h3><ol>
+<li><p><strong>单机</strong></p>
+<ul>
+<li>容量有限，单点风险</li>
+</ul>
+</li>
+<li><p><strong>哨兵&#x2F;主从</strong></p>
+<ul>
+<li>容量有限</li>
+</ul>
+</li>
+<li><p><strong>集群</strong></p>
+<ul>
+<li>机器成本高，存在指令重定向可能</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-3-用户中台"><a href="#3-3-用户中台" class="headerlink" title="3.3. 用户中台"></a>3.3. 用户中台</h2><p>多个接入方，共同使用一个用户中台体系。</p>
+<p><strong>用户中台业务特点</strong></p>
+<ul>
+<li>数据源、代码的统一管理</li>
+<li>方便不同业务线的接入</li>
+<li>高性能、高并发、高可用的服务</li>
+<li>维护成本较高</li>
+</ul>
+<p><em><strong>MySQL读压力如何解决？</strong></em></p>
+<p>读压力分担给从节点，从库做横向扩容。</p>
+<p><em><strong>MySQL主从架构下有什么问题？</strong></em></p>
+<p>主从延迟。</p>
+<p><em><strong>Redis存储空间不足</strong></em></p>
+<p>传统的主从、哨兵两种架构都是单点存储，如果存储数据过多，可以考虑使用分片集群架构。</p>
+<p><em><strong>Redis分片集群下有什么问题？</strong></em></p>
+<p>片键重定向，部分指令失效。</p>
+<p><strong>流量增加的处理手段</strong></p>
+<p>面对流量的增加，核心的处理手段就是横向扩容，所以在进行架构设计的时候需要考虑到这一点。</p>
+<h1 id="4-用户服务中台"><a href="#4-用户服务中台" class="headerlink" title="4. 用户服务中台"></a>4. 用户服务中台</h1><p><strong>用户数据存储分析</strong></p>
+<ol>
+<li>设计的时候尽量做到冷热字段分离；</li>
+<li>分析哪些属性是唯一的，哪些属性是一对多的；</li>
+<li>用户数据量预估；</li>
+<li>存储选型：一般用关系型数据库（结构化关系明显；技术成本相对较低）</li>
+</ol>
+<h2 id="4-1-MySQL的分库分表"><a href="#4-1-MySQL的分库分表" class="headerlink" title="4.1. MySQL的分库分表"></a>4.1. MySQL的分库分表</h2><p><strong>分库+分表的特点</strong></p>
+<p>分表分散在不同的数据库中</p>
+<ul>
+<li>数据库连接充足</li>
+<li>不能做联表查询</li>
+<li>跨数据库的事务操作完成不了</li>
+</ul>
+<p><strong>如何选择</strong></p>
+<p>连接数充足：分表</p>
+<p>连接数不足：分库分表</p>
+<h3 id="4-1-1-ShardingJDBC"><a href="#4-1-1-ShardingJDBC" class="headerlink" title="4.1.1. ShardingJDBC"></a>4.1.1. ShardingJDBC</h3><p>一款轻量级的Java框架，对原先的JDBC框架做了封装，可以兼容各类常用的ORM框架。</p>
+<p><strong>路由</strong></p>
+<p>将原先只访问单表的SQL，改写为可以访问分库分表模式下的SQL。</p>
+<ol>
+<li><strong>直接路由</strong></li>
+<li><strong>标准路由</strong></li>
+<li><strong>笛卡尔积路由</strong></li>
+<li><strong>全库路由</strong></li>
+<li><strong>全实例路由</strong></li>
+<li><strong>全库表路由</strong></li>
+<li><strong>单播路由</strong></li>
+<li><strong>阻断路由</strong></li>
+</ol>
+<p><em>使用ShardingJDBC后，尽量使用简单查询类型的SQL，少用<strong>分组查询</strong>，<strong>聚合函数</strong>。对于分页查询要谨慎使用，避免产生<strong>全表扫描</strong>的情况。</em></p>
+<h4 id="4-1-1-1-ShardingJDBC的实现"><a href="#4-1-1-1-ShardingJDBC的实现" class="headerlink" title="4.1.1.1 ShardingJDBC的实现"></a>4.1.1.1 ShardingJDBC的实现</h4><p><em><strong>ShardingJDBC的配置</strong></em></p>
+<pre><code class="xml">yun-livestreaming-user-provider/pom.xml
+        &lt;mybatis-plus.version&gt;3.5.3&lt;/mybatis-plus.version&gt;
+        &lt;sharding.jdbc.version&gt;5.3.2&lt;/sharding.jdbc.version&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;$&#123;yun-mysql.version&#125;&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.shardingsphere&lt;/groupId&gt;
+            &lt;artifactId&gt;shardingsphere-jdbc-core&lt;/artifactId&gt;
+            &lt;version&gt;$&#123;sharding.jdbc.version&#125;&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;$&#123;mybatis-plus.version&#125;&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+</code></pre>
+<pre><code class="yaml">yun-livestreaming-user-provider/src/main/resources/yun-db-sharding.yaml
+
+dataSources:
+  user: ##新表，重建的分表
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:3306/yun_live_user?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC
+    username: 
+    password: 
+    idle-timeout: 5 #单位：分钟
+    minimum-idle: 100
+    pool-name: yun-db-user
+    maximum-pool-size: 1000
+    connection-timeout: 30000
+    connection-init-sql: SELECT 1
+    connection-test-query: SELECT 1
+
+rules:
+  - !SINGLE
+    defaultDataSource: user ## 不分表分分库的默认数据源
+  - !SHARDING
+    tables:
+      t_user:
+        actualDataNodes: user.t_user_$&#123;(0..99).collect()&#123;it.toString().padLeft(2,&#39;0&#39;)&#125;&#125;
+        tableStrategy:
+          standard:
+            shardingColumn: user_id
+            shardingAlgorithmName: t_user-inline
+
+    shardingAlgorithms:
+      t_user-inline:
+        type: INLINE
+        props:
+          algorithm-expression: t_user_$&#123;(user_id % 100).toString().padLeft(2,&#39;0&#39;)&#125;
+
+props:
+  sql-show: true
+</code></pre>
+<pre><code class="yaml">yun-livestreaming-user-provider/src/main/resources/application.yml
+
+spring:
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+    url: jdbc:shardingsphere:classpath:yun-db-sharding.yaml
+</code></pre>
+<p><em><strong>实现单个增改查的前置操作</strong></em></p>
+<pre><code class="java">yun-livestreaming-user-provider/src/main/java/org/yun/livestreaming/user/provider/dao/po/UserPO.java
+
+//创建属性。
+</code></pre>
+<pre><code class="java">yun-livestreaming-user-interface/src/main/java/org/yun/livestreaming/user/dto/UserDTO.java
+
+public class UserDTO implements Serializable &#123;
+
+    @Serial
+    private static final long serialVersionUID = 4540721678683662252L;
+    private Long userId;
+    private String nickName;
+    private String trueName;
+    private String avatar;
+    private Integer sex;
+    private Integer workCity;
+    private Integer bornCity;
+    private Date bornDate;
+    private Date createTime;
+    private Date updateTime;
+
+    构造器......
+</code></pre>
+<pre><code class="java">yun-livestreaming-common-interface/src/main/java/org/yun/livestreaming/common/interfaces/ConvertBeanUtils.java
+    
+
+/**
+ * @Author YunSheng
+ * @Create 2023/11/10 9:59
+ * @Description Bean工具类
+ */
+public class ConvertBeanUtils &#123;
+    /**
+     * 将一个对象转成目标对象
+     *
+     * @param source
+     * @param targetClass
+     * @param &lt;T&gt;
+     * @return
+     */
+    public static &lt;T&gt; T convert(Object source, Class&lt;T&gt; targetClass) &#123;
+        if (source == null) &#123;
+            return null;
+        &#125;
+        T t = newInstance(targetClass);
+        BeanUtils.copyProperties(source, t);
+        return t;
+    &#125;
+
+    /**
+     * 将List对象转换成目标对象，注意实现是ArrayList
+     *
+     * @param targetClass
+     * @param &lt;K&gt;
+     * @param &lt;T&gt;
+     * @return
+     */
+    public static &lt;K, T&gt; List&lt;T&gt; convertList(List&lt;K&gt; sourceList, Class&lt;T&gt; targetClass) &#123;
+        if (sourceList == null) &#123;
+            return null;
+        &#125;
+        List targetList = new ArrayList((int) (sourceList.size() / 0.75) + 1);
+        for (K source : sourceList) &#123;
+            targetList.add(convert(source, targetClass));
+        &#125;
+        return targetList;
+    &#125;
+
+    private static &lt;T&gt; T newInstance(Class&lt;T&gt; targetClass) &#123;
+        try &#123;
+            return targetClass.newInstance();
+        &#125; catch (Exception e) &#123;
+            throw new BeanInstantiationException(targetClass, &quot;instantiation error&quot;, e);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="xml">yun-livestreaming-user-provider/pom.xml
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.idea&lt;/groupId&gt;
+            &lt;artifactId&gt;yun-livestreaming-common-interface&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p><em><strong>实现增改查</strong></em></p>
+<pre><code class="java">yun-livestreaming-user-interface/src/main/java/org/yun/livestreaming/user/interfaces/IUserRpc.java
+    
+public interface IUserRpc &#123;
+    /**
+     * @Author YunSheng
+     * @Create 2023/11/10 10:36
+     * @Description 根据用户ID进行查询
+     */
+    UserDTO getByUserID(Long userId);
+
+    /**
+     * @Author YunSheng
+     * @Create 2023/11/10 10:56
+     * @Description 用户信息更新
+     */
+    boolean updateUserInfo(UserDTO userDTO);
+
+    /**
+     * @Author YunSheng
+     * @Create 2023/11/10 11:02
+     * @Description 插入用户信息
+     */
+    boolean insertOne(UserDTO userDTO);
+&#125;
+</code></pre>
+<pre><code class="java">yun-livestreaming-user-provider/src/main/java/org/yun/livestreaming/user/provider/service/IUserService.java
+    
+/**
+ * @Author YunSheng
+ * @Create 2023/11/10 9:23
+ */
+public interface IUserService &#123;
+    /**
+     * @Author YunSheng
+     * @Create 2023/11/10 10:36
+     * @Description 根据用户ID进行查询
+     */
+    UserDTO getByUserID(Long userId);
+
+    /**
+     * @Author YunSheng
+     * @Create 2023/11/10 10:56
+     * @Description 用户信息更新
+     */
+    boolean updateUserInfo(UserDTO userDTO);
+
+    /**
+     * @Author YunSheng
+     * @Create 2023/11/10 11:02
+     * @Description 插入用户信息
+     */
+    boolean insertOne(UserDTO userDTO);
+&#125;
+</code></pre>
+<pre><code class="java">yun-livestreaming-user-provider/src/main/java/org/yun/livestreaming/user/provider/service/impl/UserServiceImpl.java
+    
+/**
+ * @Author YunSheng
+ * @Create 2023/11/10 9:24
+ */
+@Service
+public class UserServiceImpl implements IUserService &#123;
+    @Resource
+    private IUserMapper userMapper;
+
+    @Override
+    public UserDTO getByUserID(Long userId) &#123;
+        if (userId == null) &#123;
+            return null;
+        &#125;
+        return ConvertBeanUtils.convert(userMapper.selectById(userId), UserDTO.class);
+    &#125;
+
+    @Override
+    public boolean updateUserInfo(UserDTO userDTO) &#123;
+        if (userDTO == null || userDTO.getUserId() == null) &#123;
+            return false;
+        &#125;
+        userMapper.updateById(ConvertBeanUtils.convert(userDTO, UserPO.class));
+        return true;
+    &#125;
+
+    @Override
+    public boolean insertOne(UserDTO userDTO) &#123;
+        if (userDTO == null || userDTO.getUserId() == null) &#123;
+            return false;
+        &#125;
+        userMapper.insert(ConvertBeanUtils.convert(userDTO, UserPO.class));
+        return true;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">yun-livestreaming-user-provider/src/main/java/org/yun/livestreaming/user/provider/rpc/UserRpcImpl.java
+
+/**
+ * @Author YunSheng
+ * @Create 2023/11/9 8:59
+ */
+@DubboService
+public class UserRpcImpl implements IUserRpc &#123;
+    @Resource
+    private IUserService userService;
+
+    @Override
+    public UserDTO getByUserID(Long userId) &#123;
+        return userService.getByUserID(userId);
+    &#125;
+
+    @Override
+    public boolean updateUserInfo(UserDTO userDTO) &#123;
+        return userService.updateUserInfo(userDTO);
+    &#125;
+
+    @Override
+    public boolean insertOne(UserDTO userDTO) &#123;
+        return userService.insertOne(userDTO);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">yun-livestreaming-api/src/main/java/org/yun/livestreaming/api/controller/UserController.java
+
+/**
+ * @Author YunSheng
+ * @Create 2023/11/9 9:44
+ */
+
+@RestController
+@RequestMapping(&quot;/user&quot;)
+public class UserController &#123;
+    @DubboReference
+    private IUserRpc userRpc;
+
+    @GetMapping(&quot;/getUserInfo&quot;)
+    public UserDTO getUserInfo(Long userId) &#123;
+        return userRpc.getByUserID(userId);
+    &#125;
+
+    @GetMapping(&quot;/updateUserInfo&quot;)
+    public boolean updateUserInfo (Long userId, String nickname) &#123;
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(userId);
+        userDTO.setNickName(nickname);
+        return userRpc.updateUserInfo(userDTO);
+    &#125;
+
+    @GetMapping(&quot;/insertOne&quot;)
+    public boolean insertOne(Long userId) &#123;
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(userId);
+        userDTO.setNickName(&quot;test&quot;);
+        return userRpc.insertOne(userDTO);
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="4-1-2-主从架构下读写分离"><a href="#4-1-2-主从架构下读写分离" class="headerlink" title="4.1.2. 主从架构下读写分离"></a>4.1.2. 主从架构下读写分离</h3><pre><code class="sql">数据库
+
+CREATE DATABASE yun_livestreaming_user CHARACTER 
+SET utf8mb3 COLLATE = utf8_bin;
+
+DELIMITER $$
+CREATE PROCEDURE yun_livestreaming_user.create_t_user_100 () BEGIN
+    DECLARE
+        i INT;
+    DECLARE
+        table_name VARCHAR ( 30 );
+    DECLARE
+        table_pre VARCHAR ( 30 );
+    DECLARE
+        sql_text VARCHAR ( 3000 );
+    DECLARE
+        table_body VARCHAR ( 2000 );
+    
+    SET i = 0;
+    
+    SET table_name = &#39;&#39;;
+    
+    SET sql_text = &#39;&#39;;
+    
+    SET table_body = &#39;(
+    user_id bigint NOT NULL DEFAULT -1 COMMENT \&#39;用户 id\&#39;,
+    nick_name varchar(35) DEFAULT NULL COMMENT \&#39;昵称\&#39;,
+    avatar varchar(255) DEFAULT NULL COMMENT \&#39;头像\&#39;,
+    true_name varchar(20) DEFAULT NULL COMMENT \&#39;真实姓名\&#39;,
+    sex tinyint(1) DEFAULT NULL COMMENT \&#39;性别 0 男，1 女\&#39;,
+    born_date datetime DEFAULT NULL COMMENT \&#39;出生时间\&#39;,
+    work_city int(9) DEFAULT NULL COMMENT \&#39;工作地\&#39;,
+    born_city int(9) DEFAULT NULL COMMENT \&#39;出生地\&#39;,
+    create_time datetime DEFAULT CURRENT_TIMESTAMP,
+    update_time datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE 
+    CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 
+    COLLATE=utf8_bin;&#39;;
+    WHILE
+            i &lt; 100 DO
+        IF
+            i &lt; 10 THEN
+                
+                SET table_name = CONCAT( &#39;t_user_0&#39;, i );
+            ELSE 
+                SET table_name = CONCAT( &#39;t_user_&#39;, i );
+            
+        END IF;
+        
+        SET sql_text = CONCAT( &#39;CREATE TABLE &#39;, table_name, table_body );
+        SELECT
+            sql_text;
+        
+        SET @sql_text = sql_text;
+        PREPARE stmt 
+        FROM
+            @sql_text;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+        
+        SET i = i + 1;
+        
+    END WHILE;
+
+    END$$
+DELIMITER;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39112646/article/details/88763983">在Windows宿主机中连接虚拟机中的Docker容器总结_虚拟容器内应用怎么访问-CSDN博客</a></p>
+<p><em>MySQL主从架构配置</em></p>
+<pre><code class="bash"># 创建主从数据库文件夹
+mkdir -p /usr/local/mysql/master1/conf
+mkdir -p /usr/local/mysql/master1/data
+mkdir -p /usr/local/mysql/slave1/conf
+mkdir -p /usr/local/mysql/slave1/data
+# 初始化主数据库配置文件
+cd /usr/local/mysql/master1/conf
+vi my.cnf
+# 粘贴以下内容
+[mysqld]
+datadir = /usr/local/mysql/master1/data
+character-set-server = utf8
+lower-case-table-names = 1
+# 主从复制-主机配置# 主服务器唯一 ID
+server-id = 1
+# 启用二进制日志
+log-bin=mysql-bin
+# 设置 logbin 格式
+binlog_format = STATEMENT
+# 初始化从数据库配置文件
+cd /usr/local/mysql/slave1/conf
+vi my.cnf
+# 粘贴以下内容
+[mysqld]
+datadir = /usr/local/mysql/slave1/data
+character-set-server = utf8
+lower-case-table-names = 1
+# 主从复制-从机配置# 从服务器唯一 ID
+server-id = 2
+# 启用中继日志
+relay-log = mysql-relay
+# 文件夹授权
+chmod -R 777 /usr/local/mysql
+</code></pre>
+<pre><code class="bash">docker run --name=mysql-master-1 \
+--privileged=true \
+-p 8808:3306 \
+-v /usr/local/mysql/master1/data/:/var/lib/mysql \
+-v /usr/local/mysql/master1/conf/my.cnf:/etc/mysql/my.cnf \
+-v /usr/local/mysql/master1/mysql-files/:/var/lib/mysql-files/ \
+-e MYSQL_ROOT_PASSWORD=admin \
+-d mysql:8.0.27 --lower_case_table_names=1
+
+docker run --name=mysql-slave-1 \
+--privileged=true \
+-p 8809:3306 \
+-v /usr/local/mysql/slave1/data/:/var/lib/mysql \
+-v /usr/local/mysql/slave1/conf/my.cnf:/etc/mysql/my.cnf \
+-v /usr/local/mysql/slave1/mysql-files/:/var/lib/mysql-files/ \
+-e MYSQL_ROOT_PASSWORD=admin \
+-d mysql:8.0.27 --lower_case_table_names=1
+
+docker exec -it mysql-master-1 /bin/bash
+</code></pre>
+<pre><code class="sql">- 主数据库创建用户 slave 并授权
+
+# 创建用户,设置主从同步的账户名
+create user &#39;yun-slave&#39;@&#39;%&#39; identified with mysql_native_password by &#39;yun-pwd&#39;;
+# 授权
+grant replication slave on *.* to &#39;yun-slave&#39;@&#39;%&#39;;
+# 刷新权限
+flush privileges;
+# 查询 server_id 值
+show variables like &#39;server_id&#39;;
+# 也可临时（重启后失效）指定 server_id 的值（主从数据库的 server_id 不能相同）
+set global server_id = 1;
+# 查询 Master 状态，并记录 File 和 Position 的值，这两个值用于和下边的从数据库中的 change 那条 sql 中的master_log_file，master_log_pos 参数对齐使用
+show master status;
+# 重置下 master 的 binlog 位点
+reset master;
+</code></pre>
+<pre><code class="sql">- 进入从数据库
+
+# 注意：执行完此步骤后退出主数据库，防止再次操作导致 File 和 Position 的值发生变化
+# 验证 slave 用户是否可用
+
+# 查询 server_id 值
+show variables like &#39;server_id&#39;;
+
+# 也可临时（重启后失效）指定 server_id 的值（主从数据库的 server_id 不能相同）
+set global server_id = 2;
+
+# 若之前设置过同步，请先重置
+stop slave;
+reset slave;
+# 设置主数据库
+change master to master_host=&#39;localhost&#39;,master_port=8808,master_user=&#39;yun-slave&#39;,master_password=&#39;yun-pwd&#39;,master_log_file=&#39;binlog.000001&#39;,master_log_pos=156;
+# 开始同步
+start slave;
+# 若出现错误，则停止同步，重置后再次启动
+stop slave;
+reset slave;
+start slave;
+# 查询 Slave 状态
+show slave status;
+</code></pre>
+<h3 id="4-1-3-Redis"><a href="#4-1-3-Redis" class="headerlink" title="4.1.3. Redis"></a>4.1.3. Redis</h3><p>降低对MySQL数据库的访问压力，提升系统查询性能。</p>
+
+    </div>
+    
+    
+    
+    
+    <!-- 
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+     -->
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+        <div id="comment">
+            <div id="waline-container">
+            </div>
+        </div>
+        
+
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 云升的小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;云升
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+<!-- 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: ,
+    });
+</script>
+ -->
+
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <script>
+        Waline.init({
+            el: '#waline-container',
+            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
+            commentCount: "true",
+            pageview: "false",
+            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+            meta: "nick,mail,link".split(','),
+            requiredMeta: "nick".split(','),
+            lang: "zh-CN",
+            wordLimit: parseInt("0"),
+            pageSize: "10",
+            login: "enable",
+        });
+    </script>
+    
+
+
+
+        
+        <canvas
+            id="fireworks"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+        ></canvas>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1" ></canvas> <script src="/js/background.min.js"></script>
+    </body>
+</html>
