@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ff7d73">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #00bcd4">微服务</a>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #00a596">微服务</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="color: #ff7d73">项目</a>
+                <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="color: #00bcd4">项目</a>
             </span>
             
         </span>
@@ -290,6 +290,48 @@ nacos 2.2.3
 <p><em><strong>Docker安装MySQL，Redis</strong></em></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-install-mysql.html">Docker 安装 MySQL | 菜鸟教程 (runoob.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-install-redis.html">Docker 安装 Redis | 菜鸟教程 (runoob.com)</a></p>
+<pre><code class="xml">redis.conf
+
+#注释掉这部分，这是限制redis只能本地访问
+bind 127.0.0.1
+
+#默认yes，开启保护模式，限制为本地访问
+protected-mode no
+
+#默认no，改为yes意为以守护进程方式启动，可后台运行，除非kill进程，改为yes会使配置文件方#式启动redis失败
+daemonize no
+
+#redis持久化（可选）
+appendonly yes
+
+#设置密码
+requirepass 123456 
+
+#启动命令
+docker run -p 6379:6379 --name redis \
+-v /usr/local/redis.conf:/etc/redis/redis.conf \
+-v /usr/local/data:/data \
+-d redis redis-server /etc/redis/redis.conf \
+--appendonly yes
+
+# 启动容器的时候，并为其设置密码
+docker run -d --name myredis -p 6379:6379 redis --requirepass &quot;123456&quot;
+
+# 通过容器id，进入redis
+docker exec -it CONTAINER_ID /bin/bash
+
+# 运行redis客户端
+redis-cli
+
+# 查看redis的密码
+config get requirepass
+
+# 设置redis的密码
+config set requirepass yourPassword
+
+# 认证
+auth yourPassword
+</code></pre>
 <h3 id="2-3-2-JDK1-8"><a href="#2-3-2-JDK1-8" class="headerlink" title="2.3.2. JDK1.8"></a>2.3.2. JDK1.8</h3><p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1XVVQ67HuMpnhM7TN5BjVKg?pwd=sjeo">https://pan.baidu.com/s/1XVVQ67HuMpnhM7TN5BjVKg?pwd=sjeo</a><br>提取码：sjeo </p>
 <h3 id="2-3-3-Maven"><a href="#2-3-3-Maven" class="headerlink" title="2.3.3. Maven"></a>2.3.3. Maven</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zxf0619/article/details/121478813">在Linux系统中安装并配置maven详细教程_linux安装maven-CSDN博客</a></p>
 <h3 id="2-3-4-RocketMQ"><a href="#2-3-4-RocketMQ" class="headerlink" title="2.3.4. RocketMQ"></a>2.3.4. RocketMQ</h3><p><a target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/quickStart/01quickstart/">快速开始 | RocketMQ (apache.org)</a></p>
@@ -298,6 +340,7 @@ nacos 2.2.3
 nohup sh /bin/mqnamesrcv &gt;/dev/null 2&gt;&amp;1 &amp;
 </code></pre>
 <h3 id="2-3-5-Nacos"><a href="#2-3-5-Nacos" class="headerlink" title="2.3.5. Nacos"></a>2.3.5. Nacos</h3><p><a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/docs/quick-start.html">Nacos 快速开始</a></p>
+<p><em>需要开放7848、8848、9848、9849端口</em></p>
 <h2 id="2-4-Docker的使用"><a href="#2-4-Docker的使用" class="headerlink" title="2.4. Docker的使用"></a>2.4. Docker的使用</h2><p>容器技术的流行与服务的架构演变有关。</p>
 <h3 id="2-4-1-Docker的特点"><a href="#2-4-1-Docker的特点" class="headerlink" title="2.4.1. Docker的特点"></a>2.4.1. Docker的特点</h3><ul>
 <li>不需要运行额外的OS（省内存）</li>
@@ -316,6 +359,8 @@ docker exec -it [container id] /bin/bash
 exit
 停止容器
 docker stop [container id]
+删除容器
+docker rm [container id]
 容器信息
 docker inspect [container id]
 容器日志
@@ -351,11 +396,11 @@ nacos:
   username:
   password:
 discovery:
-  server-addr:yun.test.com:8848
-  namespace:yun-live-test
+  server-addr: xx.xx.xx.xx:8848
+  namespace: [从nacos里copy的命名空间ID]
 </code></pre>
 <pre><code>dubbo.application.name=yun-livestreaming-user-provider
-dubbo.registry.address=nacos://localhost:8848?namespace=yun-live-test
+dubbo.registry.address=nacos://localhost:8848?namespace=[从nacos里copy的命名空间ID]
 dubbo.server=true
 dubbo.protocol.name=dubbo
 dubbo.protocol.port=9090
@@ -382,6 +427,7 @@ public class UserProviderApplication &#123;
 </code></pre>
 <p><a target="_blank" rel="noopener" href="https://cn.dubbo.apache.org/zh-cn/docsv2.7/user/references/xml/dubbo-reference/">dubbo:reference | Apache Dubbo</a></p>
 <p><a target="_blank" rel="noopener" href="https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/advanced-features-and-usage/">高级特性和用法 | Apache Dubbo</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012988901/article/details/84503672">(3)Dubbo启动时qos-server can not bind localhost:22222错误解决_qos-server can not bind localhost:22222, dubbo ver-CSDN博客</a></p>
 <h4 id="3-1-1-1-Dubbo的底层原理"><a href="#3-1-1-1-Dubbo的底层原理" class="headerlink" title="3.1.1.1. Dubbo的底层原理"></a>3.1.1.1. Dubbo的底层原理</h4><p><strong>服务暴露原理</strong></p>
 <p>对export函数的源代码进行深入研究，一直到NettyServer的启动。</p>
 <p><strong>服务调用原理</strong></p>
@@ -489,47 +535,84 @@ public class UserProviderApplication &#123;
 <pre><code class="yaml">yun-livestreaming-user-provider/src/main/resources/yun-db-sharding.yaml
 
 dataSources:
-  user: ##新表，重建的分表
+  # 新表，重建的分表
+  user_master:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:3306/yun_live_user?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC
-    username: 
-    password: 
-    idle-timeout: 5 #单位：分钟
-    minimum-idle: 100
-    pool-name: yun-db-user
-    maximum-pool-size: 1000
-    connection-timeout: 30000
-    connection-init-sql: SELECT 1
-    connection-test-query: SELECT 1
+    jdbcUrl: jdbc:mysql://host:8808/yun_livestreaming_user?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC
+    username: root
+    password: admin
+  # 新表，重建的分表
+  user_slave0:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://host:8809/yun_livestreaming_user?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC
+    username: root
+    password: admin
 
+# 读写分离，写的时候往master写，读的时候在slave读
 rules:
+  - !READWRITE_SPLITTING
+    dataSources:
+      user_ds:
+        staticStrategy:
+          writeDataSourceName: user_master
+          readDataSourceNames:
+            - user_slave0
   - !SINGLE
-    defaultDataSource: user ## 不分表分分库的默认数据源
+    defaultDataSource: user_ds  # 不分表分分库的默认数据源
   - !SHARDING
     tables:
       t_user:
-        actualDataNodes: user.t_user_$&#123;(0..99).collect()&#123;it.toString().padLeft(2,&#39;0&#39;)&#125;&#125;
+        actualDataNodes: user_ds.t_user_$&#123;(0..99).collect()&#123; it.toString().padLeft(2,&#39;0&#39;) &#125; &#125;
         tableStrategy:
           standard:
             shardingColumn: user_id
             shardingAlgorithmName: t_user-inline
-
     shardingAlgorithms:
       t_user-inline:
         type: INLINE
         props:
-          algorithm-expression: t_user_$&#123;(user_id % 100).toString().padLeft(2,&#39;0&#39;)&#125;
-
+          algorithm-expression: t_user_$&#123;(user_id %100).toString().padLeft(2,&#39;0&#39;)&#125;
 props:
   sql-show: true
 </code></pre>
 <pre><code class="yaml">yun-livestreaming-user-provider/src/main/resources/application.yml
 
 spring:
+  application:
+    name: yun-livestreaming-user-provider
   datasource:
     driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
     url: jdbc:shardingsphere:classpath:yun-db-sharding.yaml
+    hikari:
+      pool-name: yun-user-pool
+      minimum-idle: 150
+      maximum-pool-size: 300
+      idle-timeout: 60000
+      connection-timeout: 4000
+      max-lifetime: 60000
+
+
+dubbo:
+  application:
+    name: $&#123;spring.application.name&#125;
+  registry:
+    address: nacos://host:8848?namespace=610d99d1-3f09-4bdd-adb2-a09368e0d59a
+  protocol:
+    name: dubbo
+    port: 9091
+</code></pre>
+<pre><code class="yaml">yun-livestreaming-user-provider/src/main/resources/bootstrap.yml
+
+spring:
+  application:
+    name: yun-livestreaming-user-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 60.204.193.53:8848
+        namespace: 610d99d1-3f09-4bdd-adb2-a09368e0d59a
 </code></pre>
 <p><em><strong>实现单个增改查的前置操作</strong></em></p>
 <pre><code class="java">yun-livestreaming-user-provider/src/main/java/org/yun/livestreaming/user/provider/dao/po/UserPO.java
@@ -841,9 +924,12 @@ CREATE PROCEDURE yun_livestreaming_user.create_t_user_100 () BEGIN
     END$$
 DELIMITER;
 </code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog-yunsheng.cn/2023/11/12/%E6%9C%AC%E5%9C%B0%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8ADocker%E4%B8%8B%E7%9A%84MySQL/">本地远程连接云服务器上Docker下的MySQL | 云升的小窝 (blog-yunsheng.cn)</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39112646/article/details/88763983">在Windows宿主机中连接虚拟机中的Docker容器总结_虚拟容器内应用怎么访问-CSDN博客</a></p>
 <p><em>MySQL主从架构配置</em></p>
-<pre><code class="bash"># 创建主从数据库文件夹
+<pre><code class="bash">linux
+
+# 创建主从数据库文件夹
 mkdir -p /usr/local/mysql/master1/conf
 mkdir -p /usr/local/mysql/master1/data
 mkdir -p /usr/local/mysql/slave1/conf
@@ -877,7 +963,9 @@ relay-log = mysql-relay
 # 文件夹授权
 chmod -R 777 /usr/local/mysql
 </code></pre>
-<pre><code class="bash">docker run --name=mysql-master-1 \
+<pre><code class="bash">linux-docker
+
+docker run --name=mysql-master-1 \
 --privileged=true \
 -p 8808:3306 \
 -v /usr/local/mysql/master1/data/:/var/lib/mysql \
@@ -939,7 +1027,210 @@ start slave;
 # 查询 Slave 状态
 show slave status;
 </code></pre>
+<p><em>服务器启动后自动初始化数据库</em></p>
+<pre><code class="java">yun-livestreaming-framework/yun-livestreaming-framework-datasource-starter/src/main/java/org/idea/yun/livestreaming/framework/datasource/starter/config/ShardingJdbcDatasourceAutoInitConnectionConfig.java
+    
+package org.idea.yun.livestreaming.framework.datasource.starter.config;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+
+
+/**
+ * @Author YunSheng
+ * @Create 2023/11/13 11:04
+ * @Description
+ */
+@Configuration
+public class ShardingJdbcDatasourceAutoInitConnectionConfig &#123;
+
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(ShardingJdbcDatasourceAutoInitConnectionConfig.class);
+
+    @Bean
+    public ApplicationRunner runner(DataSource dataSource) &#123;
+        return args -&gt; &#123;
+            LOGGER.info(&quot; ================== [ShardingJdbcDatasourceAutoInitConnectionConfig]dataSource:&#123;&#125; &quot;, dataSource);
+            //手动触发下连接池的连接创建
+            Connection connection = dataSource.getConnection();
+        &#125;;
+    &#125;
+&#125;
+</code></pre>
 <h3 id="4-1-3-Redis"><a href="#4-1-3-Redis" class="headerlink" title="4.1.3. Redis"></a>4.1.3. Redis</h3><p>降低对MySQL数据库的访问压力，提升系统查询性能。</p>
+<pre><code class="java">yun-livestreaming-framework/yun-livestreaming-framework-redis-starter/src/main/java/org/idea/yun/livestreaming/framework/redis/starter/config/RedisConfig.java
+
+/**
+ * @Author YunSheng
+ * @Create 2023/11/13 13:05
+ * @Description
+ */
+@Configuration
+@ConditionalOnClass(RedisTemplate.class)
+public class RedisConfig &#123;
+    @Bean
+    public RedisTemplate&lt;String, Object&gt; redisTemplate(RedisConnectionFactory redisConnectionFactory) &#123;
+        RedisTemplate&lt;String, Object&gt; redisTemplate = new RedisTemplate&lt;&gt;();
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        IGenericJackson2JsonRedisSerializer valueSerializer = new IGenericJackson2JsonRedisSerializer();
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringRedisSerializer);
+        redisTemplate.setValueSerializer(valueSerializer);
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashValueSerializer(valueSerializer);
+        redisTemplate.afterPropertiesSet();
+        return redisTemplate;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">yun-livestreaming-framework/yun-livestreaming-framework-redis-starter/src/main/java/org/idea/yun/livestreaming/framework/redis/starter/config/MapperFactory.java
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper.DefaultTyping;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import org.springframework.cache.support.NullValue;
+import org.springframework.util.StringUtils;
+
+import java.io.IOException;
+
+/**
+ * @Author YunSheng
+ * @Create 2023/11/13 13:12
+ * @Description
+ */
+
+public class MapperFactory &#123;
+
+    public static ObjectMapper newInstance() &#123;
+        return initMapper(new ObjectMapper(), (String) null);
+    &#125;
+
+    private static ObjectMapper initMapper(ObjectMapper mapper, String classPropertyTypeName) &#123;
+        mapper.registerModule(new SimpleModule().addSerializer(new MapperNullValueSerializer(classPropertyTypeName)));
+        if (StringUtils.hasText(classPropertyTypeName)) &#123;
+            mapper.enableDefaultTypingAsProperty(DefaultTyping.NON_FINAL, classPropertyTypeName);
+        &#125; else &#123;
+            mapper.enableDefaultTyping(DefaultTyping.NON_FINAL, As.PROPERTY);
+        &#125;
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        return mapper;
+    &#125;
+
+
+    /**
+     * &#123;@link StdSerializer&#125; adding class information required by
+     * default typing. This allows de-/serialization of
+     * &#123;@link NullValue&#125;.
+     *
+     * @author Christoph Strobl
+     * @since 1.8
+     */
+    private static class MapperNullValueSerializer extends StdSerializer&lt;NullValue&gt; &#123;
+        private static final long serialVersionUID = 1999052150548658808L;
+        private final String classIdentifier;
+
+        /**
+         * @param classIdentifier can be &#123;@literal null&#125; and will
+         *                        be defaulted to &#123;@code @class&#125;.
+         */
+        MapperNullValueSerializer(String classIdentifier) &#123;
+            super(NullValue.class);
+            this.classIdentifier = StringUtils.hasText(classIdentifier) ? classIdentifier : &quot;@class&quot;;
+        &#125;
+
+        /*
+        * (non-Javadoc)
+        * @see
+       com.fasterxml.jackson.databind.ser.std.StdSerializer#serialize(jav
+       a.lang.Object, com.fasterxml.jackson.core.JsonGenerator,
+       com.fasterxml.jackson.databind.SerializerProvider)
+        */
+        @Override
+        public void serialize(NullValue value, JsonGenerator jgen, SerializerProvider provider) throws IOException &#123;
+            jgen.writeStartObject();
+            jgen.writeStringField(classIdentifier, NullValue.class.getName());
+            jgen.writeEndObject();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">yun-livestreaming-framework/yun-livestreaming-framework-redis-starter/src/main/java/org/idea/yun/livestreaming/framework/redis/starter/config/IGenericJackson2JsonRedisSerializer.java
+
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.SerializationException;
+
+/**
+ * @Author YunSheng
+ * @Create 2023/11/13 13:14
+ * @Description
+ */
+public class IGenericJackson2JsonRedisSerializer extends GenericJackson2JsonRedisSerializer &#123;
+    public IGenericJackson2JsonRedisSerializer() &#123;
+        super(MapperFactory.newInstance());
+    &#125;
+
+    @Override
+    public byte[] serialize(Object source) throws SerializationException &#123;
+        if (source != null &amp;&amp; ((source instanceof String) || (source instanceof Character))) &#123;
+            return source.toString().getBytes();
+        &#125;
+        return super.serialize(source);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>yun-livestreaming-framework/yun-livestreaming-framework-redis-starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
+
+org.idea.yun.livestreaming.framework.redis.starter.config.RedisConfig
+org.idea.yun.livestreaming.framework.redis.starter.key.UserProviderCacheKeyBuilder
+</code></pre>
+<pre><code class="java">yun-livestreaming-user-provider/src/main/java/org/yun/livestreaming/user/provider/service/impl/UserServiceImpl.java
+
+    @Resource
+    private RedisTemplate&lt;String, UserDTO&gt; redisTemplate;
+
+    @Resource
+    private UserProviderCacheKeyBuilder userProviderCacheKeyBuilder;
+
+    @Override
+    public UserDTO getByUserID(Long userId) &#123;
+        if (userId == null) &#123;
+            return null;
+        &#125;
+        String key = userProviderCacheKeyBuilder.buildUserInfoKey(userId);
+        UserDTO userDTO = redisTemplate.opsForValue().get(key);
+        if (userDTO != null) &#123;
+            return userDTO;
+        &#125;
+        userDTO = ConvertBeanUtils.convert(userMapper.selectById(userId), UserDTO.class);
+        if (userDTO != null) &#123;
+            redisTemplate.opsForValue().set(key, userDTO);
+        &#125;
+        return userDTO;
+    &#125;
+</code></pre>
+<pre><code class="yaml">spring:  
+  data:
+    redis:
+      port: 6379
+      host: 
+      lettuce:
+        pool:
+          min-idle: 10
+          max-active: 50
+          max-idle: 20
+      password: 123456
+</code></pre>
 
     </div>
     

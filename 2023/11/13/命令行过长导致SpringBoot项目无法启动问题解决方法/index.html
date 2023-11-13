@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>自定义404页面后文章错误跳转问题的解决 | 云升的小窝</title>
+        <title>命令行过长导致SpringBoot项目无法启动问题解决方法 | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -149,22 +149,22 @@
             <div id="main" v-show="!loading">
                 <div class="article">
     <div>
-        <h1>自定义404页面后文章错误跳转问题的解决</h1>
+        <h1>命令行过长导致SpringBoot项目无法启动问题解决方法</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/4/12
+            2023/11/13
         </span>
         
         <span class="category">
-            <a href="/categories/%E5%85%B6%E4%BB%96/">
+            <a href="/categories/%E5%BC%80%E5%8F%91/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                其他
+                开发
             </a>
         </span>
         
@@ -176,17 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/hexo/" style="color: #03a9f4">hexo</a>
+                <a href="/tags/DEBUG/" style="color: #00a596">DEBUG</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/404/" style="color: #03a9f4">404</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" style="color: #ffa2c4">自定义</a>
+                <a href="/tags/IDEA/" style="color: #ffa2c4">IDEA</a>
             </span>
             
         </span>
@@ -194,20 +189,10 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="文章错误跳转问题的解决"><a href="#文章错误跳转问题的解决" class="headerlink" title="文章错误跳转问题的解决"></a>文章错误跳转问题的解决</h1><p>昨天在自定义404页面后，发布了一篇关于git上传远程仓库方法的记录文章，在部署后打开会跳转到404页面，以下是解决的过程记录。</p>
-<img src="/2023/04/12/%E8%87%AA%E5%AE%9A%E4%B9%89404%E9%A1%B5%E9%9D%A2%E5%90%8E%E6%96%87%E7%AB%A0%E9%94%99%E8%AF%AF%E8%B7%B3%E8%BD%AC%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/image-20230412121358032-1681273648598-1.png" class="">
-
-<p>首先查看本地部署情况，本地部署后跳转正常，部署到github后则未能正常跳转，点击新发布文章后跳转到404页面。</p>
-<p>此时情况有：</p>
-<ol>
-<li>手动输入文章地址，正常打开；</li>
-<li>其他文章正常打开。</li>
-</ol>
-<p>点开F12控制台面板，点击文章，看到 <code>attribute</code> 相关信息错误，回顾之前操作，想起来自己有过直接修改 <code>post</code> 文件名，将文件名修改回创建时的文件名后再次测试，正常打开，说明 <code>hexo</code> 不能自己随意修改文章 <code>md</code> 文件名，以下是查阅官方文档找到的相关操作：</p>
-<pre><code class="bash">-p, --path	自定义新文章的路径
--r, --replace	如果存在同名文章，将其替换
--s, --slug	文章的 Slug，作为新文章的文件名和发布后的 URL
-</code></pre>
+        <p>application.yml文件过长后项目无法启动了，最后找到了解决方法：</p>
+<p><img src="/2023/11/13/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%87%E9%95%BF%E5%AF%BC%E8%87%B4SpringBoot%E9%A1%B9%E7%9B%AE%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/image-20231113135659900.png" alt="image-20231113135659900"></p>
+<p><img src="/2023/11/13/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%87%E9%95%BF%E5%AF%BC%E8%87%B4SpringBoot%E9%A1%B9%E7%9B%AE%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/image-20231113135720989.png" alt="image-20231113135720989"></p>
+<p>如图设置即可！</p>
 
     </div>
     
