@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ffa2c4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #00a596">微服务</a>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #03a9f4">微服务</a>
             </span>
             
             <span class="tag">
@@ -1064,6 +1064,7 @@ public class ShardingJdbcDatasourceAutoInitConnectionConfig &#123;
 &#125;
 </code></pre>
 <h3 id="4-1-3-Redis"><a href="#4-1-3-Redis" class="headerlink" title="4.1.3. Redis"></a>4.1.3. Redis</h3><p>降低对MySQL数据库的访问压力，提升系统查询性能。</p>
+<h4 id="4-1-3-1-Redis的实现"><a href="#4-1-3-1-Redis的实现" class="headerlink" title="4.1.3.1. Redis的实现"></a>4.1.3.1. Redis的实现</h4><p><em>单个查询引入Redis提升查询速率</em></p>
 <pre><code class="java">yun-livestreaming-framework/yun-livestreaming-framework-redis-starter/src/main/java/org/idea/yun/livestreaming/framework/redis/starter/config/RedisConfig.java
 
 /**
@@ -1229,8 +1230,80 @@ org.idea.yun.livestreaming.framework.redis.starter.key.UserProviderCacheKeyBuild
           min-idle: 10
           max-active: 50
           max-idle: 20
-      password: 123456
+      password: 
 </code></pre>
+<p><em><strong>批量查询的实现</strong></em></p>
+<pre><code class="java">yun-livestreaming-user-provider/src/main/java/org/yun/livestreaming/user/provider/service/impl/UserServiceImpl.java
+
+    @Override
+    public Map&lt;Long, UserDTO&gt; batchQueryUserInfo(List&lt;Long&gt; userIdList) &#123;
+        if (CollectionUtils.isEmpty(userIdList)) &#123;
+            return Maps.newHashMap();
+        &#125;
+        userIdList = userIdList.stream().filter(id -&gt; id &gt; 10000).collect(Collectors.toList());
+        if (CollectionUtils.isEmpty(userIdList)) &#123;
+            return Maps.newHashMap();
+        &#125;
+
+        // redis
+        List&lt;String&gt; keyList = new ArrayList&lt;&gt;();
+        userIdList.forEach(userId -&gt; &#123;
+            keyList.add(userProviderCacheKeyBuilder.buildUserInfoKey(userId));
+        &#125;);
+        List&lt;UserDTO&gt; userDTOList = redisTemplate.opsForValue().multiGet(keyList).stream().filter(x -&gt; x != null).collect(Collectors.toList());
+        if (!CollectionUtils.isEmpty(userDTOList) &amp;&amp; userDTOList.size() == userIdList.size()) &#123;
+            return userDTOList.stream().collect(Collectors.toMap(UserDTO::getUserId, x -&gt; x));
+        &#125;
+        List&lt;Long&gt; userIdInCacheList = userDTOList.stream().map(UserDTO::getUserId).collect(Collectors.toList());
+        List&lt;Long&gt; userIdNotInCacheList = userIdList.stream().filter(x -&gt; !userIdInCacheList.contains(x)).collect(Collectors.toList());
+
+        // 多线程查询
+        Map&lt;Long, List&lt;Long&gt;&gt; userIdMap = userIdNotInCacheList.stream().collect(Collectors.groupingBy(userId -&gt; userId % 100));
+        List&lt;UserDTO&gt; dbQueryResult = new CopyOnWriteArrayList&lt;&gt;();
+        userIdMap.values().parallelStream().forEach(queryUserIdList -&gt; &#123;
+            dbQueryResult.addAll(ConvertBeanUtils.convertList(userMapper.selectBatchIds(queryUserIdList), UserDTO.class));
+        &#125;);
+        if (!CollectionUtils.isEmpty(dbQueryResult)) &#123;
+            Map&lt;String, UserDTO&gt; saveCacheMap = dbQueryResult.stream().collect(Collectors.toMap(userDTO -&gt; userProviderCacheKeyBuilder.buildUserInfoKey(userDTO.getUserId()), x -&gt; x));
+            redisTemplate.opsForValue().multiSet(saveCacheMap);
+            userDTOList.addAll(dbQueryResult);
+        &#125;
+        return userDTOList.stream().collect(Collectors.toMap(UserDTO::getUserId, x -&gt; x));
+    &#125;
+</code></pre>
+<p><em>测试成功</em></p>
+<p><img src="/2023/11/05/%E5%9F%BA%E4%BA%8ESpringCloudAlibaba%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%B4%E6%92%AD%E5%B9%B3%E5%8F%B0%E9%A1%B9%E7%9B%AE/image-20231114113038787.png" alt="image-20231114113038787"></p>
+<h4 id="4-1-3-2-Redis过期时间设置"><a href="#4-1-3-2-Redis过期时间设置" class="headerlink" title="4.1.3.2. Redis过期时间设置"></a>4.1.3.2. Redis过期时间设置</h4><p>回顾Redis可能出现的一些问题：<a target="_blank" rel="noopener" href="https://blog-yunsheng.cn/2023/10/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BC%80%E5%8F%91%E7%BB%BC%E5%90%88%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%81%8FJava%E6%96%B9%E5%90%91%EF%BC%89/">计算机开发综合知识总结（偏Java方向）</a></p>
+<pre><code class="java">// 以管道的形式(网络IO开销较少)实现过期时间
+redisTemplate.executePipelined(new SessionCallback&lt;Object&gt;() &#123;
+    @Override
+    public &lt;K, V&gt; Object execute(RedisOperations&lt;K, V&gt; operations) throws DataAccessException &#123;
+        for (String redisKey : saveCacheMap.keySet()) &#123;
+            operations.expire((K) redisKey, createRandomExpireTime(), TimeUnit.SECONDS);
+        &#125;
+        return null;
+    &#125;
+&#125;);
+
+// 单个查询中的设置
+redisTemplate.opsForValue().set(key, userDTO, 30, TimeUnit.MINUTES);
+</code></pre>
+<h4 id="4-1-3-3-高并发场景下缓存和数据库一致性问题"><a href="#4-1-3-3-高并发场景下缓存和数据库一致性问题" class="headerlink" title="4.1.3.3. 高并发场景下缓存和数据库一致性问题"></a>4.1.3.3. 高并发场景下缓存和数据库一致性问题</h4><p>理解先MySQL与先Redis为什么都有可能会出现数据不一致的问题。原因是多个进程之间的读写不同步问题。</p>
+<p><strong>解决方法</strong></p>
+<p><em>不推荐用加锁解决，会导致性能糟糕。</em></p>
+<p><em>不推荐写时加载缓存，数据一旦写入混乱，得依靠下一次的写操作去恢复。</em></p>
+<ul>
+<li>读时加载缓存：更新MySQL后，删除掉缓存。等到读的时候再同步到缓存。</li>
+</ul>
+<p>在更新和删除缓存之间另一进程也有可能从Redis读取到脏数据，但是概率较低，具体看业务需求是否容忍。</p>
+<p><strong>最终一致性</strong></p>
+<p>性能和一致性不可兼得，引入缓存的目的都是为了提升效率，最终都会妥协到最终一致性来解决。</p>
+<p><em>例如：</em></p>
+<ul>
+<li>利用数据库日志订阅+消息队列保证数据更新</li>
+<li>通过延时双删来解决主从同步延时</li>
+</ul>
+<p><del><em>理解！理解！理解！背是背不下来滴，多想想吧，不难理解但是怕忘了，温故而知新。</em></del></p>
 
     </div>
     

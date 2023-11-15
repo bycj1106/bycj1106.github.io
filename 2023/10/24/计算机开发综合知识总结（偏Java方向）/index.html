@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ffa2c4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00bcd4">综合</a>
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #ffa2c4">综合</a>
             </span>
             
         </span>
@@ -653,6 +653,17 @@ new Integer(2).equals(new Integer(2)); // true
 <p><strong>多态</strong></p>
 <p>一个引用变量倒底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。</p>
 <p>Java实现多态有三个必要条件：继承、重写、向上转型。</p>
+<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性"></a>不可变性</h3><p><em><strong><code>final</code>关键字</strong></em></p>
+<ul>
+<li>类声明–&gt;类不可以被继承</li>
+<li>函数声明–&gt;函数不可以在派生类中重写</li>
+<li>变量声明–&gt;变量不可以指向其他对象</li>
+</ul>
+<p><em><strong>不可变性的实现</strong></em></p>
+<ul>
+<li><code>final</code>关键字无法保证不可变性</li>
+<li>从接口定义，类的实现上保证不可变性</li>
+</ul>
 <h3 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3><ul>
 <li>类的成员变量–&gt;对象状态</li>
 <li>类的成员函数–&gt;对象行为</li>
