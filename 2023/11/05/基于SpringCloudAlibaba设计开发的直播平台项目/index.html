@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ffa2c4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #03a9f4">微服务</a>
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #00a596">微服务</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="color: #00bcd4">项目</a>
+                <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="color: #ff7d73">项目</a>
             </span>
             
         </span>
@@ -611,7 +611,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 60.204.193.53:8848
+        server-addr: :8848
         namespace: 610d99d1-3f09-4bdd-adb2-a09368e0d59a
 </code></pre>
 <p><em><strong>实现单个增改查的前置操作</strong></em></p>
@@ -1289,6 +1289,7 @@ redisTemplate.executePipelined(new SessionCallback&lt;Object&gt;() &#123;
 redisTemplate.opsForValue().set(key, userDTO, 30, TimeUnit.MINUTES);
 </code></pre>
 <h4 id="4-1-3-3-高并发场景下缓存和数据库一致性问题"><a href="#4-1-3-3-高并发场景下缓存和数据库一致性问题" class="headerlink" title="4.1.3.3. 高并发场景下缓存和数据库一致性问题"></a>4.1.3.3. 高并发场景下缓存和数据库一致性问题</h4><p>理解先MySQL与先Redis为什么都有可能会出现数据不一致的问题。原因是多个进程之间的读写不同步问题。</p>
+<p>在CSDN看到了一篇很好的讲解文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39069718/article/details/119797629">为什么需要分布式ID？_为什么要使用分布式id_南大白的博客-CSDN博客</a></p>
 <p><strong>解决方法</strong></p>
 <p><em>不推荐用加锁解决，会导致性能糟糕。</em></p>
 <p><em>不推荐写时加载缓存，数据一旦写入混乱，得依靠下一次的写操作去恢复。</em></p>
@@ -1304,6 +1305,33 @@ redisTemplate.opsForValue().set(key, userDTO, 30, TimeUnit.MINUTES);
 <li>通过延时双删来解决主从同步延时</li>
 </ul>
 <p><del><em>理解！理解！理解！背是背不下来滴，多想想吧，不难理解但是怕忘了，温故而知新。</em></del></p>
+<h3 id="4-1-4-分布式ID"><a href="#4-1-4-分布式ID" class="headerlink" title="4.1.4. 分布式ID"></a>4.1.4. 分布式ID</h3><p><em>场景分析</em></p>
+<p>用户注册后，需要分配一个userId，其需要具备的特性有：</p>
+<ol>
+<li>唯一标识</li>
+<li>无规律，随机性强（防止窃听，获知用户增量等信息）</li>
+</ol>
+<h4 id="4-1-4-1-UUID机制"><a href="#4-1-4-1-UUID机制" class="headerlink" title="4.1.4.1. UUID机制"></a>4.1.4.1. UUID机制</h4><p>算法的核心思想是结合机器的网卡、当地时间、一个随机数来生成UUID。</p>
+<ul>
+<li>优点：本地生成，生成简单，性能好，没有高可用风险；</li>
+<li>缺点：长度过长，无序不可读，对于MySQL的查询不方便，且容易造成叶子节点裂变。</li>
+</ul>
+<h4 id="4-1-4-2-Redis自增ID"><a href="#4-1-4-2-Redis自增ID" class="headerlink" title="4.1.4.2. Redis自增ID"></a>4.1.4.2. Redis自增ID</h4><p>Redis的所有命令操作都是单线程的，本身提供像incr和increby这样的自增原子命令，所以能保证生成的ID肯定是唯一有序的。</p>
+<ul>
+<li>优点：不依赖于数据库，灵活方便，且性能优于数据库，数字ID天然排序，对分页或者需要排序的结果很有帮助；</li>
+<li>缺点：存放在Redis当中，如果内存淘汰策略选择不当，会导致丢失，不支持非连续性ID生成。</li>
+</ul>
+<h4 id="4-1-4-3-数据库自增ID"><a href="#4-1-4-3-数据库自增ID" class="headerlink" title="4.1.4.3. 数据库自增ID"></a>4.1.4.3. 数据库自增ID</h4><p>使用数据库的ID自增策略，如MySQL的auto_increment。</p>
+<p>并且可用使用两台数据库分表设置不同步长，生成不重复ID的策略来实现高可用。</p>
+<ul>
+<li>优点：数据库生成的ID绝对有序，高可用实现方式简单；</li>
+<li>缺点：需要独立部署数据库实例，成本高，有性能瓶颈。</li>
+</ul>
+<h4 id="4-1-4-4-雪花算法"><a href="#4-1-4-4-雪花算法" class="headerlink" title="4.1.4.4. 雪花算法"></a>4.1.4.4. 雪花算法</h4><p>Twitter利用Zookeeper实现了一个全局ID生成的服务Snowflake，不同的位代表了不同的含义。</p>
+<ul>
+<li>优点：高性能，低延迟，按时间有序，一般不会造成ID碰撞；</li>
+<li>缺点：需要独立的开发和部署，依赖于机器的时钟。</li>
+</ul>
 
     </div>
     

@@ -176,17 +176,17 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #03a9f4">Java</a>
+                <a href="/tags/Java/" style="color: #00bcd4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ff7d73">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #ffa2c4">综合</a>
+                <a href="/tags/%E7%BB%BC%E5%90%88/" style="color: #00bcd4">综合</a>
             </span>
             
         </span>
@@ -703,6 +703,15 @@ new Integer(2).equals(new Integer(2)); // true
 <p>抽象类可以有部分实现</p>
 <p>抽象类不可以多重继承，接口可以</p>
 <h4 id="Iterable接口"><a href="#Iterable接口" class="headerlink" title="Iterable接口"></a>Iterable接口</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43848614/article/details/114601737">【Java】Iterable接口的使用_iterable的用法_何为xl的博客-CSDN博客</a></p>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33537014/article/details/80575033">JAVA中泛型和Object的区别_使用范型和object的区别-CSDN博客</a></p>
+<p><code>ArrayList&lt;Integer&gt;</code>是<code>List&lt;Integer&gt;</code></p>
+<p><code>List&lt;Integer&gt;</code>不是<code>List&lt;Object&gt;</code></p>
+<pre><code class="java">// 把List&lt;Integer&gt;转换成List&lt;Object&gt;
+// 1.
+new ArrayList&lt;Object&gt;(intList);
+// 2.能运行，但危险！
+(List&lt;Object&gt;)(List)intList;
+</code></pre>
 <h2 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h2><p><em><strong>数学归纳法（俗称……找规律，显然法，高数里高阶函数问题常用的方法，这里用来推程序正确性）</strong></em></p>
 <p>用于证明断言对所有自然数成立</p>
 <ul>
