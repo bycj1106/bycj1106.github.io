@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>RocketMQ因内存不足无法启动的一个坑（Linux） | 云升的小窝</title>
+        <title>关于以后的一些计划 | 云升的小窝</title>
         <meta name="author" content="云升" />
         <meta name="description" content="A home for my heart at peace" />
         <meta name="keywords" content="" />
@@ -149,22 +149,22 @@
             <div id="main" v-show="!loading">
                 <div class="article">
     <div>
-        <h1>RocketMQ因内存不足无法启动的一个坑（Linux）</h1>
+        <h1>关于以后的一些计划</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/11/15
+            2023/11/20
         </span>
         
         <span class="category">
-            <a href="/categories/%E5%BC%80%E5%8F%91/">
+            <a href="/categories/%E7%94%9F%E6%B4%BB/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                开发
+                生活
             </a>
         </span>
         
@@ -176,17 +176,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/DEBUG/" style="color: #03a9f4">DEBUG</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/RocketMQ/" style="color: #ff7d73">RocketMQ</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/Linux/" style="color: #00bcd4">Linux</a>
+                <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ffa2c4">生活</a>
             </span>
             
         </span>
@@ -194,14 +184,24 @@
     </div>
     
     <div class="content" v-pre>
-        <p>RocketMQ启动了将近一个小时，均无法启动，以失败告终，查了一堆文档，都没有找到解决方法，最后找到logs文件，里面记录了error原因，系JVM内存不足，于是才终于找到解决方法。</p>
-<p>到bin文件夹下，修改runserver.sh、runbroker.sh、tools.sh三个文件中以下值：*<del>默认设定为8g和4g，怪不得我的小破云服务器启动不起来，不是，就一个消息队列都这么吃内存吗？</del>*</p>
-<p><img src="/2023/11/15/RocketMQ%E5%9B%A0%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91%EF%BC%88Linux%EF%BC%89/image-20231115143736083.png" alt="image-20231115143736083"></p>
-<p><code>JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms256m -Xmx256m -Xmn128m&quot;</code></p>
-<p><em>相关参数</em></p>
-<p>Xms 是指设定程序启动时占用内存大小。一般来讲，大点，程序会启动的快一点，但是也可能会导致机器暂时<br>间变慢。<br>Xmx 是指设定程序运行期间最大可占用的内存大小。如果程序运行需要占用更多的内存，超出了这个设置值，<br>就会抛出OutOfMemory异常。<br>xmn 年轻代的heap大小，一般设置为Xmx的3、4分之一。</p>
-<h4 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h4><p><img src="/2023/11/15/RocketMQ%E5%9B%A0%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91%EF%BC%88Linux%EF%BC%89/image-20231115144518338.png" alt="image-20231115144518338"></p>
-<p>终于启动成功，但是似乎还有一些其他建议，与GC有关，暂时先忽略，等之后优化，仅此记录一下。</p>
+        <h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>既然是写在博客上，那么就先说说博客方面。</p>
+<p>目前打算把Hexo从GitHub Pages迁移部署到Gitee Pages，原因主要为GitHub Pages国内网络访问不稳定，预计下月初抽周末一天的时间来完成这项工作。</p>
+<p>另外未来可能会更换博客框架，Hexo有些过于轻量化了，这个等以后再说。</p>
+<h2 id="关于专业"><a href="#关于专业" class="headerlink" title="关于专业"></a>关于专业</h2><p>这是目前最至关重要的问题了，因为今年原本计划的考研，有大半年的时间没有专研专业方面的内容，知识这东西，大半年的时间搁置不仅仅是停滞，更是倒退。</p>
+<p>10月底于班级就业群里看到了一个中意的公司，投递了简历，年包20-30W，本未报太大希望，但却一路通过简历筛选、笔试、评测到面试因个人原因未能通过，有些失意。随后认真的了解目前的就业情况，班级里原本就打算找工作的同学全部都已经找到了合适的去处，有些专业一般的也有八九千的薪资。</p>
+<p>金九银十，如今错过了秋招季后较好的工作机会变得寥寥无几，因为重心的转移与认知的缺乏导致完全地错过了一次极其重要的就业时段，多少已经影响到原本考研的打算了，用现在流行的话来说是道心破碎，而作为班上技术面名列前茅的学生，我原本极有可能在这个时段找到一个令我自己满意的工作的……</p>
+<p>好在已经过去了两周多，心态早已调整回来，我本就不是患得患失的人，如今还是尽早重新规划一下这最重要的半年的路线，目前我的重心已经重新回到专业面上来。</p>
+<p>在Java开发方面，岗位确实很多，但是竞争的人更多，这个赛道已经太卷了，在Java上我也已经到了一个瓶颈期的位置，我想我没必要再吊死在Java这一门语言上。</p>
+<p>目前我正在完成我的毕设项目，等这个毕设项目完成，我想我就可以在一段时间内暂时转变学习的方向，重新拾起C++编程语言，现在国家战略大概是会偏向硬件方面，这是C++可以大展拳脚的地方，跟着国家的战略走总不会错的，同时游戏开发方面也有对C++的需求，总的来说我分析C++的应用面是比较广的，而且现在在这个赛道上竞争的人并不十分多，所以这将是我暂时搁置Java方面学习后会去学习的一个方向。</p>
+<p>同时还有一个大概算是附赠的编程语言，C#，也有很多应用场景。</p>
+<p>因为有一定进度，预计不到2个月的时间我可以做完Java毕设项目，然后一边重温C++一边做C++项目，我比较喜欢在实践中学习，预计2-3个月可以完成吧，大概能赶在明年春招前完成。</p>
+<p>这些是编程语言方面的学习与项目方面的实战安排，明年三四月份的蓝桥杯我会在C++组参赛，Java已经拿过一次奖了，其他的一些比赛能参加就参加，学历不够奖项是最好的补品了。</p>
+<p>厚积而勃发，既然已经错过了，就不要再着急了，现在潜心积累，我相信以我对计算机的热爱与投入，一定也会取得一个不错的结果的。</p>
+<h2 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h2><p>目前有些痴迷于折腾小主机（树莓派、工控机、单片机、工作站等等），如果能自己搞定一个软路由、NAS、实验用的服务器等等东西我觉得蛮酷的，不过现在精力主要还不能放在这里，等找到实习后大概会用工资在咸鱼买一台自己的工作站，然后做各种各样的实验。</p>
+<p>目前也在看金融市场方面的书，前段时间了解到了量化交易这样一个概念，现在想尝试着开始理财学习，目前还是先把市场基本的知识学会，量化平台的搭建倒是比较简单，也找到了不错的量化数据开源库：<a target="_blank" rel="noopener" href="https://akshare.akfamily.xyz/index.html">Welcome to AKShare’s Online Documentation! — AKShare 1.11.78 文档 (akfamily.xyz)</a></p>
+<p><strong>沉心静气，好好想想自己想要的是什么，并不是只有无止境的内卷才能过好自己的一生。</strong></p>
+<p>以前看到的一句话：<em>从前往后看一切皆是变数，从后往前看一切皆是定数。</em></p>
+<p>取自己想取，弃自己想弃吧。</p>
 
     </div>
     

@@ -176,12 +176,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #00bcd4">开发</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BC%80%E5%8F%91/" style="color: #ff7d73">开发</a>
+                <a href="/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
             <span class="tag">
@@ -584,6 +584,7 @@
 <h2 id="Java-IO"><a href="#Java-IO" class="headerlink" title="Java IO"></a>Java IO</h2><p>Java 把 Input输入流 和 Output 输出流，统称为IO流，它的核心就是对文件的操作，对于 字节 、字符类型的输入和输出。</p>
 <p>IO流主要分为两大类，字节流和字符流。字节流可以处理任何类型的数据，如图片，视频等，字符流只能处理字符类型的数据。</p>
 <p>IO流的本质是数据传输，并且流是单向的。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wugongzi/p/12092326.html">Java——IO流超详细总结 - 说故事的五公子 - 博客园 (cnblogs.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25418336">Java IO学习整理 - 知乎 (zhihu.com)</a></p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><p><strong>32位int的范围</strong></p>
 <p>-2^31 ~ 2^31-1</p>
@@ -683,7 +684,8 @@ new Integer(2).equals(new Integer(2)); // true
 <li>hashCode</li>
 <li>toString</li>
 </ul>
-<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p><em><strong>为什么要有接口的概念</strong></em></p>
+<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>接口里面定义了很多函数，但是他们没有实现，这个就叫接口，它做到了一个合约的作用，明确对象需要满足什么样的要求。</p>
+<p><em><strong>为什么要有接口的概念</strong></em></p>
 <p>从用户（使用实现的代码）角度看问题，用户不需要关心它是怎么实现的。</p>
 <p><em><strong>接口与类相比</strong></em></p>
 <ul>
@@ -702,6 +704,17 @@ new Integer(2).equals(new Integer(2)); // true
 <p>抽象类可以有成员变量</p>
 <p>抽象类可以有部分实现</p>
 <p>抽象类不可以多重继承，接口可以</p>
+<p><em><strong>父类&#x2F;子类的实例化&#x2F;析构顺序</strong></em></p>
+<p>实例化顺序为先父类再子类，析构反之。</p>
+<p><em><strong>final(Java)和const(C++)的作用</strong></em></p>
+<p>final可以用在变量上也可以用在方法、类上。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xingjiarong/article/details/47282255">C语言中const关键字的用法-CSDN博客</a></p>
+<p><em><strong>虚函数与纯虚函数</strong></em></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-virtual-functions.html">C++ 虚函数和纯虚函数的区别 | 菜鸟教程 (runoob.com)</a></p>
+<p>虚函数：它虚就虚在所谓”推迟联编”或者”动态联编”上，一个类函数的调用并不是在编译时刻被确定的，而是在运行时刻被确定的。由于编写代码的时候并不能确定被调用的是基类的函数还是哪个派生类的函数，所以被称为”虚”函数。虚函数只能借助于指针或者引用来达到多态的效果。</p>
+<p>纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。纯虚函数的声明就是在告诉子类的设计者，”你必须提供一个纯虚函数的实现，但我不知道你会怎样实现它”。</p>
+<p><em><strong>多重继承</strong></em></p>
+<p>C++允许多重继承，Java不允许，但实现接口可以。</p>
 <h4 id="Iterable接口"><a href="#Iterable接口" class="headerlink" title="Iterable接口"></a>Iterable接口</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43848614/article/details/114601737">【Java】Iterable接口的使用_iterable的用法_何为xl的博客-CSDN博客</a></p>
 <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33537014/article/details/80575033">JAVA中泛型和Object的区别_使用范型和object的区别-CSDN博客</a></p>
 <p><code>ArrayList&lt;Integer&gt;</code>是<code>List&lt;Integer&gt;</code></p>
@@ -712,6 +725,9 @@ new ArrayList&lt;Object&gt;(intList);
 // 2.能运行，但危险！
 (List&lt;Object&gt;)(List)intList;
 </code></pre>
+<h4 id="C-中的虚函数表"><a href="#C-中的虚函数表" class="headerlink" title="C++中的虚函数表"></a>C++中的虚函数表</h4><p><a target="_blank" rel="noopener" href="https://leehao.me/C-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E5%89%96%E6%9E%90/">C++虚函数表剖析 | Leo的技术分享 (leehao.me)</a></p>
+<p>Java里所有的函数都相当于C++里的虚函数。</p>
+<p><em>理解指针的指向，引用的对象，vtable-&gt;虚函数表，在其中找到虚函数。</em></p>
 <h2 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h2><p><em><strong>数学归纳法（俗称……找规律，显然法，高数里高阶函数问题常用的方法，这里用来推程序正确性）</strong></em></p>
 <p>用于证明断言对所有自然数成立</p>
 <ul>
@@ -1038,7 +1054,6 @@ B -----&gt;  △△△△△△△△||△△==(short)△△△△(int)||△====
 <td align="left">稳定</td>
 </tr>
 </tbody></table>
-<p>15074806803</p>
 
     </div>
     
