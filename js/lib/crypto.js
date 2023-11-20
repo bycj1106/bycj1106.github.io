@@ -1,9 +1,6 @@
 mixins.crypto = {
     data() {
-        return {
-            crypto: "",
-            check: null,
-        };
+        return { crypto: "", cryptoStatus: "" };
     },
     watch: {
         crypto(value) {
@@ -13,20 +10,13 @@ mixins.crypto = {
             try {
                 let decrypted = CryptoJS.AES.decrypt(encrypted, value).toString(CryptoJS.enc.Utf8);
                 if (CryptoJS.SHA256(decrypted).toString() === shasum) {
-                    this.check = true;
+                    this.cryptoStatus = "success";
                     content.innerHTML = decrypted;
                     this.render();
-                } else this.check = false;
+                } else this.cryptoStatus = "failure";
             } catch {
-                this.check = false;
+                this.cryptoStatus = "failure";
             }
-        },
-    },
-    computed: {
-        cryptoClass() {
-            if (this.check === null) return "";
-            if (this.check === true) return "success";
-            if (this.check === false) return "fail";
         },
     },
 };

@@ -1,26 +1,30 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>纸牌魔术流程笔记 | 云升的小窝</title>
-        <meta name="author" content="云升" />
-        <meta name="description" content="A home for my heart at peace" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="icon" href="/images/avatar.jpg" />
-        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
-<link rel="stylesheet" href="/css/fonts.min.css" />
+<head>
+    <meta charset="utf-8" />
+    <title>纸牌魔术流程笔记 | 云升的小窝</title>
+    <meta name="author" content="云升" />
+    <meta name="description" content="A home for my heart at peace" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.png" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
 <link
     rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
 />
 <script src="/js/lib/highlight.js"></script>
 
@@ -33,19 +37,22 @@
 
 
 
-<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
-
 
 
 
 <link rel="stylesheet" href="/css/main.css" />
 
-    <meta name="generator" content="Hexo 6.3.0"></head>
-    <body>
-        <div id="layout">
-            <transition name="fade">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <canvas id="fireworks"
+    	style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background"
+    	style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="layout">
+        <transition name="fade">
             <div id="loading" v-show="loading">
                 <div id="loading-circle">
                     <h2>LOADING</h2>
@@ -53,9 +60,9 @@
                     <img src="/images/loading.gif" />
                 </div>
             </div>
-            </transition>
-            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <div class="desktop-menu">
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
         <a class="title" href="/">
             <span>云升的小窝</span>
         </a>
@@ -85,69 +92,70 @@
             <span>&ensp;Tags</span>
         </a>
         
-    </div>
-    <div id="mobile-menu">
-        <div class="curtain" @click="shouMenuItems = !shouMenuItems" v-show="shouMenuItems"></div>
-        <div class="title" @click="shouMenuItems = !shouMenuItems">
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
             <span>&emsp;云升的小窝</span>
         </div>
         <transition name="slide">
-        <div class="items" v-show="shouMenuItems">
-            
-            <a href="/">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                </div>
-            </a>
-            
-            <a href="/about">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-id-card fa-fw"></i>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                </div>
-            </a>
-            
-            <a href="/archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                </div>
-            </a>
-            
-            <a href="/categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                </div>
-            </a>
-            
-            <a href="/tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                </div>
-            </a>
-            
-        </div>
+                </a>
+                
+            </div>
         </transition>
-    </div>
-</nav>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-            <transition name="into">
-            <div id="main" v-show="!loading">
-                <div class="article">
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
     <div>
         <h1>纸牌魔术流程笔记</h1>
     </div>
@@ -174,19 +182,20 @@
                 <i class="fa-solid fa-tags fa-fw"></i>
             </span>
             
+            
             <span class="tag">
                 
-                <a href="/tags/%E9%AD%94%E6%9C%AF/" style="color: #ffa2c4">魔术</a>
+                <a href="/tags/%E9%AD%94%E6%9C%AF/" style="color: #00bcd4">魔术</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%BA%B8%E7%89%8C/" style="color: #00bcd4">纸牌</a>
+                <a href="/tags/%E7%BA%B8%E7%89%8C/" style="color: #ff7d73">纸牌</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E6%B5%81%E7%A8%8B/" style="color: #ff7d73">流程</a>
+                <a href="/tags/%E6%B5%81%E7%A8%8B/" style="color: #ffa2c4">流程</a>
             </span>
             
             <span class="tag">
@@ -219,25 +228,12 @@
     
     
     
-    <!-- 
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
-     -->
     
-        <!-- 样式文件 -->
-        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
-        <div id="comment">
-            <div id="waline-container">
-            </div>
-        </div>
-        
-
     
     
 </div>
 
-                <footer id="footer">
+            <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -249,72 +245,28 @@
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
         </div>
         
     </div>
 </footer>
 
-            </div>
-            </transition>
-            
-            <transition name="fade">
+        </div>
+        
+        <transition name="fade">
             <div id="preview" ref="preview" v-show="previewShow">
                 <img id="preview-content" ref="previewContent" />
             </div>
-            </transition>
-            
-        </div>
-        <script src="/js/main.js"></script>
+        </transition>
         
-        
-
-<!-- 
-<script>
-    Waline.init({
-        el: "#waline-container",
-        serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
-        commentCount: true,
-        pageview: false,
-        emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
-        meta: ["nick","mail","link"],
-        requiredMeta: ["nick"],
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "10",
-        login: "enable",
-        locale: ,
-    });
-</script>
- -->
-
-    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-    <script>
-        Waline.init({
-            el: '#waline-container',
-            serverURL: "https://blog-comment-eogs94h9d-bycj1106.vercel.app/",
-            commentCount: "true",
-            pageview: "false",
-            emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
-            meta: "nick,mail,link".split(','),
-            requiredMeta: "nick".split(','),
-            lang: "zh-CN",
-            wordLimit: parseInt("0"),
-            pageSize: "10",
-            login: "enable",
-        });
-    </script>
+    </div>
+    <script src="/js/main.js"></script>
+    
     
 
 
 
-        
-        <canvas
-            id="fireworks"
-            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
-        ></canvas>
-        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
-        <script src="/js/fireworks.min.js"></script>
-        <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1" ></canvas> <script src="/js/background.min.js"></script>
-    </body>
+
+    
+</body>
 </html>
