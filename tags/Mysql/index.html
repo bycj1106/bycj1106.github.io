@@ -14,7 +14,7 @@
   
 
   
-  <title>Tag: MySQL | 云升的小窝</title>
+  <title>Tag: Mysql | 云升的小窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -23,7 +23,7 @@
   <meta name="description" content="A home for my heart at peace">
 <meta property="og:type" content="website">
 <meta property="og:title" content="云升的小窝">
-<meta property="og:url" content="http://example.com/tags/MySQL/index.html">
+<meta property="og:url" content="http://example.com/tags/Mysql/index.html">
 <meta property="og:site_name" content="云升的小窝">
 <meta property="og:description" content="A home for my heart at peace">
 <meta property="og:locale" content="en_US">
@@ -288,42 +288,23 @@
             <div class="dot-wrapper">
                 <div class="dot"></div>
             </div>
-            <div class="article-count">2 articles</div>
+            <div class="article-count">1 article</div>
         </div>
       
-      <a class="archive-article-link" href="/2023/11/12/%E6%9C%AC%E5%9C%B0%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8ADocker%E4%B8%8B%E7%9A%84MySQL/" title="本地远程连接云服务器上Docker下的MySQL">
-        <div class="date">11-12</div>
+      <a class="archive-article-link" href="/2023/05/24/%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8AMysql%E6%8A%A5%E9%94%99/" title="部分使用远程客户端连接Mysql时报错问题的解决">
+        <div class="date">05-24</div>
         <div class="line">
             <div class="dot"></div>
         </div>
         <div class="title">
             <div class="title-inner">
                 
-                    本地远程连接云服务器上Docker下的MySQL
+                    部分使用远程客户端连接Mysql时报错问题的解决
                 
             </div>
         </div>
         <div class="tags">
-            #开发 #MySQL #计算机网络
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/2023/11/10/%E9%80%9A%E8%BF%87SSH%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8F%8A%E5%85%B6%E4%B8%ADDocker%E4%B8%8B%E7%9A%84MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" title="通过SSH连接虚拟机及其中Docker下的MySQL数据库">
-        <div class="date">11-10</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    通过SSH连接虚拟机及其中Docker下的MySQL数据库
-                
-            </div>
-        </div>
-        <div class="tags">
-            #开发 #Docker #MySQL #虚拟机
+            #DEBUG #Mysql
         </div>
       </a>
     
@@ -341,6 +322,33 @@
 
     </div>
     <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
+lass="back-to-top-wrapper">
     <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
         <i class="fa-solid fa-angle-up"></i>
     </button>
